@@ -1,0 +1,263 @@
+<dsx>
+
+<views default="janela" >
+    
+	<!-- declaracao obrigatoria de pelo menos uma vista; -->
+    <!-- se varias vistas declaradas, o default e' a -->
+    <!-- primeira vista; de cada vez que se pressione a tecla v/V, -->
+    <!-- a vista muda para a proxima da lista; da --> 
+    <!-- ultima vista da lista volta 'a primeira -->
+	<perspective id="janela" near="0.1" far="500.0" angle="60">
+		<from x="278" y="0" z="125" />
+        <to x="278" y="154" z="90" />
+    </perspective>
+        
+</views>
+
+
+
+<illumination doublesided="1" local="1" >
+    
+    <ambient r="0.05" g="0.05" b="0.05" a="1" />            <!-- global ambient -->
+    <background r="0.8" g="0.8" b="0.8" a="1" />			<!-- background color -->
+        
+</illumination>
+
+
+
+<lights>
+    
+	<!-- Deve existir um ou mais blocos "omni" ou "spot" -->
+	<!-- Os identificadores "id" nao podem ser repetidos -->
+	<omni id="candeeiro_a_fazer" enabled="1" >
+		<location x="357.5" y="500" z="155" w="1" />
+		<ambient r="0.2" g="0.2" b="0.2" a="1" />        <!-- ambient component -->
+		<diffuse r="0.5" g="0.5" b="0.1" a="1" />        <!-- diffuse component -->
+		<specular r="0" g="0" b="0" a="1" />       	<!-- specular component --> <!-- no specular here because it's a wide source of light -->
+	</omni>
+	
+	<spot id="foco_bilhar1" enabled="1" angle="45" exponent="25">
+		<!-- atencao, "target" e' diferente de "direction" -->
+		<target x="70" y="120" z="80" />
+		<location x="70" y="120" z="250" />
+		<ambient r="0.3" g="0.3" b="0.3" a="1" />        <!-- ambient component -->
+		<diffuse r="0.3" g="0.3" b="0.3" a="1" />        <!-- diffuse component -->
+		<specular r="0.3" g="0.3" b="0.3" a="1" />       <!-- specular component -->
+	</spot>
+	<spot id="foco_bilhar2" enabled="1" angle="45" exponent="25">
+		<!-- atencao, "target" e' diferente de "direction" -->
+		<target x="210" y="120" z="80" />
+		<location x="210" y="120" z="250" />
+		<ambient r="0.3" g="0.3" b="0.3" a="1" />        <!-- ambient component -->
+		<diffuse r="0.3" g="0.3" b="0.3" a="1" />        <!-- diffuse component -->
+		<specular r="0.3" g="0.3" b="0.3" a="1" />       <!-- specular component -->
+	</spot>
+	<spot id="foco_bilhar3" enabled="1" angle="45" exponent="25">
+		<!-- atencao, "target" e' diferente de "direction" -->
+		<target x="350" y="120" z="80" />
+		<location x="350" y="120" z="250" />
+		<ambient r="0.3" g="0.3" b="0.3" a="1" />        <!-- ambient component -->
+		<diffuse r="0.3" g="0.3" b="0.3" a="1" />        <!-- diffuse component -->
+		<specular r="0.3" g="0.3" b="0.3" a="1" />       <!-- specular component -->
+	</spot>
+	<spot id="foco_bilhar4" enabled="1" angle="45" exponent="25">
+		<!-- atencao, "target" e' diferente de "direction" -->
+		<target x="490" y="120" z="80" />
+		<location x="490" y="120" z="250" />
+		<ambient r="0.3" g="0.3" b="0.3" a="1" />        <!-- ambient component -->
+		<diffuse r="0.3" g="0.3" b="0.3" a="1" />        <!-- diffuse component -->
+		<specular r="0.3" g="0.3" b="0.3" a="1" />       <!-- specular component -->
+	</spot>
+	<spot id="foco_bilhar5" enabled="1" angle="45" exponent="25">
+		<!-- atencao, "target" e' diferente de "direction" -->
+		<target x="70" y="274" z="80" />
+		<location x="70" y="274" z="250" />
+		<ambient r="0.3" g="0.3" b="0.3" a="1" />        <!-- ambient component -->
+		<diffuse r="0.3" g="0.3" b="0.3" a="1" />        <!-- diffuse component -->
+		<specular r="0.3" g="0.3" b="0.3" a="1" />       <!-- specular component -->
+	</spot>
+	<spot id="foco_bilhar6" enabled="1" angle="45" exponent="25">
+		<!-- atencao, "target" e' diferente de "direction" -->
+		<target x="210" y="274" z="80" />
+		<location x="210" y="274" z="250" />
+		<ambient r="0.3" g="0.3" b="0.3" a="1" />        <!-- ambient component -->
+		<diffuse r="0.3" g="0.3" b="0.3" a="1" />        <!-- diffuse component -->
+		<specular r="0.3" g="0.3" b="0.3" a="1" />       <!-- specular component -->
+	</spot>
+	<spot id="foco_bilhar7" enabled="1" angle="45" exponent="25">
+		<!-- atencao, "target" e' diferente de "direction" -->
+		<target x="350" y="274" z="80" />
+		<location x="350" y="274" z="250" />
+		<ambient r="0.3" g="0.3" b="0.3" a="1" />        <!-- ambient component -->
+		<diffuse r="0.3" g="0.3" b="0.3" a="1" />        <!-- diffuse component -->
+		<specular r="0.3" g="0.3" b="0.3" a="1" />       <!-- specular component -->
+	</spot>
+	<spot id="foco_bilhar8" enabled="1" angle="45" exponent="25">
+		<!-- atencao, "target" e' diferente de "direction" -->
+		<target x="490" y="274" z="80" />
+		<location x="490" y="274" z="250" />
+		<ambient r="0.3" g="0.3" b="0.3" a="1" />        <!-- ambient component -->
+		<diffuse r="0.3" g="0.3" b="0.3" a="1" />        <!-- diffuse component -->
+		<specular r="0.3" g="0.3" b="0.3" a="1" />       <!-- specular component -->
+	</spot>
+</lights>
+
+
+
+<textures>
+    
+	<!-- Deve existir um ou mais blocos "texture" -->
+	<!-- Os identificadores "id" nao podem ser repetidos -->
+	<!-- length_s e length_t sao fatores de escala de textura:-->
+	<!-- Exemplo length_s=3.0: uma ocorrencia da textura, em -->
+	<!-- comprimento, deve cobrir um comprimento igual -->
+	<!-- a 3 unidades;  -->
+	<!-- Exemplo length_t=0.4, uma ocorrencia da textura, em -->
+	<!-- largura, deve cobrir uma largura igual a 0.4 unidades.  -->
+	<!-- Transf. Geometr. do tipo escalamento sobre os -->
+	<!-- objetos respetivos podem a violar esta regra.         -->
+	<!-- Nao necessario aplicar fatores de escala em  -->
+	<!-- quadricas (esfera, ciclindro...) -->
+	
+	<texture id="wooden_floor" file="ss" length_s="ff" length_t="ff" />  
+	
+</textures>
+
+
+	
+	
+<primitives>
+	<primitive id="retangulo">
+		<rectangle x1="-0.5" y1="-0.5" x2="0.5" y2="0.5" />
+	</primitive>
+	
+	<primitive id="cilindro">
+		<cylinder base="1" top="1" height="1" slices="8" stacks="8"/>
+	</primitive>
+	
+	<primitive id="triangulo">
+		<triangle x1="0" y1="0" z1="0" x2="1" y2="0" z2="0" x3="0.5" y3="0" z3="1"/>
+	</primitive>
+	
+	<primitive id="esfera">
+		<sphere radius="1" slices="8" stacks="8" />
+	</primitive>
+</primitives>
+
+<transformations>
+    <transformation id="tampo_bilhar_cima">
+        <scale x="265" y="154" z="1" />
+		<translate x="0" y="0" z="0" />
+    </transformation>
+	<transformation id="tampo_bilhar_direita">
+        <rotate axis="y" angle="90" />
+		<scale x="1" y="154" z="15" />
+		<translate x="132.5" y="0" z="0" />
+    </transformation>
+	<transformation id="tampo_bilhar_esquerda">
+        <rotate axis="y" angle="90" />
+        <scale x="1" y="154" z="15" />
+		<translate x="-132.5" y="0" z="0" />
+    </transformation>
+	<transformation id="tampo_bilhar_frente">
+        <rotate axis="x" angle="90" />
+        <scale x="265" y="1" z="15" />
+		<translate x="0" y="-77" z="0" />
+    </transformation>
+	<transformation id="tampo_bilhar_tras">
+        <rotate axis="x" angle="90" />
+        <scale x="265" y="1" z="15" />
+		<translate x="0" y="77" z="0" />
+    </transformation>
+	<transformation id="tampo_bilhar_baixo">
+        <scale x="265" y="154" z="1" />
+		<translate x="0" y="0" z="-15" />
+    </transformation>
+        
+	<transformation id="perna1_esquerda">
+        <rotate axis="y" angle="90" />
+		<scale x="1" y="10" z="65" />
+		<translate x="-132.5" y="-77" z="" />
+    </transformation>
+	<transformation id="perna1_direita">
+        <rotate axis="y" angle="90" />
+		<scale x="1" y="10" z="65" />
+		<translate x="170" y="125.5" z="33" />
+    </transformation>
+	<transformation id="perna1_frente">
+        <rotate axis="x" angle="90" />
+		<scale x="10" y="1" z="65" />
+		<translate x="165.5" y="120" z="33" />
+    </transformation>
+	<transformation id="perna1_tras">
+        <rotate axis="x" angle="90" />
+		<scale x="10" y="1" z="65" />
+		<translate x="165.5" y="130" z="33" />
+    </transformation>
+	
+	<transformation id="perna2_esquerda">
+        <rotate axis="y" angle="90" />
+		<scale x="1" y="10" z="65" />
+		<translate x="415" y="125.5" z="33" />
+    </transformation>
+	<transformation id="perna2_direita">
+        <rotate axis="y" angle="90" />
+		<scale x="1" y="10" z="65" />
+		<translate x="425" y="125.5" z="33" />
+    </transformation>
+	<transformation id="perna2_frente">
+        <rotate axis="x" angle="90" />
+		<scale x="10" y="1" z="65" />
+		<translate x="420.5" y="120" z="33" />
+    </transformation>
+	<transformation id="perna2_tras">
+        <rotate axis="x" angle="90" />
+		<scale x="10" y="1" z="65" />
+		<translate x="165.5" y="130" z="33" />
+    </transformation>
+	
+	<transformation id="perna1_esquerda">
+        <rotate axis="y" angle="90" />
+		<scale x="1" y="10" z="65" />
+		<translate x="160" y="125.5" z="33" />
+    </transformation>
+	<transformation id="perna1_direita">
+        <rotate axis="y" angle="90" />
+		<scale x="1" y="10" z="65" />
+		<translate x="170" y="125.5" z="33" />
+    </transformation>
+	<transformation id="perna1_frente">
+        <rotate axis="x" angle="90" />
+		<scale x="10" y="1" z="65" />
+		<translate x="165.5" y="120" z="33" />
+    </transformation>
+	<transformation id="perna1_tras">
+        <rotate axis="x" angle="90" />
+		<scale x="10" y="1" z="65" />
+		<translate x="165.5" y="130" z="33" />
+    </transformation>
+	
+	<transformation id="perna1_esquerda">
+        <rotate axis="y" angle="90" />
+		<scale x="1" y="10" z="65" />
+		<translate x="160" y="125.5" z="33" />
+    </transformation>
+	<transformation id="perna1_direita">
+        <rotate axis="y" angle="90" />
+		<scale x="1" y="10" z="65" />
+		<translate x="170" y="125.5" z="33" />
+    </transformation>
+	<transformation id="perna1_frente">
+        <rotate axis="x" angle="90" />
+		<scale x="10" y="1" z="65" />
+		<translate x="165.5" y="120" z="33" />
+    </transformation>
+	<transformation id="perna1_tras">
+        <rotate axis="x" angle="90" />
+		<scale x="10" y="1" z="65" />
+		<translate x="165.5" y="130" z="33" />
+    </transformation>
+	
+</transformations>
+
+</dsx>

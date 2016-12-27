@@ -1,0 +1,1575 @@
+<dsx>
+
+	<scene root="raiz" axis_length="1080" />
+
+	
+	<views default="janela" >
+	
+		<perspective id="janela" near="0.1" far="500.0" angle="60">
+			<from x="70" y="50" z="70" />
+			<to x="0" y="0" z="0" />
+		</perspective>
+		
+		<perspective id="janela1" near="0.1" far="500.0" angle="60">
+			<from x="50" y="30" z="0" />
+			<to x="15" y="10" z="50" />
+		</perspective>
+			
+	</views>
+
+
+	<illumination doublesided="1" local="1" >
+		
+		<ambient r="0.05" g="0.05" b="0.05" a="1" />            <!-- global ambient -->
+		<background r="0.8" g="0.8" b="0.8" a="1" />			<!-- background color -->
+			
+	</illumination>
+
+
+	<lights>
+		
+		<omni id="tela" enabled="1" >
+			<location x="35.75" y="15.5" z="0" w="1" />
+			<ambient r="0.2" g="0.2" b="0.2" a="1" />        <!-- ambient component -->
+			<diffuse r="0.5" g="0.5" b="0.1" a="1" />        <!-- diffuse component -->
+			<specular r="0" g="0" b="0" a="1" />       	<!-- specular component --> <!-- no specular here because it's a wide source of light -->
+		</omni>
+		
+		<spot id="projetor" enabled="1" angle="45" exponent="20">
+			<target x="35.75" y="16" z="0" />
+			<location x="35.75" y="24" z="35" w="1" />
+			<ambient r="0" g="0.8" b="0" a="0.5" />        <!-- ambient component -->
+			<diffuse r="0" g="0.8" b="0" a="0.5" />        <!-- diffuse component -->
+			<specular r="0" g="0.8" b="0" a="0.5" />       	<!-- specular component -->
+		</spot>
+		<spot id="foco_bilhar1" enabled="1" angle="45" exponent="25">
+			<!-- atencao, "target" e' diferente de "direction" -->
+			<target x="9.25" y="8" z="15" />
+			<location x="9.25" y="24" z="15" />
+			<ambient r="0.3" g="0.3" b="0.3" a="1" />        <!-- ambient component -->
+			<diffuse r="0.3" g="0.3" b="0.3" a="1" />        <!-- diffuse component -->
+			<specular r="0.3" g="0.3" b="0.3" a="1" />       <!-- specular component -->
+		</spot>
+		<spot id="foco_bilhar2" enabled="1" angle="45" exponent="25">
+			<!-- atencao, "target" e' diferente de "direction" -->
+			<target x="27.75" y="8" z="15" />
+			<location x="27.75" y="24" z="15" />
+			<ambient r="0.3" g="0.3" b="0.3" a="1" />        <!-- ambient component -->
+			<diffuse r="0.3" g="0.3" b="0.3" a="1" />        <!-- diffuse component -->
+			<specular r="0.3" g="0.3" b="0.3" a="1" />       <!-- specular component -->
+		</spot>
+		<spot id="foco_bilhar3" enabled="1" angle="45" exponent="25">
+			<!-- atencao, "target" e' diferente de "direction" -->
+			<target x="46.25" y="8" z="15" />
+			<location x="46.25" y="24" z="15" />
+			<ambient r="0.3" g="0.3" b="0.3" a="1" />        <!-- ambient component -->
+			<diffuse r="0.3" g="0.3" b="0.3" a="1" />        <!-- diffuse component -->
+			<specular r="0.3" g="0.3" b="0.3" a="1" />       <!-- specular component -->
+		</spot>
+		<spot id="foco_bilhar4" enabled="1" angle="45" exponent="25">
+			<!-- atencao, "target" e' diferente de "direction" -->
+			<target x="9.25" y="8" z="15" />
+			<location x="9.25" y="24" z="15" />
+			<ambient r="0.3" g="0.3" b="0.3" a="1" />        <!-- ambient component -->
+			<diffuse r="0.3" g="0.3" b="0.3" a="1" />        <!-- diffuse component -->
+			<specular r="0.3" g="0.3" b="0.3" a="1" />       <!-- specular component -->
+		</spot>
+		<spot id="foco_bilhar5" enabled="1" angle="45" exponent="25">
+			<!-- atencao, "target" e' diferente de "direction" -->
+			<target x="27.75" y="8" z="15" />
+			<location x="27.75" y="24" z="15" />
+			<ambient r="0.3" g="0.3" b="0.3" a="1" />        <!-- ambient component -->
+			<diffuse r="0.3" g="0.3" b="0.3" a="1" />        <!-- diffuse component -->
+			<specular r="0.3" g="0.3" b="0.3" a="1" />       <!-- specular component -->
+		</spot>
+		<spot id="foco_bilhar6" enabled="1" angle="45" exponent="25">
+			<!-- atencao, "target" e' diferente de "direction" -->
+			<target x="46.25" y="8" z="15" />
+			<location x="46.25" y="24" z="15" />
+			<ambient r="0.3" g="0.3" b="0.3" a="1" />        <!-- ambient component -->
+			<diffuse r="0.3" g="0.3" b="0.3" a="1" />        <!-- diffuse component -->
+			<specular r="0.3" g="0.3" b="0.3" a="1" />       <!-- specular component -->
+		</spot>
+		
+	</lights>
+
+
+	<textures>
+		
+		<texture id="wooden_floor" file="../resources/chao.png" length_s="1" length_t="0.4" />
+		<texture id="parede" file="../resources/white_wall.png" length_s="1" length_t="1" />
+		<texture id="projector" file="../resources/textura_projetor.png" length_s="1" length_t="1" />
+		<texture id="movie" file="../resources/movie.png" length_s="1" length_t="1" />
+		<texture id="table_leather" file="../resources/cabedal_mesa.png" length_s="1" length_t="1" />
+		<texture id="table_leg" file="../resources/perna_mesa.png" length_s="1" length_t="1" />
+		<texture id="pano_bilhar" file="../resources/pano_bilhar.png" length_s="1" length_t="1" />
+		<texture id="sofa_fabric" file="../resources/tecido_sofa.png" length_s="2" length_t="2" />
+		<texture id="sofa_detail" file="../resources/detalhes_sofa.png" length_s="1" length_t="1" />
+		<texture id="madeira_taco" file="../resources/madeira_taco.png" length_s="1" length_t="1" />
+		<texture id="relogio" file="../resources/relogio.png" length_s="0.4" length_t="0.4" />
+		<texture id="aviao" file="../resources/plane.png" length_s="0.1" length_t="0.1" />
+		<texture id="logo" file="../resources/tap.png" length_s="0.1" length_t="0.1" />
+		<texture id="branco" file="../resources/branco.png" length_s="0.1" length_t="0.1" />
+		<texture id="motor" file="../resources/branco_motor.png" length_s="0.1" length_t="0.1" />
+		<texture id="asa" file="../resources/branco_asas.png" length_s="0.1" length_t="0.1" />
+		<texture id="cockpit" file="../resources/cockpit.png" length_s="0.1" length_t="0.1" />
+
+	</textures>
+	
+	
+	<materials>
+    
+        <material id="m1">
+			<emission r="0.2" g="0.2" b="0.2" a="0.2"/>
+			<ambient r="0.3" g="0.3" b="0.3" a="0.3"/>
+			<diffuse r="0" g="0" b="0" a="0"/>
+			<specular r="1.0" g="0" b="0" a="0"/>
+			<shininess value="0.8"/>
+		</material>
+		
+		<material id="bola_branca">
+			<emission r="0.8" g="0" b="0" a="0.2"/>
+			<ambient r="0.75" g="0.1" b="0.1" a="0.3"/>
+			<diffuse r="0.6" g="0.6" b="0.6" a="0.3"/>
+			<specular r="0.8" g="0.8" b="0.8" a="0.3"/>
+			<shininess value="0.8"/>
+		</material>
+		
+    </materials>
+
+
+	<transformations>
+		
+		<transformation id="nula">
+			<translate x="0" y="0" z="0" />
+		</transformation>
+		
+	</transformations>
+
+	<animations>
+		
+		<animation id="teste" span="5" type="linear">
+			<controlpoint xx="1" yy="10" zz="0" />
+			<controlpoint xx="1" yy="20" zz="-10" />
+			<controlpoint xx="1" yy="30" zz="-20" />
+								  
+		</animation>
+		<animation id="anime2" span="5" type="circular"
+					centerx="1" centery="10" centerz="1"
+					radius="5" startang="-90" rotang="90" />
+		 
+	</animations>	
+	
+	<primitives>
+		<primitive id="retangulo">
+			<rectangle x1="-0.5" y1="-0.5" x2="0.5" y2="0.5" />
+		</primitive>
+		
+		<primitive id="cilindro">
+			<cylinder base="0.3" top="0.1" height="12" slices="8" stacks="8"/>
+		</primitive>
+		
+		<primitive id="triangulo">
+			<triangle x1="0" y1="0" z1="0" x2="1" y2="0" z2="0" x3="0.5" y3="0" z3="1"/>
+		</primitive>
+		
+		<primitive id="esfera">
+			<sphere radius="1" slices="8" stacks="8" />
+		</primitive>
+		
+		<primitive id="torus">
+			<torus inner="0.8" outer="2" slices="20" loops="8" />
+		</primitive>
+		
+		<primitive id="plane">
+			<plane dimX="4" dimY="4" partsX="8" partsY="8"/>
+		</primitive>
+		
+		<primitive id="patch1">
+			<patch orderU="1" orderV="1" partsU="2" partsV="2" >    
+				<controlpoint x="-5" y="-5" z="0" />
+				<controlpoint x="-5" y="5" z="0" />
+				<controlpoint x="5" y="-5" z="0" />
+				<controlpoint x="5" y="5" z="0" />
+            </patch>
+		</primitive>
+		
+		<primitive id="vehicle">
+			<vehicle />
+		</primitive>
+		
+		<primitive id="chessboard">
+			<chessboard du="4" dv="4" textureref="wooden_floor" su="1" sv="2">
+				<c1 r="0.0" g="0.0" b="0.4" a="1.0" />
+				<c2 r="0.4" g="0.4" b="0.0" a="1.0" />
+				<cs r="1.0" g="0.0" b="0.0" a="1.0" />
+			</chessboard>
+		</primitive>
+		
+		
+		<primitive id="chessboard2">
+			<chessboard du="6" dv="6" textureref="wooden_floor" su="1" sv="1">
+				<c1 r="0.2" g="0.2" b="0.8" a="1.0" />
+				<c2 r="0.4" g="0.4" b="0.0" a="1.0" />
+				<cs r="1.0" g="0.0" b="0.0" a="1.0" />
+			</chessboard>
+		</primitive>
+		
+	</primitives>
+	
+        
+    <components>
+        
+        <component id="raiz">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <componentref id="xadrez1"/>
+				  
+            </children>
+            
+        </component>
+		
+		<components>
+        
+        <component id="xadrez1">
+        
+            <transformation>
+                  <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				 <componentref id="11"/>
+				 <componentref id="12"/>
+				 <componentref id="13"/>
+				 <componentref id="14"/>
+				 <componentref id="15"/>
+				 <componentref id="16"/>
+				 <componentref id="17"/>
+				 <componentref id="18"/>
+				 
+				 <componentref id="21"/>
+				 <componentref id="22"/>
+				 <componentref id="23"/>
+				 <componentref id="24"/>
+				 <componentref id="25"/>
+				 <componentref id="26"/>
+				 <componentref id="27"/>
+				 <componentref id="28"/>
+				 
+				 <componentref id="31"/>
+				 <componentref id="32"/>
+				 <componentref id="33"/>
+				 <componentref id="34"/>
+				 <componentref id="35"/>
+				 <componentref id="36"/>
+				 <componentref id="38"/>
+				 <componentref id="37"/>
+				 
+				 <componentref id="41"/>
+				 <componentref id="42"/>
+				 <componentref id="43"/>
+				 <componentref id="44"/>
+				 <componentref id="45"/>
+				 <componentref id="46"/>
+				 <componentref id="48"/>
+				 <componentref id="47"/>
+				 
+				 <componentref id="51"/>
+				 <componentref id="52"/>
+				 <componentref id="53"/>
+				 <componentref id="54"/>
+				 <componentref id="55"/>
+				 <componentref id="56"/>
+				 <componentref id="57"/>
+				 <componentref id="58"/>
+				 
+				 <componentref id="61"/>
+				 <componentref id="62"/>
+				 <componentref id="63"/>
+				 <componentref id="64"/>
+				 <componentref id="65"/>
+				 <componentref id="66"/>
+				 <componentref id="67"/>
+				 <componentref id="68"/>
+				 
+				 <componentref id="71"/>
+				 <componentref id="72"/>
+				 <componentref id="73"/>
+				 <componentref id="74"/>
+				 <componentref id="75"/>
+				 <componentref id="76"/>
+				 <componentref id="77"/>
+				 <componentref id="78"/>
+				 
+				 <componentref id="81"/>
+				 <componentref id="82"/>
+				 <componentref id="83"/>
+				 <componentref id="84"/>
+				 <componentref id="85"/>
+				 <componentref id="86"/>
+				 <componentref id="87"/>
+				 <componentref id="88"/>
+				 
+            </children>
+            
+        </component>
+		
+		<component id="11">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+
+		<component id="11">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="12">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="13">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="14">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="15">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="16">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="17">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="18">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="21">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="22">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="23">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="24">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="25">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="26">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="27">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="28">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="31">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="32">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="33">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="34">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="35">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="36">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="37">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="38">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="41">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="42">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="43">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="44">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="45">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="46">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="47">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="48">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="51">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="52">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="53">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="54">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="55">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="56">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="57">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="58">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="61">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="62">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="63">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="64">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="65">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="66">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="67">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="68">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="71">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="72">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="73">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="74">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="75">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="76">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="77">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="78">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="81">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="82">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="83">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="84">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="85">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="86">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="87">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+		<component id="88">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				  <primitiveref id="plane"/>
+				  
+            </children>
+            
+        </component>
+		
+			
+		<components>
+        
+        
+				
+    </components>
+	
+</dsx>
