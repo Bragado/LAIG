@@ -37,8 +37,8 @@ function Constroi_Tab_State(scene, boardID, tipoDeJogo, dificuldade, cameras)  {
 		this.tile_choosed =  null;
 		
 		this.players = [];
-		this.players.push( new jogadorPeca(this.scene, 'A', 19, 6.5, 29));
-		this.players.push( new jogadorPeca(this.scene, 'B', 19, 6.5, 71));
+		this.players.push( new jogadorPeca(this.scene, 'A', 19, 6.5, 29, 1, 1));
+		this.players.push( new jogadorPeca(this.scene, 'B', 19, 6.5, 71, 8, 1));
 				
 		
 		

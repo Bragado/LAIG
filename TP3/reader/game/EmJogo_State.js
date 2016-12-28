@@ -1,3 +1,9 @@
+var allMoves = "";
+var movesChanged = false;
+var bestMoveReady = false;
+var bestMove = "";
+
+
 class EmJogo_State {
 	
 	constructor(scene, Board, dificuldade, tipo_de_jogo, currTime, players) {
@@ -29,6 +35,20 @@ class EmJogo_State {
 	
 	display(currTime) {
 		
+		if(movesChanged) {
+			this.decodeMoves(allMoves);
+			movesChanged = false;
+			if (this.tipo_de_jogo == 1 || (this.tipo_de_jogo == 2 && this.players[this.player].id) == 'A') {
+				this.piecesToPick();
+			}
+				
+			
+			else {
+				// chamar a best move e executar
+				
+			}
+		}
+		
 		var id = this.scene.logPicking();
 		this.scene.clearPickRegistration();
 		if (id != "" && id != undefined) {
@@ -57,8 +77,8 @@ class EmJogo_State {
 					var move = {oldX: this.players[this.player].x, oldY: this.players[this.player].y, oldZ: this.players[this.player].z, newX: this.piecesAvailable[i].x, newY: this.piecesAvailable[i].y, newZ: this.piecesAvailable[i].z }
 					
 					this.movesTRACK.push(new PlayerMove(this.players[this.player].id, move));
-					this.noPiecesToPick()
-					setAnimeOn(true, this.piecesAvailable[i].x, this.piecesAvailable[i].z, this.currTime);
+					this.noPiecesToPick();
+					this.players[this.player].setAnimeOn(true, this.piecesAvailable[i].x, this.piecesAvailable[i].z, this.currTime, this);
 					this.internalState = this.states.AUTOMATICMOVE;
 				}
 			}
@@ -74,8 +94,8 @@ class EmJogo_State {
 	}
 	
 	stopAutomatic() {
-		
-		this.trocaDeJogador();
+		this.internalState = this.states.WAITING;
+		this.trocaJogador();
 		this.calculaPecasDisponiveis();
 				
 	}
@@ -89,12 +109,13 @@ class EmJogo_State {
 			this.piecesAvailable.push(this.gameBoard.board[0][1].peca);
 			this.piecesAvailable.push(this.gameBoard.board[1][1].peca);
 			this.piecesAvailable.push(this.gameBoard.board[1][0].peca);
+			this.firstTime = false;
 			this.piecesToPick();
 		}else {
 			// falar com prolog
 			var board = this.gameBoard.toString();
-			var requestString = "moves(" + board + "," + this.players[this.player].row + "," + this.players[this.player].col + "," + this.player[Math.abs(this.player - 1)].row + "," + this.player[Math.abs(this.player - 1)].col;
-			//makerequest(requestString, this);	
+			var requestString = "moves(" + board + "," + this.players[this.player].col + "," + this.players[this.player].row + "," + this.players[Math.abs(this.player - 1)].col + "," + this.players[Math.abs(this.player - 1)].row + ")";
+			makeRequest(requestString, this, 0);	
 			
 		}
 		
@@ -110,6 +131,7 @@ class EmJogo_State {
 	}
 	
 	piecesToPick() {
+		console.log("piecesToPick");
 		for(var i = 0; i < this.piecesAvailable.length; i++) {
 			this.piecesAvailable[i].pick = this.piecesAvailable[i].states.TOPPICK;
 		}
@@ -123,34 +145,29 @@ class EmJogo_State {
 	}
 	
 	
-	prologAnswer(data) {
-		if (this.prolog_Answer == this.states.ALLMOVES) {
-			var moves = data.target.response;
-			this.decodeMoves(moves);
+	allMoves(data) {
+		
+		allMoves = data.target.response;
+		movesChanged = true;
 			
-			
-			if(tipo_de_jogo > 0 && this.players[this.player].id == 'B') {				// verificar se também é o player B
-				this.prolog_Answer = this.states.BESTMOVE;
-				// make request for best move
-				return;	
-			}
-			
-			this.piecesToPick();
-			
-		} else {
-			// transcreve o melhor move
-			this.prolog_Answer = this.states.ALLMOVES;
-		}
 		
 	}
 	
+	
+	bestMove(data) {
+		
+		
+	}
+	
+	
+	
 	decodeMoves(moves) {
 		//replace(/t/g,"");
-		
+		this.piecesAvailable = new Array();
 		
 		for(var i = 0; i < moves.length; i++) {
 			if( moves[i] >=  '1' && moves[i] <= '9')			
-				addPieceAvailable(parseInt(moves[i]));
+				this.addPieceAvailable(parseInt(moves[i]));
 		}
 		
 		
@@ -159,7 +176,7 @@ class EmJogo_State {
 	
 	addPieceAvailable(move) {
 		var col = this.players[this.player].col;
-		var row = this.players[this.player].col;
+		var row = this.players[this.player].row;
 		switch(move) {
 			case 1:
 				col--;

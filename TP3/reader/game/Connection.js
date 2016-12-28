@@ -13,14 +13,18 @@ function getPrologRequest(requestString, onSuccess, onError, port){
 
 
 
-function makeRequest(requestString, state)
+function makeRequest(requestString, state, type)
 {
 	
 	 			
 	console.log(requestString);
 	
 	// Make Request
-	getPrologRequest(requestString, state.prologAnswer);
+	
+	if(type == 0)
+		getPrologRequest(requestString, state.allMoves);
+	else
+		etPrologRequest(requestString, state.bestMove);
 }
 			
 //Handle the Reply

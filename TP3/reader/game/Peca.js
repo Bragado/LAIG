@@ -202,7 +202,7 @@ class normalPeca extends Peca {
 
 class jogadorPeca extends Peca {
 	
-	constructor(scene, id, x, y, z, col, row) {
+	constructor(scene, id, x, y, z, row, col) {
 		super(scene, id, x, y, z);
 			
 		this.row = row;
@@ -232,11 +232,16 @@ class jogadorPeca extends Peca {
 		
 	}
 	
-	setAnimeOn(bool, xTarget, zTarget, currTime) {
+	setAnimeOn(bool, xTarget, zTarget, currTime, state) {
 		this.animeOn = bool;
 		this.animeInitTime = currTime;
 		this.xTarget = xTarget;
 		this.zTarget = zTarget;
+		this.state = state;
+		this.col += this.xTarget > this.x ? 1 : 0;
+		this.row += this.zTarget > this.z ? 1 : 0;
+		this.col += this.xTarget < this.x ? -1 : 0;
+		this.row += this.zTarget < this.z ? -1 : 0;
 	}
 	
 	display(currTime) {
@@ -274,7 +279,7 @@ class jogadorPeca extends Peca {
 			this.animeOn = false;
 			posicao.x = this.xTarget;
 			posicao.z = this.zTarget;
-			
+			this.state.stopAutomatic();
 			
 		}
 		
@@ -284,11 +289,12 @@ class jogadorPeca extends Peca {
 			var angle = Math.PI * dt;														//			
 																							//                 **   						|	
 																							//			   *	    *						|	this.altura
-			posicao.x = this.x * (1.0-dt) + xTarget *  dt;									//		    *			   *					|								
-																							//		  *	                 *					|	
-			posicao.z = this.z * (1.0-dt) + zTarget *  dt;									
-																							
-			posicao.y = this.altura * Math.sin(angle);										
+			posicao.x = this.x * (1.0-dt) + this.xTarget *  dt;									//		    *			   *				|								
+			 																	//		  *	                 *					|	
+			posicao.z = this.z * (1.0-dt) + this.zTarget *  dt;									
+			 																					
+			posicao.y = this.y + this.altura * Math.sin(angle);
+			 										
 		}
 		
 		
