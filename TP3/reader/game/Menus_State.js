@@ -77,7 +77,7 @@ class Menu {
 		if(id == null || isNaN(near) || near == null || far == null || isNaN(far) || isNaN(angle) || angle == null || isNaN(fx) || fx == null || isNaN(fy) || fy == null || isNaN(fz) || fz == null || isNaN(tx) || tx == null || isNaN(ty) || ty == null || isNaN(tz) || tz == null)
 			continue;
 			
-		this.angles.push(angle*this.degToRad);	
+		//this.angles.push(angle*this.degToRad);	
 		this.camera.push( new CGFcamera(angle* this.degToRad, near, far, [fx, fy, fz], [tx, ty, tz]));
 		
 		

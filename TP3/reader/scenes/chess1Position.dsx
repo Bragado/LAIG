@@ -74,15 +74,7 @@
 				<to x="40" y="0" z="50" />
 			</perspective>
 			
-			<perspective id="fimJogo_porfazer" near="0.1" far="500.0" angle="60">
-				<from x="40" y="57" z="315" />
-				<to x="40" y="40" z="280" />
-			</perspective>
 			
-			<perspective id="principal" near="0.1" far="500.0" angle="60">
-				<from x="40" y="57" z="315" />
-				<to x="40" y="40" z="280" />
-			</perspective>
 		</views>
 		
 		<getMeBack posx="" posy="" posz=""/>  <!-- e' necessario fazer a primitiva também -->
@@ -237,8 +229,8 @@
 		</tiles>
 		
 		<jogadores>
-			<jogador id="A" posX="19" posY="7.5" posZ="29"/>
-			<jogador id="B" posX="19" posY="7.5" posZ="71"/>
+			<jogador id="A" posX="19" posY="5.5" posZ="29"/>
+			<jogador id="B" posX="19" posY="5.5" posZ="71"/>
 		</jogadores>
 		
 		<cronometro posX posY posZ dimX dimY dimZ   >

@@ -1,7 +1,7 @@
 function Constroi_Tab_State(scene, boardID, tipoDeJogo, dificuldade, cameras)  {
 		
 		
-		this.cameras = cameras;
+		this.cameras = cameras;			/* Menu Principal, Menu Final, 3 Diferentes câmaras */
 		this.ready = false;													// Colocar isto a dar...
 		scene.ready = false;
 		this.erros = false;
@@ -37,8 +37,8 @@ function Constroi_Tab_State(scene, boardID, tipoDeJogo, dificuldade, cameras)  {
 		this.tile_choosed =  null;
 		
 		this.players = [];
-		this.players.push( new jogadorPeca(this.scene, 'A', 19, 6.5, 29, 1, 1));
-		this.players.push( new jogadorPeca(this.scene, 'B', 19, 6.5, 71, 8, 1));
+		
+		
 				
 		
 		
@@ -176,6 +176,74 @@ Constroi_Tab_State.prototype.processBoard = function(root) {
 			this.scene.pieces.push(id);
 		}
 
+		/*
+			Jogadores	
+		
+		*/
+		
+		var players = root.getElementsByTagName('jogadores');
+		var jogador = players[0].getElementsByTagName('jogador');
+		
+		for(var i = 0; i < jogador.length; i++) {
+			var id = this.reader.getString(jogador[i], 'id', false);;
+			var posX = this.reader.getFloat(jogador[i], 'posX', false);
+			var posY = this.reader.getFloat(jogador[i], 'posY', false);
+			var posZ = this.reader.getFloat(jogador[i], 'posZ', false);
+			var col = 1;
+			var row = 8;
+			if(i == 0)
+				row = 1;
+			
+			this.players.push( new jogadorPeca(this.scene, id, posX, posY, posZ, row, col));
+				
+			
+		}
+		
+		/*
+			Views
+			
+		*/
+		
+		var views = root.getElementsByTagName('views');
+		var perspectives = views[0].getElementsByTagName('perspective');
+		
+		for(var i = 0; i < perspectives.length; i++){
+		
+			// id + near + far + angle
+			var id = this.reader.getString(perspectives[i], 'id', false);
+			var near = this.reader.getFloat(perspectives[i], 'near', false);
+			var far = this.reader.getFloat(perspectives[i], 'far', false);
+			var angle = this.reader.getFloat(perspectives[i], 'angle', false);
+			
+			
+			
+			// from x + y + z	
+			var fromm = perspectives[i].getElementsByTagName('from');
+			if(fromm == null || fromm.length == 0)
+				continue;
+			var fx = this.reader.getFloat(fromm[0],'x', false);
+			var fy = this.reader.getFloat(fromm[0], 'y', false);
+			var fz = this.reader.getFloat(fromm[0], 'z', false);
+			
+			// to x + y + z
+			var to = perspectives[i].getElementsByTagName('to');
+			if(to == null || to.length == 0)
+				continue;
+			 
+			
+			var tx = this.reader.getFloat(to[0], 'x', false);
+			var ty = this.reader.getFloat(to[0], 'y', false);		
+			var tz = this.reader.getFloat(to[0], 'z', false);
+			
+			// verification
+			if(id == null || isNaN(near) || near == null || far == null || isNaN(far) || isNaN(angle) || angle == null || isNaN(fx) || fx == null || isNaN(fy) || fy == null || isNaN(fz) || fz == null || isNaN(tx) || tx == null || isNaN(ty) || ty == null || isNaN(tz) || tz == null)
+				continue;
+				
+				
+			this.cameras.push( new CGFcamera(angle* this.degToRad, near, far, [fx, fy, fz], [tx, ty, tz]));
+			
+			
+		}
 		
 		
 
