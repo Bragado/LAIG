@@ -296,7 +296,7 @@ Constroi_Tab_State.prototype.verifyEnd = function() {
 	if(this.gameBoard.complete) {
 		//scene, Board, dificuldade, tipo_de_jogo, currTime, players
 		if(this.internalState == this.states.NOPIECECHOOSED)
-		this.scene.state = new EmJogo_State(this.scene, this.gameBoard, this.dificuldade, this.tipoDeJogo, this.currTime, this.players);
+		this.scene.state = new EmJogo_State(this.scene, this.gameBoard, this.dificuldade, this.tipoDeJogo, this.currTime, this.players, this.cameras);
 		
 	}
 }

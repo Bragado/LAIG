@@ -6,13 +6,14 @@ var theEnd = false;
 
 class EmJogo_State {
 	
-	constructor(scene, Board, dificuldade, tipo_de_jogo, currTime, players) {
+	constructor(scene, Board, dificuldade, tipo_de_jogo, currTime, players, cameras) {
 		
 		this.scene = scene;
 		this.initTime = currTime;
 		this.dificuldade = dificuldade;
 		this.gameBoard = Board;
 		this.tipo_de_jogo = tipo_de_jogo;
+		this.cameras = cameras;			/* Menu Principal, Menu Final, 3 Diferentes câmaras */
 		
 		this.states = { PLAYERA: 0, PLAYERB: 1, WAITING: 2, AUTOMATICMOVE: 3, ALLMOVES:4, BESTMOVE: 5 };
 		
@@ -41,6 +42,7 @@ class EmJogo_State {
 		this.gameBoard.board[3][4].peca.setSpecialAutomaticMove(this, -1, 0.5, this.initTime);
 		this.gameBoard.board[4][3].peca.setSpecialAutomaticMove(this, -1, 0.5, this.initTime);
 		this.gameBoard.board[4][3].peca.setSpecialAutomaticMove(this, -1, 0.5, this.initTime);
+		this.gameBoard.board[4][4].peca.setSpecialAutomaticMove(this, -1, 0.5, this.initTime);
 		this.gameBoard.board[3][3].peca.setSpecialAutomaticMove(this, -1, 0.5, this.initTime);
 		this.gameBoard.board[7][0].peca.setSpecialAutomaticMove(this, -1, 0.5, this.initTime);
 		this.gameBoard.board[7][7].peca.setSpecialAutomaticMove(this, -1, 0.5, this.initTime);
@@ -107,9 +109,30 @@ class EmJogo_State {
 	
 	
 	theEndHasArrived() {
-		if(this.internalState == this.states.WAITING);
-			// type of end 
+		if(this.internalState == this.states.WAITING) {
+			//types: 0 -> empate, 1 -> playerA ganhou, 2 -> playerB ganhou 
+			var type = 0;
+			
+			for(var i = 0; i < this.players.length; i++) {
+				if(this.players[i].id == 'A') {
+					if(row == 8 && col == 8)
+						type = 1;
+					
+				} else {
+					if(row == 1 && col == 8)
+						type = 2;
+					
+				}				
+				
+			}
+			
 			// transition
+			//this.scene.state = new Transition(this.scene, new MenuFinal(this.scene, [this.cameras[0], this.cameras[3]], this.gameBoard, movesTRACK, type), this.camera[this.cameraState], this.camera[1], this.currTime );
+			
+			
+		}
+			 
+			
 		
 	}
 	
