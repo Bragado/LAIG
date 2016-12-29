@@ -106,6 +106,7 @@ print_header_line(_).
 
 parse_input(handshake, handshake).
 parse_input(test(C), Res) :- teste(C, Res).
+parse_input(fim(Board, X, Y, X1, Y1), Res) :- testaFim(Board, X, Y, X1, Y1, Res).
 parse_input(moves(Board, X, Y, X1, Y1), Moves) :- movesAvailable(Board, Moves, X, Y, X1, Y1).
 parse_input(quit, goodbye).
 

@@ -1,4 +1,24 @@
+not(Goal) :- call(Goal), !, fail.
+not(Goal).
 
+
+
+testaFim(Tab, X, Y, X1, Y1, 1) :- not(possibleMoves(Tab, X, Y, X1, Y1)), not(possibleMoves(Tab, X1, Y1, X, Y)). 
+testaFim(_, _, _, _, _, 0).
+
+nextStep(X, Y,  Peca) :- testaMove(X, Y, 1), 	move(Peca, 1).
+nextStep(X, Y,  Peca) :- testaMove(X, Y, 2), 	move(Peca, 2).
+nextStep(X, Y,  Peca) :- testaMove(X, Y, 3), 	move(Peca, 3).
+nextStep(X, Y,  Peca) :- testaMove(X, Y, 4), 	move(Peca, 4).
+nextStep(X, Y,  Peca) :- testaMove(X, Y, 6), 	move(Peca, 6).
+nextStep(X, Y,  Peca) :- testaMove(X, Y, 7), 	move(Peca, 7).
+nextStep(X, Y,  Peca) :- testaMove(X, Y, 8), 	move(Peca, 8).
+nextStep(X, Y, Peca) :- testaMove(X, Y, 9), 	move(Peca, 9).
+
+
+possibleMoves(Tab, X, Y, X1, Y1) :-  getPeca(Tab, X1, Y1, Peca),  nextStep(X, Y, Peca).
+
+ 
 
 jogaComputador(Board, X, Y, X1, Y1, Dificuldade, Jogada) :- movesAvailable(Moves, X, Y, X1, Y1), bestMove(Board, Moves, Dificuldade, Jogada).
 

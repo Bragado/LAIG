@@ -2,7 +2,7 @@ var allMoves = "";
 var movesChanged = false;
 var bestMoveReady = false;
 var bestMove = "";
-
+var theEnd = false;
 
 class EmJogo_State {
 	
@@ -35,19 +35,7 @@ class EmJogo_State {
 	
 	display(currTime) {
 		
-		if(movesChanged) {
-			this.decodeMoves(allMoves);
-			movesChanged = false;
-			if (this.tipo_de_jogo == 1 || (this.tipo_de_jogo == 2 && this.players[this.player].id) == 'A') {
-				this.piecesToPick();
-			}
-				
-			
-			else {
-				// chamar a best move e executar
-				
-			}
-		}
+		this.dealWithProlog();
 		
 		var id = this.scene.logPicking();
 		this.scene.clearPickRegistration();
@@ -64,6 +52,43 @@ class EmJogo_State {
 		
 	}
 	
+	dealWithProlog() {
+		
+		if(theEnd ) {
+			this.theEndHasArrived();
+		}
+		else { 		
+			
+					
+			if(movesChanged) {
+				this.decodeMoves(allMoves);
+				movesChanged = false;
+				if (this.tipo_de_jogo == 1 || (this.tipo_de_jogo == 2 && this.players[this.player].id) == 'A') {
+					this.piecesToPick();
+				}
+					
+				
+				else {
+					// chamar a best move e executar
+					
+				}
+			}
+			
+			if(bestMoveReady) {
+				
+			}
+			
+		}
+		
+	}
+	
+	
+	theEndHasArrived() {
+		if(this.internalState == this.states.WAITING);
+			// type of end 
+			// transition
+		
+	}
 	
 	
 	mouseDown(id) {
@@ -105,7 +130,7 @@ class EmJogo_State {
 	}
 	
 	calculaPecasDisponiveis() {
-		if(this.firstTime) {					// #TODO fazer o método special pieces 
+		if(this.firstTime) {					 
 			this.piecesAvailable.push(this.gameBoard.board[0][1].peca);
 			this.piecesAvailable.push(this.gameBoard.board[1][1].peca);
 			this.piecesAvailable.push(this.gameBoard.board[1][0].peca);
@@ -124,7 +149,10 @@ class EmJogo_State {
 	}
 	
 	trocaJogador() {
+		
+		this.testTheEnd();
 		// programar o cronometro 
+		
 		this.player = (this.player == this.states.PLAYERA) ? this.states.PLAYERB : this.states.PLAYERA;
 			
 		
@@ -153,22 +181,40 @@ class EmJogo_State {
 		
 	}
 	
+	testTheEnd() {
+		var stringRequest = "fim(" + this.gameBoard.toString() + ","  + this.players[this.player].col + "," + this.players[this.player].row + "," + this.players[Math.abs(this.player - 1)].col + "," + this.players[Math.abs(this.player - 1)].row + ")";
+		makeRequest(stringRequest, this, 2);
+		
+	}
+	
+	
 	
 	bestMove(data) {
 		
 		
 	}
 	
+	theEnd(data) {
+		if(parseInt(data.target.response) == 1)
+			theEnd = true;
+		
+	}
+	
 	
 	
 	decodeMoves(moves) {
-		//replace(/t/g,"");
+		if(moves[0] != "[")
+			return;
+		 
 		this.piecesAvailable = new Array();
 		
 		for(var i = 0; i < moves.length; i++) {
 			if( moves[i] >=  '1' && moves[i] <= '9')			
 				this.addPieceAvailable(parseInt(moves[i]));
 		}
+		
+		if(this.piecesAvailable.length == 0 && !theEnd)
+			this.addPieceAvailable(5);
 		
 		
 		

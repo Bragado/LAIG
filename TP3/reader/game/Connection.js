@@ -21,10 +21,21 @@ function makeRequest(requestString, state, type)
 	
 	// Make Request
 	
-	if(type == 0)
-		getPrologRequest(requestString, state.allMoves);
-	else
-		etPrologRequest(requestString, state.bestMove);
+	switch(type) {
+		case 0:		// all possible moves for one player
+			getPrologRequest(requestString, state.allMoves);
+		break;
+		case 1:		// best move for Bot
+			getPrologRequest(requestString, state.bestMove);
+		break;
+		case 2:		// if its the end
+			getPrologRequest(requestString, state.theEnd);
+		break;
+		
+	}
+	
+	
+	 
 }
 			
 //Handle the Reply
