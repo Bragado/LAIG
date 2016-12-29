@@ -30,6 +30,26 @@ class EmJogo_State {
 		
 		var sstr = Board.toString();
 		
+		this.firstMove();
+		
+	}
+	
+	firstMove() {
+		this.gameBoard.board[0][0].peca.setSpecialAutomaticMove(this, -1, 0.5, this.initTime);
+		this.gameBoard.board[0][7].peca.setSpecialAutomaticMove(this, -1, 0.5, this.initTime);
+		this.gameBoard.board[3][3].peca.setSpecialAutomaticMove(this, -1, 0.5, this.initTime);
+		this.gameBoard.board[3][4].peca.setSpecialAutomaticMove(this, -1, 0.5, this.initTime);
+		this.gameBoard.board[4][3].peca.setSpecialAutomaticMove(this, -1, 0.5, this.initTime);
+		this.gameBoard.board[4][3].peca.setSpecialAutomaticMove(this, -1, 0.5, this.initTime);
+		this.gameBoard.board[3][3].peca.setSpecialAutomaticMove(this, -1, 0.5, this.initTime);
+		this.gameBoard.board[7][0].peca.setSpecialAutomaticMove(this, -1, 0.5, this.initTime);
+		this.gameBoard.board[7][7].peca.setSpecialAutomaticMove(this, -1, 0.5, this.initTime);
+		this.internalState = this.states.AUTOMATICMOVE;
+	}
+	
+	stopSpecialAutomatic() {
+			this.internalState = this.states.WAITING;
+		
 	}
 	
 	
@@ -38,6 +58,7 @@ class EmJogo_State {
 		this.dealWithProlog();
 		
 		var id = this.scene.logPicking();
+		
 		this.scene.clearPickRegistration();
 		if (id != "" && id != undefined) {
 			this.mouseDown(id);
@@ -49,7 +70,7 @@ class EmJogo_State {
 		this.gameBoard.display(currTime);
 		this.players[0].display(currTime);
 		this.players[1].display(currTime);
-		
+		 
 	}
 	
 	dealWithProlog() {
@@ -76,6 +97,8 @@ class EmJogo_State {
 			
 			if(bestMoveReady) {
 				
+				
+				this.internalState = this.states.AUTOMATICMOVE;
 			}
 			
 		}

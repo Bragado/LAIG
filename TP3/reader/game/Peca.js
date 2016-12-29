@@ -60,7 +60,7 @@ class normalPeca extends Peca {
 		this.placed = false;
 		this.automaticMove = false;
 		this.automaticToMove = {State: null, xTarget: -1, yTarget: -1, zTarget: -1, spanTime: -1, currentTime: -1, altura: 10};
-		
+		this.specialAutomaticMove = false
 		
 		this.material = new CGFappearance(this.scene);
 		this.material.setAmbient(0.3, 0.3, 0.3, 0.3);
@@ -84,11 +84,27 @@ class normalPeca extends Peca {
 	getPosition(currTime){
 		
 		
-		if(!this.automaticMove) {
+		if(!this.automaticMove && !this.specialAutomaticMove) {
 			var posicao = {x: this.x, y: this.y, z: this.z};	
 			return posicao;
 			
 		}
+		
+		if(this.specialAutomaticMove) {
+			if (currTime >= this.automaticToMove.spanTime + this.automaticToMove.currentTime) {
+				this.specialAutomaticMove = false;
+				this.y = this.automaticToMove.yTarget;
+				this.automaticToMove.State.stopSpecialAutomatic();
+				
+			}
+				
+			var posicao = {x: this.x, y: this.y, z: this.z};
+			var dt = (currTime - this.automaticToMove.currentTime )/ this.automaticToMove.spanTime; 
+			posicao.y = this.y * (1.0 - dt) + this.automaticToMove.yTarget*dt;	
+			
+			return posicao;
+		}
+		
 		
 		if (currTime >= this.automaticToMove.spanTime + this.automaticToMove.currentTime) {
 			this.automaticMove = false;
@@ -121,7 +137,10 @@ class normalPeca extends Peca {
 		this.automaticMove = true;
 	}
 	
-	
+	setSpecialAutomaticMove(state, dy, span, currTime) {
+		this.automaticToMove = {State: state, yTarget: this.y + dy, spanTime: span, currentTime: currTime};
+		this.specialAutomaticMove = true;
+	}
 	
 	
 	
