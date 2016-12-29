@@ -144,7 +144,7 @@
 			<peca id="uuurrr" posX="75" posY="3" posZ="21" textura="../resources/game/pecas/uuurrr.png"/>
 			<peca id="uuurul" posX="81" posY="3" posZ="21" textura="../resources/game/pecas/uuurul.png"/>
 			
-			<peca id="sw" posX="19" posY="3" posZ="29" textura="../resources/game/pecas/sw.png"/>
+			<peca id="sw" posX="19" posY="2" posZ="29" textura="../resources/game/pecas/sw.png"/>
 			<peca id="cw" posX="19" posY="3" posZ="71" textura="../resources/game/pecas/cw.png"/>
 			<peca id="sb" posX="61" posY="3" posZ="71" textura="../resources/game/pecas/sb.png"/>
 			<peca id="cb" posX="61" posY="3" posZ="29" textura="../resources/game/pecas/cb.png"/>

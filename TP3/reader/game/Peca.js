@@ -20,10 +20,11 @@ class Peca {
 		
 		
 		this.activeShader = false;
-		/*
-		this.shader = shader
-	
-	*/
+		
+		 
+		
+		
+		 
 	}
 	
 	
@@ -68,6 +69,15 @@ class normalPeca extends Peca {
 		this.material.setEmission(0.2, 0.2, 0.2, 0.2);
 		this.material.setShininess(0.8);
 		this.material.setTextureWrap('REPEAT', 'REPEAT');
+		
+		var colorRed = [1.0, 0.0, 0.0, 1.0];
+		
+		this.shader = new CGFshader(this.scene.gl, "shaders/piece.vert", "shaders/piece.frag");
+	
+		this.shader.setUniformsValues({
+								  uSampler : 0,
+                                  cs: colorRed
+								});
 		
 	}
 	
@@ -178,23 +188,26 @@ class normalPeca extends Peca {
 			this.scene.translate(0.0, 3.0, 0.0);
 			this.scene.rotate(-Math.PI/2, 1, 0, 0);
 			
-			this.material.setTexture(this.texture);	
-			this.material.apply();
-			//this..texture.bind();
-			if(this.states.TOPPICK == this.pick ||this.pick == this.states.PICK){
+			//this.material.setTexture(this.texture);	
+			//this.material.apply();
+			this.texture.bind(0);
+			if(this.states.TOPPICK == this.pick){
 				this.scene.registerForPick(parseInt(this.id), this.quad);
+				this.scene.setActiveShader(this.shader);
+				this.quad.display();
+				this.scene.setActiveShader(this.scene.defaultShader);
 			}
-
+			else 
 				this.quad.display();
 			
 			
-			//this.scene.graph.texture[textureRef][0].unbind();
+			this.texture.unbind(0);
 		this.scene.popMatrix();
 			// retirar o registo de picking
 		this.scene.clearPickRegistration();
 	
-		this.material.setTexture(null);
-		this.material.apply();
+		//this.material.setTexture(null);
+		//this.material.apply();
 	}
 		
 }
@@ -208,7 +221,7 @@ class jogadorPeca extends Peca {
 		this.row = row;
 		this.col = col;
 			// to draw the object
-		this.cylinder = new Cylinder(scene, 2, 2, 1, 16, 8);
+		this.cylinder = new Cylinder(scene, 2, 2, 1, 16, 2);
 		//this.material = new CGFMaterial();
 		
 		
@@ -222,14 +235,17 @@ class jogadorPeca extends Peca {
 		this.altura = 5;
 		
 		this.material = new CGFappearance(this.scene);
-		this.material.setAmbient(0.3, 0.3, 0.3, 0.0);
-		this.material.setDiffuse(0.0, 0.0, 0.0, 1.0);
+		this.material.setAmbient(0.3, 0.3, 0.3, 0.3);
+		this.material.setDiffuse(0.8, 0.8, 0.8, 0.3);
 		this.material.setSpecular(0.8, 0.8, 0.8, 0.3);
-		this.material.setEmission(0.5, 0.5, 0.5, 0.5);
-		this.material.setShininess(0.3);
+		this.material.setEmission(0.5, 0.5, 0.5, 0.0);
+		this.material.setShininess(0.0);
 		this.material.setTextureWrap('REPEAT', 'REPEAT');
-		
-		
+	/*	this.shader = new CGFshader(this.scene.gl, "shaders/jogador.vert", "shaders/jogador.frag");
+		this.shader.setUniformsValues({
+								  uSampler : 0,
+                                  uAlpha: 0.5
+								});*/
 	}
 	
 	setAnimeOn(bool, xTarget, zTarget, currTime, state) {
@@ -245,17 +261,18 @@ class jogadorPeca extends Peca {
 	}
 	
 	display(currTime) {
-		
-			
+		 
 		var posicao = this.getPosicao(currTime);
 		this.scene.pushMatrix();
 			this.scene.translate(posicao.x, posicao.y, posicao.z);
 			this.scene.rotate(Math.PI/2, 1, 0, 0); 
-			this.material.apply();	
+			this.material.apply();
+			 
 			this.cylinder.display();
+			 
 		this.scene.popMatrix();
-		// retirar o registo de picking
 		
+	 
 	}
 	
 	getPosicao(currTime) {

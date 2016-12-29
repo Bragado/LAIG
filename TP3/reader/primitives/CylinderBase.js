@@ -45,6 +45,6 @@ CylinderBase.prototype.initBuffers = function() {
 	this.indices.push(0, start, 1);
 
 
-	this.primitiveType = this.scene.gl.TRIANGLES;
+	this.primitiveType = this.scene.gl.LINES;
 	this.initGLBuffers();
 };

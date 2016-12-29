@@ -46,8 +46,6 @@ function Constroi_Tab_State(scene, boardID, tipoDeJogo, dificuldade, cameras)  {
 		this.reader = this.scene.graph.reader;
 		this.reader.open('scenes/'+ filename, this);
 
-		//makeRequest();
-		
 	};
 	
 	

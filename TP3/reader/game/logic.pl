@@ -135,6 +135,11 @@ move(uudddl, 8).
 move(uudddl, 2).
 move(uudddl, 1).
 
+move(uuddll, 8).
+move(uuddll, 2).
+move(uuddll, 4).
+
+
 move(urrrll, 9).
 move(urrrll, 6).
 move(urrrll, 4).
