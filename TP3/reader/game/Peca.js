@@ -14,7 +14,7 @@ class Peca {
 		
 		
 		
-		
+		 
 		
 		this.pick = this.states.PICK;
 		

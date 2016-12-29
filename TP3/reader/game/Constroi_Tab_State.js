@@ -23,7 +23,7 @@ function Constroi_Tab_State(scene, boardID, tipoDeJogo, dificuldade, cameras)  {
 		this.internalState = this.states.NOPIECECHOOSED;
 		this.playerTurn = this.states.PLAYERA;
 		
-		 
+		 this.test = 1;
 		 
 		 
 		this.automaticTime = 0.5;	
@@ -60,6 +60,7 @@ Constroi_Tab_State.prototype.onXMLReady=function()
 				this.processBoard(board[i]);
 				if(this.errors == false){
 					this.ready == true;
+					if(this.tipoDeJogo < 2)
 					setPiecesToBePicked();
 					
 					
@@ -258,19 +259,20 @@ Constroi_Tab_State.prototype.processBoard = function(root) {
 		
 	//@override
 Constroi_Tab_State.prototype.display = function(currTime) {
-		
-		this.verifyEnd(); 	
-		
-		var id = this.scene.logPicking();
-		this.scene.clearPickRegistration();
-		if (id != "" && id != undefined) {
-			this.mouseDown(id);
-		}
-		
-		
-		
 		if(!this.ready)
 			return;
+		this.verifyEnd(); 	
+		this.test++;
+		
+		if(this.tipoDeJogo == 3 && this.test % 20 == 0) {
+			this.dealWithTipoDeJogo();
+			
+		} else if(this.tipoDeJogo != 3)
+			this.dealWithTipoDeJogo();
+		
+		
+		
+		
 		
 		
 		this.currTime = currTime;
@@ -289,6 +291,83 @@ Constroi_Tab_State.prototype.display = function(currTime) {
 			
 		
 	}
+	
+	
+Constroi_Tab_State.prototype.dealWithTipoDeJogo = function() {
+		switch(this.tipoDeJogo) {
+			case 1:
+				var id = this.scene.logPicking();
+				this.scene.clearPickRegistration();
+				if (id != "" && id != undefined) {
+					this.mouseDown(id);
+				}
+			break;
+			case 2:
+				if(this.playerTurn == this.states.PLAYERA) {
+					var id = this.scene.logPicking();
+					this.scene.clearPickRegistration();
+					if (id != "" && id != undefined) {
+						this.mouseDown(id);
+					}
+					break;
+				
+				}
+				
+			
+			default:
+				if(this.internalState == this.states.NOPIECECHOOSED) {
+					
+					var peca = this.findFreePiece();
+					var tile = this.findFreeTile();
+					tile.setPeca(peca);
+					tile.internalState = tile.states.PIECE;
+					//tile.peca.pick = tile.piece.states.NOPICK;
+					tile.peca.setAutomaticMove(this, tile.x, tile.y, tile.z, 0.5, this.currTime, 10);
+					this.internalState = this.states.AUTOMATICMOVE;
+					tile.peca.placed = true;		
+				}
+			
+			break;
+		
+			
+			
+			
+		}
+		
+		
+
+}	
+
+Constroi_Tab_State.prototype.findFreePiece = function() {
+	while(1) {
+		var random = Math.random();
+		var indice = Math.floor(this.gameConstructBoard.length*random);
+		 
+		if(indice < this.gameConstructBoard.length && !this.gameConstructBoard[indice].placed )
+			return this.gameConstructBoard[indice];
+		
+	}
+	
+}
+
+Constroi_Tab_State.prototype.findFreeTile = function () {
+	while(1) {
+		var random1 = Math.random();
+		var random2 = Math.random();
+		var col = Math.floor(this.gameBoard.board.length*random1);
+		var row = Math.floor(this.gameBoard.board.length*random2);
+		if(col < this.gameBoard.board.length && row < this.gameBoard.board.length && this.gameBoard.board[row][col].internalState == this.gameBoard.board[row][col].states.NOPIECE)
+				return this.gameBoard.board[row][col];
+		
+		
+	}
+	
+	
+	
+}
+
+
+
 
 	
 Constroi_Tab_State.prototype.verifyEnd = function() {
@@ -296,6 +375,11 @@ Constroi_Tab_State.prototype.verifyEnd = function() {
 	if(this.gameBoard.complete) {
 		//scene, Board, dificuldade, tipo_de_jogo, currTime, players
 		if(this.internalState == this.states.NOPIECECHOOSED)
+		
+		for(var i = 0; i < this.gameConstructBoard.length; i++) {
+			this.gameConstructBoard[i].pick = this.gameConstructBoard[i].states.NOPICK;	
+		}
+	
 		this.scene.state = new EmJogo_State(this.scene, this.gameBoard, this.dificuldade, this.tipoDeJogo, this.currTime, this.players, this.cameras);
 		
 	}
@@ -370,7 +454,10 @@ Constroi_Tab_State.prototype.tilesToPick_NoPieceToPick = function() {
 
 
 Constroi_Tab_State.prototype.trocaPlayer = function() {
-	
+		if(this.playerTurn == this.states.PLAYERA)
+			this.playerTurn = this.states.PLAYERB;
+		else
+			this.playerTurn = this.states.PLAYERA;
 	
 }
 	
@@ -396,7 +483,7 @@ Constroi_Tab_State.prototype.mouseDown = function(id) {
 						//tile.peca.pick = tile.piece.states.NOPICK;
 						tile.peca.setAutomaticMove(this, tile.x, tile.y, tile.z, 0.5, this.currTime, 10);
 						this.internalState = this.states.AUTOMATICMOVE;
-									
+						tile.peca.placed = true;			
 						
 						
 					}
@@ -429,7 +516,10 @@ Constroi_Tab_State.prototype.mouseDown = function(id) {
 	//@override
 Constroi_Tab_State.prototype.stopAutomatic = function() {
 		this.internalState = this.states.NOPIECECHOOSED;
-		this.NoTilesToPick_PiecesToPick();
+		this.trocaPlayer();
+		
+		if(this.tipoDeJogo == 1 || (this.tipoDeJogo==2 && this.playerTurn == this.states.PLAYERA))
+			this.NoTilesToPick_PiecesToPick();
 	}
 	
 	//@override

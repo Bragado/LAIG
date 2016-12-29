@@ -194,10 +194,10 @@ class MenuPrincipal extends Menu {
 				
 				switch(this.internalState.Ambiente) {
 					case "chess2":
-						CHESS = 2;
+						CHESS = 4;
 					break;
 					case "chess3":
-						CHESS = 3;
+						CHESS = 5;
 					break;
 					
 				}
