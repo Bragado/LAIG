@@ -1,3 +1,6 @@
+:- use_module(library(random)).
+
+
 not(Goal) :- call(Goal), !, fail.
 not(Goal).
 
@@ -26,28 +29,29 @@ movesAvailable(Board, Moves, X, Y, X1, Y1):- findall(Move, allPossibleMoves(Boar
 
 teste(B,funcionaaaaaaaaaaaa).
 
+ 
 
-bestMove(_, Moves, 1, D) :- generateRandomMove(Moves, D).
-bestMove(Board, Moves, 2, D) :- assert(melhorJogada(5, 9999)), !, tentaMoves(Board, Moves, D, 2), alwaysYES(retracts).
-bestMove(Board, Moves, 3, D) :- assert(melhorJogada(5, 9999)), tentaMoves(Board, Moves, D, 3), alwaysYES(retracts).
+bestMove(_, Moves, _, _,_,_,  1, D) :- generateRandomMove(Moves, D).
+bestMove(Board, Moves, X, Y, X1, Y1, 2, D) :- assert(melhorJogada(5, 9999)), !, tentaMoves(Board, Moves, X, Y, X1, Y1, D, 2), alwaysYES(retracts).
+bestMove(Board, Moves, X, Y, X1, Y1, 3, D) :- assert(melhorJogada(5, 9999)), tentaMoves(Board, Moves, X, Y, X1, Y1, D, 3), alwaysYES(retracts).
 
 retracts:- retract(melhorJogada(_, _)), retract(melhorJogada(_, _)),retract(melhorJogada(_, _)),retract(melhorJogada(_, _)),retract(melhorJogada(_, _)),retract(melhorJogada(_, _)), retract(nJogadas(_)), retract(nJogadas(_)), retract(nJogadas(_)),retract(nJogadas(_)),retract(nJogadas(_)),retract(nJogadas(_)). 
 
 
-tentaMoves(Board, [], D, Grau) :- retract(melhorJogada(D, _)).
-tentaMoves(Board, [D|T], Di, Grau) :- tentaMovesAux(Board, D, Grau), tentaMoves(Board, T, Di, Grau).    
+tentaMoves(Board, [], X, Y, X1, Y1, D, Grau) :- retract(melhorJogada(D, _)).
+tentaMoves(Board, [D|T], X, Y, X1, Y1, Di, Grau) :- tentaMovesAux(Board,  D, X, Y, X1, Y1, Grau), tentaMoves(Board, T, X, Y, X1, Y1, Di, Grau).    
 
-tentaMovesAux(Board, D, 2) :-  assert(nJogadas(9999)),  jogadorAtual(_, X, Y),  alwaysYES(movePC(Board, D, X, Y, 0, CF)), nJogadas(N), melhorJogada(_, NA), !, decideTroca(D, N, NA).
+tentaMovesAux(Board, D,  X, Y, X1, Y1, 2) :-  assert(nJogadas(9999)),    alwaysYES(movePC(Board, D, X, Y, 0, CF)), nJogadas(N), melhorJogada(_, NA), !, decideTroca(D, N, NA).
+decideTroca(D, N, NA) :- N < NA, retract(nJogadas(_)), retract(melhorJogada(_, _)),   assert(melhorJogada(D, N)), !.
+decideTroca(_, _, _,) :- retract(nJogadas(_)).
+
+tentaMovesAux(_, _, _, _, _, 5, 2).
+
+
+tentaMovesAux(Board,  D, X, Y, X1, Y1, 3) :-  assert(nJogadas(9999)),    alwaysYES(jogoEu(Board, 0, X, Y, X1, Y1, D)),   nJogadas(N), melhorJogada(_, NA), !, decideTroca(D, N, NA).
 decideTroca(D, N, NA) :- N < NA, retract(nJogadas(_)), retract(melhorJogada(_, _)),   assert(melhorJogada(D, N)), !.
 decideTroca(_, _, _) :- retract(nJogadas(_)).
-
-tentaMovesAux(_, 5, 2).
-
-
-tentaMovesAux(Board, D, 3) :-  assert(nJogadas(9999)), jogadorAtual(_, X, Y), jogadorOponente(_, X1, Y1),  alwaysYES(jogoEu(Board, 0, X, Y, X1, Y1, D)),   nJogadas(N), melhorJogada(_, NA), !, decideTroca(D, N, NA).
-decideTroca(D, N, NA) :- N < NA, retract(nJogadas(_)), retract(melhorJogada(_, _)),   assert(melhorJogada(D, N)), !.
-decideTroca(_, _, _) :- retract(nJogadas(_)).
-tentaMovesAux(Board, D, 3) :- tentaMovesAux(Board, D, 2).
+tentaMovesAux(Board,  D, X, Y, X1, Y1, 3) :- tentaMovesAux(Board, D, 2).
 
 
 
