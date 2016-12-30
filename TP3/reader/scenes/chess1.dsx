@@ -21,7 +21,7 @@
 		</perspective>
 		
 		<perspective id="primeiroTabuleiro3" near="0.1" far="500.0" angle="60">
-			<from x="40" y="42" z="51" />
+			<from x="40" y="60" z="51" />
 			<to x="40" y="0" z="50" />
 		</perspective>
 		
@@ -56,7 +56,7 @@
 		</perspective>
 		
 		<perspective id="menuAuxiliar" near="0.1" far="500.0" angle="60">
-			<from x="240" y="57" z="320" />
+			<from x="240" y="60" z="320" />
 			<to x="240" y="40" z="280" />
 		</perspective>
 		
@@ -78,64 +78,64 @@
 
 	<lights>
 		
-		<omni id="tela" enabled="1" >
-			<location x="35.75" y="15.5" z="0" w="1" />
+		<omni id="menuPrincipal" enabled="1" >
+			<location x="240" y="65" z="215" w="1" />
 			<ambient r="0.2" g="0.2" b="0.2" a="1" />        <!-- ambient component -->
 			<diffuse r="0.5" g="0.5" b="0.1" a="1" />        <!-- diffuse component -->
 			<specular r="0" g="0" b="0" a="1" />       	<!-- specular component --> <!-- no specular here because it's a wide source of light -->
 		</omni>
 		
-		<spot id="projetor" enabled="1" angle="45" exponent="20">
-			<target x="35.75" y="16" z="0" />
-			<location x="35.75" y="24" z="35" w="1" />
+		<spot id="ambient1_1" enabled="1" angle="45" exponent="20">
+			<target x="30" y="0" z="30" />
+			<location x="30" y="24" z="30" w="1" />
 			<ambient r="0" g="0.8" b="0" a="0.5" />        <!-- ambient component -->
 			<diffuse r="0" g="0.8" b="0" a="0.5" />        <!-- diffuse component -->
 			<specular r="0" g="0.8" b="0" a="0.5" />       	<!-- specular component -->
 		</spot>
-		<spot id="foco_bilhar1" enabled="1" angle="45" exponent="25">
+		<spot id="ambient1_2" enabled="1" angle="45" exponent="25">
 			<!-- atencao, "target" e' diferente de "direction" -->
-			<target x="9.25" y="8" z="15" />
-			<location x="9.25" y="24" z="15" />
+			<target x="60" y="0" z="30" />
+			<location x="60" y="24" z="30" w="1" />
 			<ambient r="0.3" g="0.3" b="0.3" a="1" />        <!-- ambient component -->
 			<diffuse r="0.3" g="0.3" b="0.3" a="1" />        <!-- diffuse component -->
 			<specular r="0.3" g="0.3" b="0.3" a="1" />       <!-- specular component -->
 		</spot>
-		<spot id="foco_bilhar2" enabled="1" angle="45" exponent="25">
+		<spot id="ambient2_1" enabled="1" angle="45" exponent="25">
 			<!-- atencao, "target" e' diferente de "direction" -->
-			<target x="27.75" y="8" z="15" />
-			<location x="27.75" y="24" z="15" />
+			<target x="230" y="0" z="30" />
+			<location x="230" y="24" z="30" w="1" />
 			<ambient r="0.3" g="0.3" b="0.3" a="1" />        <!-- ambient component -->
 			<diffuse r="0.3" g="0.3" b="0.3" a="1" />        <!-- diffuse component -->
 			<specular r="0.3" g="0.3" b="0.3" a="1" />       <!-- specular component -->
 		</spot>
-		<spot id="foco_bilhar3" enabled="1" angle="45" exponent="25">
+		<spot id="ambient2_2" enabled="1" angle="45" exponent="25">
 			<!-- atencao, "target" e' diferente de "direction" -->
-			<target x="46.25" y="8" z="15" />
-			<location x="46.25" y="24" z="15" />
+			<target x="260" y="0" z="30" />
+			<location x="260" y="24" z="30" w="1" />
 			<ambient r="0.3" g="0.3" b="0.3" a="1" />        <!-- ambient component -->
 			<diffuse r="0.3" g="0.3" b="0.3" a="1" />        <!-- diffuse component -->
 			<specular r="0.3" g="0.3" b="0.3" a="1" />       <!-- specular component -->
 		</spot>
-		<spot id="foco_bilhar4" enabled="1" angle="45" exponent="25">
+		<spot id="ambient3_1" enabled="1" angle="45" exponent="25">
 			<!-- atencao, "target" e' diferente de "direction" -->
-			<target x="9.25" y="8" z="15" />
-			<location x="9.25" y="24" z="15" />
+			<target x="430" y="0" z="30" />
+			<location x="430" y="24" z="30" w="1" />
 			<ambient r="0.3" g="0.3" b="0.3" a="1" />        <!-- ambient component -->
 			<diffuse r="0.3" g="0.3" b="0.3" a="1" />        <!-- diffuse component -->
 			<specular r="0.3" g="0.3" b="0.3" a="1" />       <!-- specular component -->
 		</spot>
-		<spot id="foco_bilhar5" enabled="1" angle="45" exponent="25">
+		<spot id="ambient3_2" enabled="1" angle="45" exponent="25">
 			<!-- atencao, "target" e' diferente de "direction" -->
-			<target x="27.75" y="8" z="15" />
-			<location x="27.75" y="24" z="15" />
+			<target x="460" y="0" z="30" />
+			<location x="460" y="24" z="30" w="1" />
 			<ambient r="0.3" g="0.3" b="0.3" a="1" />        <!-- ambient component -->
 			<diffuse r="0.3" g="0.3" b="0.3" a="1" />        <!-- diffuse component -->
 			<specular r="0.3" g="0.3" b="0.3" a="1" />       <!-- specular component -->
 		</spot>
-		<spot id="foco_bilhar6" enabled="1" angle="45" exponent="25">
+		<spot id="menuAuxiliar" enabled="1" angle="45" exponent="25">
 			<!-- atencao, "target" e' diferente de "direction" -->
-			<target x="46.25" y="8" z="15" />
-			<location x="46.25" y="24" z="15" />
+			<target x="240" y="50" z="280" />
+			<location x="240" y="50" z="320" />
 			<ambient r="0.3" g="0.3" b="0.3" a="1" />        <!-- ambient component -->
 			<diffuse r="0.3" g="0.3" b="0.3" a="1" />        <!-- diffuse component -->
 			<specular r="0.3" g="0.3" b="0.3" a="1" />       <!-- specular component -->
@@ -178,7 +178,12 @@
 		<texture id="dificil" file="../resources/game/button_dificil.png" length_s="9" length_t="2" />	
 		
 		<texture id="filmeJogo" file="../resources/game/button_filme-de-jogo.png" length_s="9" length_t="2" />
-		<texture id="menuPrincipal" file="../resources/game/button_menu-principal.png" length_s="9" length_t="2" />					
+		<texture id="menuPrincipal" file="../resources/game/button_menu-principal.png" length_s="9" length_t="2" />	
+
+		<texture id="cima" file="../resources/game/up.png" length_s="1" length_t="1" />
+		<texture id="baixo" file="../resources/game/down.png" length_s="1" length_t="1" />	
+		<texture id="undo" file="../resources/game/undo.png" length_s="1" length_t="1" />
+		<texture id="exit" file="../resources/game/sair.png" length_s="1" length_t="1" />	
 	</textures>
 	
 	
@@ -276,10 +281,6 @@
 		
 		<primitive id="cube">
 			<cube />
-		</primitive>
-		
-		<primitive id="cruz">
-			<cruz />
 		</primitive>
 		
 	</primitives>
@@ -568,27 +569,7 @@
 				<componentref id="xadrez1"/>
 				<componentref id="paredes_chao1"/>
 				<componentref id="escadinhas1"/>
-				<componentref id="cruz"/>
-				<componentref id="marcador"/>
-            </children>
-            
-        </component>
-		
-		<component id="marcador">
-        
-            <transformation>
-                <translate x="40" y="40" z="50"/>
-				<scale x="10" y="4" z="4"/>
-            </transformation>
-       
-            <materials>
-                <material id="m1"/>
-            </materials>
-                  
-            <texture id="madeira"/>
-            
-            <children> 
-				<componentref id="cubo_madeira"/>
+				<componentref id="menu_opcoes1"/>
             </children>
             
         </component>
@@ -596,7 +577,7 @@
 		<component id="xadrez1">
         
             <transformation>
-                <translate x="0" y="0" z="10"/>
+                <translate x="-5" y="0" z="10"/>
             </transformation>
        
             <materials>
@@ -1030,7 +1011,7 @@
 				<componentref id="xadrez2"/>
 				<componentref id="paredes_chao2"/>
 				<componentref id="escadinhas2"/>
-				<componentref id="cruz"/>
+				<componentref id="menu_opcoes2"/>
             </children>
             
         </component>
@@ -1038,7 +1019,7 @@
 		<component id="xadrez2">
         
             <transformation>
-                <translate x="0" y="0" z="10"/>
+                <translate x="-5" y="0" z="10"/>
             </transformation>
        
             <materials>
@@ -1468,7 +1449,7 @@
 				<componentref id="xadrez3"/>
 				<componentref id="paredes_chao3"/>
 				<componentref id="escadinhas3"/>
-				<componentref id="cruz"/>
+				<componentref id="menu_opcoes3"/>
             </children>
             
         </component>
@@ -1476,7 +1457,7 @@
 		<component id="xadrez3">
         
             <transformation>
-                <translate x="0" y="0" z="10"/>
+                <translate x="-5" y="0" z="10"/>
             </transformation>
        
             <materials>
@@ -1687,24 +1668,6 @@
             </children>
             
         </component>
-
-		<component id="cruz">
-        
-            <transformation>
-                <translate x="40" y="2" z="77"/>
-            </transformation>
-       
-            <materials>
-                <material id="m1"/>
-            </materials>
-                  
-            <texture id="parede"/>
-            
-            <children> 
-				<primitiveref id="cruz"/>
-            </children>
-            
-        </component>
 		
 		<component id="cubo">
 			<transformation>
@@ -1828,6 +1791,214 @@
             </children>
 			
 		</component>
+		
+		<component id="menu_opcoes1">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				<componentref id="cubo_opcoes"/>
+				<componentref id="opcoes_menu"/>
+            </children>
+            
+        </component>
+		<component id="menu_opcoes2">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				<componentref id="cubo_opcoes2"/>
+				<componentref id="opcoes_menu"/>
+            </children>
+            
+        </component>
+		<component id="menu_opcoes3">
+        
+            <transformation>
+                <transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="none"/>
+            
+            <children> 
+				<componentref id="cubo_opcoes3"/>
+				<componentref id="opcoes_menu"/>
+            </children>
+            
+        </component>
+		<component id="cubo_opcoes">
+        
+            <transformation>
+				<translate x="70" y="8" z="60"/>
+				<rotate axis="x" angle="-45"/>
+				<scale x="15" y="15" z="2"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="madeira"/>
+            
+            <children> 
+				<componentref id="cubo_madeira"/>
+            </children>
+            
+        </component>
+		<component id="cubo_opcoes2">
+        
+            <transformation>
+				<translate x="70" y="8" z="60"/>
+				<rotate axis="x" angle="-45"/>
+				<scale x="15" y="15" z="2"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="sand"/>
+            
+            <children> 
+				<componentref id="cubo_areia"/>
+            </children>
+            
+        </component>
+		<component id="cubo_opcoes3">
+        
+            <transformation>
+				<translate x="70" y="8" z="60"/>
+				<rotate axis="x" angle="-45"/>
+				<scale x="15" y="15" z="2"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="padrao_chines"/>
+            
+            <children> 
+				<componentref id="cubo_madeira"/>
+            </children>
+            
+        </component>
+		<component id="opcoes_menu">
+        
+            <transformation>
+				<transformationref id="nula"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="inherit"/>
+            
+            <children> 
+				<componentref id="cima"/>
+				<componentref id="baixo"/>
+				<componentref id="exit"/>
+				<componentref id="undo"/>
+            </children>
+            
+        </component>
+		<component id="cima">
+        
+            <transformation>
+				<translate x="70" y="12.25" z="57.25"/>
+				<rotate axis="x" angle="-45"/>
+				<scale x="5" y="5" z="5"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="cima"/>
+            
+            <children> 
+				<primitiveref id="retangulo"/>
+            </children>
+            
+        </component>
+		<component id="baixo">
+        
+            <transformation>
+				<translate x="70" y="5.25" z="64.25"/>
+				<rotate axis="x" angle="-45"/>
+				<scale x="5" y="5" z="5"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="baixo"/>
+            
+            <children> 
+				<primitiveref id="retangulo"/>
+            </children>
+            
+        </component>
+		<component id="exit">
+        
+            <transformation>
+				<translate x="65" y="8.71" z="60.71"/>
+				<rotate axis="x" angle="-45"/>
+				<scale x="5" y="5" z="5"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="exit"/>
+            
+            <children> 
+				<primitiveref id="retangulo"/>
+            </children>
+            
+        </component>
+		<component id="undo">
+        
+            <transformation>
+				<translate x="75" y="8.71" z="60.71"/>
+				<rotate axis="x" angle="-45"/>
+				<scale x="5" y="5" z="5"/>
+            </transformation>
+       
+            <materials>
+                <material id="m1"/>
+            </materials>
+                  
+            <texture id="undo"/>
+            
+            <children> 
+				<primitiveref id="retangulo"/>
+            </children>
+            
+        </component>
 		
 		<component id="menu">
         

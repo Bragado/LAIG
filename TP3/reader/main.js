@@ -11,7 +11,7 @@ function getUrlVars() {
     return vars;
 }	 
 
-serialInclude(['../lib/CGF.js', 'XMLscene.js', 'MySceneGraph.js', 'Node.js', 'game/Connection.js','game/Transition.js', 'game/Menus_State.js',  'game/Constroi_Tab_State.js', 'game/Board.js', 'game/Peca.js', 'game/Tile.js', 'game/EmJogo_State.js' , 'primitives/Rectangle.js', 'primitives/Cylinder.js', 'primitives/Torus.js', 'primitives/Triangle.js', 'primitives/Sphere.js', 'primitives/CylinderSurface.js', 'primitives/CylinderBase.js', 'primitives/reversedSphere.js', 'primitives/Cruz.js', 'primitives/Cube.js', 'Interface.js', 'animations/Animation.js', 'animations/LinearAnimation.js', 'animations/CircularAnimation.js', 'primitives/Plane.js', 'primitives/Patch.js', 'primitives/ChessBoard.js', 'primitives/Vehicle.js', 'shaders/flat.frag', 'shaders/flat.vert', 'shaders/piece.frag' , 'shaders/piece.vert' , 'shaders/jogador.frag' , 'shaders/jogador.vert' ,
+serialInclude(['../lib/CGF.js', 'XMLscene.js', 'MySceneGraph.js', 'Node.js', 'game/Connection.js','game/Transition.js', 'game/Menus_State.js',  'game/Constroi_Tab_State.js', 'game/Board.js', 'game/Peca.js', 'game/Tile.js', 'game/EmJogo_State.js' , 'primitives/Rectangle.js', 'primitives/Cylinder.js', 'primitives/Torus.js', 'primitives/Triangle.js', 'primitives/Sphere.js', 'primitives/CylinderSurface.js', 'primitives/CylinderBase.js', 'primitives/reversedSphere.js', 'primitives/Cruz.js', 'primitives/Cube.js', 'Interface.js', 'howler.js', 'animations/Animation.js', 'animations/LinearAnimation.js', 'animations/CircularAnimation.js', 'primitives/Plane.js', 'primitives/Patch.js', 'primitives/ChessBoard.js', 'primitives/Vehicle.js', 'shaders/flat.frag', 'shaders/flat.vert', 'shaders/piece.frag' , 'shaders/piece.vert' , 'shaders/jogador.frag' , 'shaders/jogador.vert' ,
 
 main=function()
 {
@@ -19,6 +19,7 @@ main=function()
     var app = new CGFapplication(document.body);
     var myScene = new XMLscene();
     var myInterface = new Interface();
+	var sound = new Howl({src: ['sound.mp3'], autoplay: true, loop: true});
 
     app.init();
 
