@@ -32,10 +32,11 @@ class EmJogo_State {
 		var sstr = Board.toString();
 		
 		this.firstMove();
-		
+		this.ready = false; 
 	}
 	
 	firstMove() {
+		
 		this.gameBoard.board[0][0].peca.setSpecialAutomaticMove(this, -1, 0.5, this.initTime);
 		this.gameBoard.board[0][7].peca.setSpecialAutomaticMove(this, -1, 0.5, this.initTime);
 		this.gameBoard.board[3][3].peca.setSpecialAutomaticMove(this, -1, 0.5, this.initTime);
@@ -51,20 +52,21 @@ class EmJogo_State {
 	
 	stopSpecialAutomatic() {
 			this.internalState = this.states.WAITING;
-		
+			this.ready = true;
 	}
 	
 	
 	display(currTime) {
-		
-		this.dealWithProlog();
-		
-		var id = this.scene.logPicking();
-		
-		this.scene.clearPickRegistration();
-		if (id != "" && id != undefined) {
-			this.mouseDown(id);
-		}
+			if(this.ready) {
+				this.dealWithProlog();
+				
+				var id = this.scene.logPicking();
+				
+				this.scene.clearPickRegistration();
+				if (id != "" && id != undefined) {
+					this.mouseDown(id);
+				}
+			}
 		
 		
 		this.currTime = currTime;
@@ -76,36 +78,48 @@ class EmJogo_State {
 	}
 	
 	dealWithProlog() {
+	
 		
 		if(theEnd ) {
 			this.theEndHasArrived();
 		}
 		else { 		
 			
-					
-			if(movesChanged) {
-				this.decodeMoves(allMoves);
-				movesChanged = false;
-				if (this.tipo_de_jogo == 1 || (this.tipo_de_jogo == 2 && this.players[this.player].id) == 'A') {
-					this.piecesToPick();
+			if(movesChanged && (this.tipo_de_jogo == 1 ||  (this.tipo_de_jogo == 2 && this.players[this.player].id == 'A'))){
+						
+							this.decodeMoves(allMoves);
+							movesChanged = false;
+							this.piecesToPick();
+							
+			}else if (!(this.tipo_de_jogo == 1 ||  (this.tipo_de_jogo == 2 && this.players[this.player].id == 'A'))){
+				if(this.tipo_de_jogo == 3 && this.firstTime) {
+					this.firstTime = false;
+					this.bestMoveRequest();
+					this.applyBestMove();
 				}
-					
-				
-				else {
-					// chamar a best move e executar
+				if(movesChanged) {
+					this.decodeMoves(allMoves);
+					movesChanged = false;
+					this.bestMoveRequest(); 					
+				}
+				if(bestMoveReady) {
+					this.applyBestMove();
 					
 				}
 			}
-			
-			if(bestMoveReady) {
-				
-				
-				this.internalState = this.states.AUTOMATICMOVE;
-			}
-			
 		}
+	}
+	
+	bestMoveRequest() {
+		
 		
 	}
+	
+	applyBestMove() {
+		
+		
+	}
+	
 	
 	
 	theEndHasArrived() {
@@ -139,7 +153,7 @@ class EmJogo_State {
 	
 	mouseDown(id) {
 		
-		if(this.internalState == this.states.WAITING) {
+		if(this.internalState == this.states.WAITING ) {
 			
 			for(var i = 0; i < this.piecesAvailable.length; i++) {
 				

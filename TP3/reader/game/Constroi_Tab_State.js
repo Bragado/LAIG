@@ -261,7 +261,7 @@ Constroi_Tab_State.prototype.processBoard = function(root) {
 Constroi_Tab_State.prototype.display = function(currTime) {
 		if(!this.ready)
 			return;
-		this.verifyEnd(); 	
+		 	
 		this.test++;
 		
 		if(this.tipoDeJogo == 3 && this.test % 20 == 0) {
@@ -520,6 +520,8 @@ Constroi_Tab_State.prototype.stopAutomatic = function() {
 		
 		if(this.tipoDeJogo == 1 || (this.tipoDeJogo==2 && this.playerTurn == this.states.PLAYERA))
 			this.NoTilesToPick_PiecesToPick();
+		
+		this.verifyEnd();
 	}
 	
 	//@override
