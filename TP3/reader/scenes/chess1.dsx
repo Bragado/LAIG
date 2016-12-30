@@ -11,8 +11,8 @@
 		</perspective>
 		
 		<perspective id="principal" near="0.1" far="500.0" angle="60">
-				<from x="40" y="57" z="315" />
-				<to x="40" y="40" z="280" />
+				<from x="40" y="60" z="215" />
+				<to x="40" y="40" z="180" />
 			</perspective>
 		
 		<perspective id="janela1" near="0.1" far="500.0" angle="60">
@@ -376,7 +376,7 @@
 		<component id="escadinhas">
         
             <transformation>
-                <transformationref id="nula"/>
+                <translate x="0" y="0" z="-0.01"/>
             </transformation>
        
             <materials>
@@ -516,7 +516,7 @@
 		<component id="cubo_principal">
         
             <transformation>
-                <translate x="40" y="50" z="300"/>
+                <translate x="40" y="50" z="200"/>
 				<scale x="10" y="15" z="3"/>
             </transformation>
        
@@ -554,7 +554,7 @@
 		<component id="1player">
         
             <transformation>
-				<translate x="40" y="56" z="301.6"/>
+				<translate x="40" y="52" z="201.6"/>
             </transformation>
        
             <materials>
@@ -571,7 +571,7 @@
 		<component id="2player">
         
             <transformation>
-				<translate x="40" y="52" z="301.6"/>
+				<translate x="40" y="56" z="201.6"/>
             </transformation>
        
             <materials>
@@ -588,7 +588,7 @@
 		<component id="compVScomp">
         
             <transformation>
-				<translate x="40" y="48" z="301.6"/>
+				<translate x="40" y="48" z="201.6"/>
             </transformation>
        
             <materials>
@@ -605,7 +605,7 @@
 		<component id="options">
         
             <transformation>
-				<translate x="40" y="44" z="301.6"/>
+				<translate x="40" y="44" z="201.6"/>
             </transformation>
        
             <materials>
@@ -622,7 +622,7 @@
 		<component id="cubo_secundario">
         
             <transformation>
-                <translate x="40" y="50" z="200"/>
+                <translate x="40" y="50" z="300"/>
 				<scale x="10" y="20" z="3"/>
             </transformation>
        
@@ -658,7 +658,7 @@
 		<component id="ambiente">
         
             <transformation>
-				<translate x="40" y="56" z="201.6"/>
+				<translate x="40" y="56" z="301.6"/>
 				<scale x="9.5" y="8" z="1"/>
             </transformation>
        
@@ -676,7 +676,7 @@
 		<component id="dificuldade">
         
             <transformation>
-				<translate x="40" y="47" z="201.6"/>
+				<translate x="40" y="47" z="301.6"/>
 				<scale x="9.5" y="8" z="1"/>
             </transformation>
        
@@ -812,7 +812,7 @@
         
             <transformation>
                 <translate x="40" y="1" z="40"/>
-				<scale x="48" y="2" z="48"/>
+				<scale x="48" y="2" z="47.9"/>
             </transformation>
        
             <materials>

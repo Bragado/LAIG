@@ -88,9 +88,10 @@ Constroi_Tab_State.prototype.processBoard = function(root) {
 			var x = this.reader.getFloat(tile[i], 'posX', false);
 			var y = this.reader.getFloat(tile[i], 'posY', false);
 			var z = this.reader.getFloat(tile[i], 'posZ', false); 
+			var texture = this.reader.getString(tile[i], 'textura', false);
 			
 			
-			this.gameBoard.board[Math.floor(i/8)][i%8] = new Tile(this.scene, id, x, y, z, null);
+			this.gameBoard.board[Math.floor(i/8)][i%8] = new Tile(this.scene, id, x, y, z, texture, null);
 			
 		}	
 

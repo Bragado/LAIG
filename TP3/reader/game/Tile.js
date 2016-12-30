@@ -1,4 +1,4 @@
-function Tile(scene, id, posx, posy, posz, Peca) {
+function Tile(scene, id, posx, posy, posz, textureRef, Peca) {
 	
 	if(Peca != undefined)	
 		this.peca = Peca;
@@ -16,6 +16,8 @@ function Tile(scene, id, posx, posy, posz, Peca) {
 	this.pick = this.states.NOPICKING;
 		
 	this.internalState = this.states.NOPIECE;
+	
+	this.texture = new CGFtexture(this.scene, textureRef);
 	
 }
 
@@ -44,10 +46,11 @@ Tile.prototype.display = function(t)  {
 		this.scene.pushMatrix();
 		if(this.pick == this.states.PICKING)
 			this.scene.registerForPick(parseInt(this.id), this.ret);  
-		
+		this.texture.bind(0);
 		this.scene.translate(this.x, this.y, this.z);
 		this.scene.rotate(-Math.PI/2, 1,0,0);
 		this.ret.display();
+		this.texture.unbind(0);
 		this.scene.popMatrix();
 		this.scene.clearPickRegistration();
 	}	
