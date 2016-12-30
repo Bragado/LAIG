@@ -3,13 +3,13 @@
 		<views>
 	
 			<perspective id="principal" near="0.1" far="500.0" angle="60">
-				<from x="40" y="60" z="215" />
-				<to x="40" y="40" z="180" />
+				<from x="240" y="60" z="215" />
+				<to x="240" y="40" z="180" />
 			</perspective>
 			
 			<perspective id="auxiliar" near="0.1" far="500.0" angle="60">
-				<from x="40" y="57" z="320" />
-				<to x="40" y="45" z="280" />
+				<from x="240" y="60" z="320" />
+				<to x="240" y="45" z="280" />
 			</perspective>
 			
 			<perspective id="chess1" near="0.1" far="500.0" angle="60">
@@ -30,54 +30,67 @@
 		</views>
 		
 		<menuPrincipal>
-			<tile x="40" y="56" z="201.61" textura1= "../../resources/game/button_2-jogadores.png" textura2=""/>
+			<tile x="240" y="56" z="201.61" textura1= "../../resources/game/button_2-jogadores.png" textura2=""/>
 			
-			<tile x="40" y="52" z="201.61" textura1="../../resources/game/button_1-jogador.png" textura2=""/>
+			<tile x="240" y="52" z="201.61" textura1="../../resources/game/button_1-jogador.png" textura2=""/>
 			
-			<tile x="40" y="48" z="201.61" textura1= "../../resources/game/button_computador-vs-computador.png" textura2=""/>
+			<tile x="240" y="48" z="201.61" textura1= "../../resources/game/button_computador-vs-computador.png" textura2=""/>
 			
-			<tile x="40" y="44" z="201.61" textura1="../../resources/game/button_opcoes.png" textura2=""/>
+			<tile x="240" y="44" z="201.61" textura1="../../resources/game/button_opcoes.png" textura2=""/>
 		</menuPrincipal>
 		
 		<menuAuxiliar>
-			<tile  x="40" y="57.5" z="301.61" textura1= "../../resources/game/button_ambiente-1.png" textura2= "../../resources/game/button_ambiente-1-selecionado.png"/>
-			<tile  x="40" y="55.5" z="301.61" textura1= "../../resources/game/button_ambiente-2.png" textura2= "../../resources/game/button_ambiente-2-selecionado.png"/>
-			<tile  x="40" y="53.5" z="301.61" textura1= "../../resources/game/button_ambiente-3.png" textura2= "../../resources/game/button_ambiente-3-selecionado.png"/>
+			<tile  x="240" y="57.5" z="301.62" textura1= "../../resources/game/button_ambiente-1.png" textura2= "../../resources/game/button_ambiente-1-selecionado.png"/>
+			<tile  x="240" y="55.5" z="301.62" textura1= "../../resources/game/button_ambiente-2.png" textura2= "../../resources/game/button_ambiente-2-selecionado.png"/>
+			<tile  x="240" y="53.5" z="301.62" textura1= "../../resources/game/button_ambiente-3.png" textura2= "../../resources/game/button_ambiente-3-selecionado.png"/>
 			
-			<tile  x="40" y="48.5" z="301.61" textura1= "../../resources/game/button_facil.png" textura2= "../../resources/game/button_facil-selecionado.png"/>
-			<tile  x="40" y="46.5" z="301.61" textura1= "../../resources/game/button_medio.png" textura2= "../../resources/game/button_medio-selecionado.png"/>
-			<tile  x="40" y="44.5" z="301.61" textura1= "../../resources/game/button_dificil.png" textura2= "../../resources/game/button_dificil-selecionado.png"/>
+			<tile  x="240" y="48.5" z="301.61" textura1= "../../resources/game/button_facil.png" textura2= "../../resources/game/button_facil-selecionado.png"/>
+			<tile  x="240" y="46.5" z="301.61" textura1= "../../resources/game/button_medio.png" textura2= "../../resources/game/button_medio-selecionado.png"/>
+			<tile  x="240" y="44.5" z="301.61" textura1= "../../resources/game/button_dificil.png" textura2= "../../resources/game/button_dificil-selecionado.png"/>
 			
-			<tile  x="40" y="41.5" z="301.61" textura1= "../../resources/game/button_back.png" textura2= ""/>
+			<tile  x="240" y="41.5" z="301.62" textura1= "../../resources/game/button_back.png" textura2= ""/>
 		</menuAuxiliar>
 		
 	</menus>
 	
 	
 	
-	<board id="chess1" posX="16" posY="2" posZ="26" dim="48">
+	<board id="chess1" posX="14" posY="2" posZ="26" dim="48">
 		
 		<views>
 			<!-- 1º, 2º, 3º são de jogo, a 4º do menuFinal, a 5º do meu principal-->
-			<perspective id="view1" near="0.1" far="500.0" angle="80">
+			<perspective id="primeiroTabuleiro" near="0.1" far="500.0" angle="80">
 				<from x="40" y="30" z="100" />
 				<to x="40" y="0" z="0" />
 			</perspective>
 		
-			<perspective id="view2" near="0.1" far="500.0" angle="60">
+			<perspective id="primeiroTabuleiro2" near="0.1" far="500.0" angle="60">
 				<from x="40" y="30" z="100" />
 				<to x="40" y="0" z="50" />
 			</perspective>
 			
-			<perspective id="view3" near="0.1" far="500.0" angle="60">
+			<perspective id="primeiroTabuleiro3" near="0.1" far="500.0" angle="60">
 				<from x="40" y="60" z="51" />
 				<to x="40" y="0" z="50" />
 			</perspective>
 			
+			<perspective id="menuFinal" near="0.1" far="500.0" angle="60">
+				<from x="40" y="10" z="-20" />
+				<to x="40" y="0" z="-50" />
+			</perspective>
 			
+			<perspective id="menuPrincipal" near="0.1" far="500.0" angle="60">
+				<from x="240" y="60" z="215" />
+				<to x="240" y="40" z="180" />
+			</perspective>			
 		</views>
 		
-		<getMeBack posx="" posy="" posz=""/>  <!-- e' necessario fazer a primitiva também -->
+		<menuTrocas>
+			<tile x="70" y="12.25" z="57.25" textura1="../../resources/game/up.png" textura2=""/>
+			<tile x="70" y="5.25" z="64.25" textura1="../../resources/game/down.png" textura2=""/>
+			<tile x="65" y="8.71" z="60.71" textura1="../../resources/game/sair.png" textura2=""/>
+			<tile x="75" y="8.71" z="60.71" textura1="../../resources/game/undo.png" textura2=""/>
+		</menuTrocas>
 			
 		<material>
 		
@@ -144,93 +157,93 @@
 			<peca id="uuurrr" posX="75" posY="3" posZ="21" textura="../resources/game/pecas/uuurrr.png"/>
 			<peca id="uuurul" posX="81" posY="3" posZ="21" textura="../resources/game/pecas/uuurul.png"/>
 			
-			<peca id="sw" posX="19" posY="3" posZ="29" textura="../resources/game/pecas/sw.png"/>
-			<peca id="cw" posX="19" posY="3" posZ="71" textura="../resources/game/pecas/cw.png"/>
-			<peca id="sb" posX="61" posY="3" posZ="71" textura="../resources/game/pecas/sb.png"/>
-			<peca id="cb" posX="61" posY="3" posZ="29" textura="../resources/game/pecas/cb.png"/>
-			<peca id="b" posX="37" posY="3" posZ="47" textura="../resources/game/pecas/b.png"/>
-			<peca id="b" posX="43" posY="3" posZ="47" textura="../resources/game/pecas/b.png"/>
-			<peca id="b" posX="37" posY="3" posZ="53" textura="../resources/game/pecas/b.png"/>
-			<peca id="b" posX="43" posY="3" posZ="53" textura="../resources/game/pecas/b.png"/>
+			<peca id="sw" posX="14" posY="3" posZ="29" textura="../resources/game/pecas/sw.png"/>
+			<peca id="cw" posX="14" posY="3" posZ="71" textura="../resources/game/pecas/cw.png"/>
+			<peca id="sb" posX="56" posY="3" posZ="71" textura="../resources/game/pecas/sb.png"/>
+			<peca id="cb" posX="56" posY="3" posZ="29" textura="../resources/game/pecas/cb.png"/>
+			<peca id="b" posX="32" posY="3" posZ="47" textura="../resources/game/pecas/b.png"/>
+			<peca id="b" posX="38" posY="3" posZ="47" textura="../resources/game/pecas/b.png"/>
+			<peca id="b" posX="32" posY="3" posZ="53" textura="../resources/game/pecas/b.png"/>
+			<peca id="b" posX="38" posY="3" posZ="53" textura="../resources/game/pecas/b.png"/>
 		</pecas>
 		<tiles>
-			<tile id="11" posX="19" posY="2.11" posZ="29" textura="../resources/game/tile.png"/>
-			<tile id="12" posX="25" posY="2.11" posZ="29" textura="../resources/game/tile.png"/>
-			<tile id="13" posX="31" posY="2.11" posZ="29" textura="../resources/game/tile.png"/>
-			<tile id="14" posX="37" posY="2.11" posZ="29" textura="../resources/game/tile.png"/>
-			<tile id="15" posX="43" posY="2.11" posZ="29" textura="../resources/game/tile.png"/>
-			<tile id="16" posX="49" posY="2.11" posZ="29" textura="../resources/game/tile.png"/>
-			<tile id="17" posX="55" posY="2.11" posZ="29" textura="../resources/game/tile.png"/>
-			<tile id="18" posX="61" posY="2.11" posZ="29" textura="../resources/game/tile.png"/>
+			<tile id="11" posX="14" posY="2.11" posZ="29" textura="../resources/game/tile.png"/>
+			<tile id="12" posX="20" posY="2.11" posZ="29" textura="../resources/game/tile.png"/>
+			<tile id="13" posX="26" posY="2.11" posZ="29" textura="../resources/game/tile.png"/>
+			<tile id="14" posX="32" posY="2.11" posZ="29" textura="../resources/game/tile.png"/>
+			<tile id="15" posX="38" posY="2.11" posZ="29" textura="../resources/game/tile.png"/>
+			<tile id="16" posX="44" posY="2.11" posZ="29" textura="../resources/game/tile.png"/>
+			<tile id="17" posX="50" posY="2.11" posZ="29" textura="../resources/game/tile.png"/>
+			<tile id="18" posX="56" posY="2.11" posZ="29" textura="../resources/game/tile.png"/>
 			
-			<tile id="21" posX="19" posY="2.11" posZ="35" textura="../resources/game/tile.png"/>
-			<tile id="22" posX="25" posY="2.11" posZ="35" textura="../resources/game/tile.png"/>
-			<tile id="23" posX="31" posY="2.11" posZ="35" textura="../resources/game/tile.png"/>
-			<tile id="24" posX="37" posY="2.11" posZ="35" textura="../resources/game/tile.png"/>
-			<tile id="25" posX="43" posY="2.11" posZ="35" textura="../resources/game/tile.png"/>
-			<tile id="26" posX="49" posY="2.11" posZ="35" textura="../resources/game/tile.png"/>
-			<tile id="27" posX="55" posY="2.11" posZ="35" textura="../resources/game/tile.png"/>
-			<tile id="28" posX="61" posY="2.11" posZ="35" textura="../resources/game/tile.png"/>
+			<tile id="21" posX="14" posY="2.11" posZ="35" textura="../resources/game/tile.png"/>
+			<tile id="22" posX="20" posY="2.11" posZ="35" textura="../resources/game/tile.png"/>
+			<tile id="23" posX="26" posY="2.11" posZ="35" textura="../resources/game/tile.png"/>
+			<tile id="24" posX="32" posY="2.11" posZ="35" textura="../resources/game/tile.png"/>
+			<tile id="25" posX="38" posY="2.11" posZ="35" textura="../resources/game/tile.png"/>
+			<tile id="26" posX="44" posY="2.11" posZ="35" textura="../resources/game/tile.png"/>
+			<tile id="27" posX="50" posY="2.11" posZ="35" textura="../resources/game/tile.png"/>
+			<tile id="28" posX="56" posY="2.11" posZ="35" textura="../resources/game/tile.png"/>
 			
-			<tile id="31" posX="19" posY="2.11" posZ="41" textura="../resources/game/tile.png"/>
-			<tile id="32" posX="25" posY="2.11" posZ="41" textura="../resources/game/tile.png"/>
-			<tile id="33" posX="31" posY="2.11" posZ="41" textura="../resources/game/tile.png"/>
-			<tile id="34" posX="37" posY="2.11" posZ="41" textura="../resources/game/tile.png"/>
-			<tile id="35" posX="43" posY="2.11" posZ="41" textura="../resources/game/tile.png"/>
-			<tile id="36" posX="49" posY="2.11" posZ="41" textura="../resources/game/tile.png"/>
-			<tile id="37" posX="55" posY="2.11" posZ="41" textura="../resources/game/tile.png"/>
-			<tile id="38" posX="61" posY="2.11" posZ="41" textura="../resources/game/tile.png"/>
+			<tile id="31" posX="14" posY="2.11" posZ="41" textura="../resources/game/tile.png"/>
+			<tile id="32" posX="20" posY="2.11" posZ="41" textura="../resources/game/tile.png"/>
+			<tile id="33" posX="26" posY="2.11" posZ="41" textura="../resources/game/tile.png"/>
+			<tile id="34" posX="32" posY="2.11" posZ="41" textura="../resources/game/tile.png"/>
+			<tile id="35" posX="38" posY="2.11" posZ="41" textura="../resources/game/tile.png"/>
+			<tile id="36" posX="44" posY="2.11" posZ="41" textura="../resources/game/tile.png"/>
+			<tile id="37" posX="50" posY="2.11" posZ="41" textura="../resources/game/tile.png"/>
+			<tile id="38" posX="56" posY="2.11" posZ="41" textura="../resources/game/tile.png"/>
 			
-			<tile id="41" posX="19" posY="2.11" posZ="47" textura="../resources/game/tile.png"/>
-			<tile id="42" posX="25" posY="2.11" posZ="47" textura="../resources/game/tile.png"/>
-			<tile id="43" posX="31" posY="2.11" posZ="47" textura="../resources/game/tile.png"/>
-			<tile id="44" posX="37" posY="2.11" posZ="47" textura="../resources/game/tile.png"/>
-			<tile id="45" posX="43" posY="2.11" posZ="47" textura="../resources/game/tile.png"/>
-			<tile id="46" posX="49" posY="2.11" posZ="47" textura="../resources/game/tile.png"/>
-			<tile id="47" posX="55" posY="2.11" posZ="47" textura="../resources/game/tile.png"/>
-			<tile id="48" posX="61" posY="2.11" posZ="47" textura="../resources/game/tile.png"/>
+			<tile id="41" posX="14" posY="2.11" posZ="47" textura="../resources/game/tile.png"/>
+			<tile id="42" posX="20" posY="2.11" posZ="47" textura="../resources/game/tile.png"/>
+			<tile id="43" posX="26" posY="2.11" posZ="47" textura="../resources/game/tile.png"/>
+			<tile id="44" posX="32" posY="2.11" posZ="47" textura="../resources/game/tile.png"/>
+			<tile id="45" posX="38" posY="2.11" posZ="47" textura="../resources/game/tile.png"/>
+			<tile id="46" posX="44" posY="2.11" posZ="47" textura="../resources/game/tile.png"/>
+			<tile id="47" posX="50" posY="2.11" posZ="47" textura="../resources/game/tile.png"/>
+			<tile id="48" posX="56" posY="2.11" posZ="47" textura="../resources/game/tile.png"/>
 			
-			<tile id="51" posX="19" posY="2.11" posZ="53" textura="../resources/game/tile.png"/>
-			<tile id="52" posX="25" posY="2.11" posZ="53" textura="../resources/game/tile.png"/>
-			<tile id="53" posX="31" posY="2.11" posZ="53" textura="../resources/game/tile.png"/>
-			<tile id="54" posX="37" posY="2.11" posZ="53" textura="../resources/game/tile.png"/>
-			<tile id="55" posX="43" posY="2.11" posZ="53" textura="../resources/game/tile.png"/>
-			<tile id="56" posX="49" posY="2.11" posZ="53" textura="../resources/game/tile.png"/>
-			<tile id="57" posX="55" posY="2.11" posZ="53" textura="../resources/game/tile.png"/>
-			<tile id="58" posX="61" posY="2.11" posZ="53" textura="../resources/game/tile.png"/>
+			<tile id="51" posX="14" posY="2.11" posZ="53" textura="../resources/game/tile.png"/>
+			<tile id="52" posX="20" posY="2.11" posZ="53" textura="../resources/game/tile.png"/>
+			<tile id="53" posX="26" posY="2.11" posZ="53" textura="../resources/game/tile.png"/>
+			<tile id="54" posX="32" posY="2.11" posZ="53" textura="../resources/game/tile.png"/>
+			<tile id="55" posX="38" posY="2.11" posZ="53" textura="../resources/game/tile.png"/>
+			<tile id="56" posX="44" posY="2.11" posZ="53" textura="../resources/game/tile.png"/>
+			<tile id="57" posX="50" posY="2.11" posZ="53" textura="../resources/game/tile.png"/>
+			<tile id="58" posX="56" posY="2.11" posZ="53" textura="../resources/game/tile.png"/>
 			
-			<tile id="61" posX="19" posY="2.11" posZ="59" textura="../resources/game/tile.png"/>
-			<tile id="62" posX="25" posY="2.11" posZ="59" textura="../resources/game/tile.png"/>
-			<tile id="63" posX="31" posY="2.11" posZ="59" textura="../resources/game/tile.png"/>
-			<tile id="64" posX="37" posY="2.11" posZ="59" textura="../resources/game/tile.png"/>
-			<tile id="65" posX="43" posY="2.11" posZ="59" textura="../resources/game/tile.png"/>
-			<tile id="66" posX="49" posY="2.11" posZ="59" textura="../resources/game/tile.png"/>
-			<tile id="67" posX="55" posY="2.11" posZ="59" textura="../resources/game/tile.png"/>
-			<tile id="68" posX="61" posY="2.11" posZ="59" textura="../resources/game/tile.png"/>
+			<tile id="61" posX="14" posY="2.11" posZ="59" textura="../resources/game/tile.png"/>
+			<tile id="62" posX="20" posY="2.11" posZ="59" textura="../resources/game/tile.png"/>
+			<tile id="63" posX="26" posY="2.11" posZ="59" textura="../resources/game/tile.png"/>
+			<tile id="64" posX="32" posY="2.11" posZ="59" textura="../resources/game/tile.png"/>
+			<tile id="65" posX="38" posY="2.11" posZ="59" textura="../resources/game/tile.png"/>
+			<tile id="66" posX="44" posY="2.11" posZ="59" textura="../resources/game/tile.png"/>
+			<tile id="67" posX="50" posY="2.11" posZ="59" textura="../resources/game/tile.png"/>
+			<tile id="68" posX="56" posY="2.11" posZ="59" textura="../resources/game/tile.png"/>
 			
-			<tile id="71" posX="19" posY="2.11" posZ="65" textura="../resources/game/tile.png"/>
-			<tile id="72" posX="25" posY="2.11" posZ="65" textura="../resources/game/tile.png"/>
-			<tile id="73" posX="31" posY="2.11" posZ="65" textura="../resources/game/tile.png"/>
-			<tile id="74" posX="37" posY="2.11" posZ="65" textura="../resources/game/tile.png"/>
-			<tile id="75" posX="43" posY="2.11" posZ="65" textura="../resources/game/tile.png"/>
-			<tile id="76" posX="49" posY="2.11" posZ="65" textura="../resources/game/tile.png"/>
-			<tile id="77" posX="55" posY="2.11" posZ="65" textura="../resources/game/tile.png"/>
-			<tile id="78" posX="61" posY="2.11" posZ="65" textura="../resources/game/tile.png"/>
+			<tile id="71" posX="14" posY="2.11" posZ="65" textura="../resources/game/tile.png"/>
+			<tile id="72" posX="20" posY="2.11" posZ="65" textura="../resources/game/tile.png"/>
+			<tile id="73" posX="26" posY="2.11" posZ="65" textura="../resources/game/tile.png"/>
+			<tile id="74" posX="32" posY="2.11" posZ="65" textura="../resources/game/tile.png"/>
+			<tile id="75" posX="38" posY="2.11" posZ="65" textura="../resources/game/tile.png"/>
+			<tile id="76" posX="44" posY="2.11" posZ="65" textura="../resources/game/tile.png"/>
+			<tile id="77" posX="50" posY="2.11" posZ="65" textura="../resources/game/tile.png"/>
+			<tile id="78" posX="56" posY="2.11" posZ="65" textura="../resources/game/tile.png"/>
 			
-			<tile id="81" posX="19" posY="2.11" posZ="71" textura="../resources/game/tile.png"/>
-			<tile id="82" posX="25" posY="2.11" posZ="71" textura="../resources/game/tile.png"/>
-			<tile id="83" posX="31" posY="2.11" posZ="71" textura="../resources/game/tile.png"/>
-			<tile id="84" posX="37" posY="2.11" posZ="71" textura="../resources/game/tile.png"/>
-			<tile id="85" posX="43" posY="2.11" posZ="71" textura="../resources/game/tile.png"/>
-			<tile id="86" posX="49" posY="2.11" posZ="71" textura="../resources/game/tile.png"/>
-			<tile id="87" posX="55" posY="2.11" posZ="71" textura="../resources/game/tile.png"/>
-			<tile id="88" posX="61" posY="2.11" posZ="71" textura="../resources/game/tile.png"/>
+			<tile id="81" posX="14"  posY="2.11" posZ="71" textura="../resources/game/tile.png"/>
+			<tile id="82" posX="20" posY="2.11" posZ="71" textura="../resources/game/tile.png"/>
+			<tile id="83" posX="26" posY="2.11" posZ="71" textura="../resources/game/tile.png"/>
+			<tile id="84" posX="32" posY="2.11" posZ="71" textura="../resources/game/tile.png"/>
+			<tile id="85" posX="38" posY="2.11" posZ="71" textura="../resources/game/tile.png"/>
+			<tile id="86" posX="44" posY="2.11" posZ="71" textura="../resources/game/tile.png"/>
+			<tile id="87" posX="50" posY="2.11" posZ="71" textura="../resources/game/tile.png"/>
+			<tile id="88" posX="56" posY="2.11" posZ="71" textura="../resources/game/tile.png"/>
 			
 		</tiles>
 		
 		<jogadores>
-			<jogador id="A" posX="19" posY="5.5" posZ="29"/>
-			<jogador id="B" posX="19" posY="5.5" posZ="71"/>
+			<jogador id="A" posX="14" posY="5.5" posZ="29"/>
+			<jogador id="B" posX="14" posY="5.5" posZ="71"/>
 		</jogadores>
 		
 		<cronometro posX posY posZ dimX dimY dimZ   >
@@ -249,6 +262,422 @@
 			
 		</cronometro>
 		
+	</board>
+	
+	<board id="chess2" posX="214" posY="2" posZ="26" dim="48">
+		
+		<views>
+			<!-- 1º, 2º, 3º são de jogo, a 4º do menuFinal, a 5º do meu principal-->
+			<perspective id="segundoTabuleiro" near="0.1" far="500.0" angle="80">
+				<from x="240" y="30" z="100" />
+				<to x="240" y="0" z="0" />
+			</perspective>
+		
+			<perspective id="segundoTabuleiro2" near="0.1" far="500.0" angle="60">
+				<from x="240" y="30" z="100" />
+				<to x="240" y="0" z="50" />
+			</perspective>
+		
+			<perspective id="segundoTabuleiro3" near="0.1" far="500.0" angle="60">
+				<from x="240" y="60" z="51" />
+				<to x="240" y="0" z="50" />
+			</perspective>
+			
+			<perspective id="menuFinal" near="0.1" far="500.0" angle="60">
+				<from x="40" y="10" z="-20" />
+				<to x="40" y="0" z="-50" />
+			</perspective>
+			
+			<perspective id="menuPrincipal" near="0.1" far="500.0" angle="60">
+				<from x="240" y="60" z="215" />
+				<to x="240" y="40" z="180" />
+			</perspective>			
+		</views>
+		
+		<menuTrocas>
+			<tile x="270" y="12.25" z="57.25" textura1="../../resources/game/up.png" textura2=""/>
+			<tile x="270" y="5.25" z="64.25" textura1="../../resources/game/down.png" textura2=""/>
+			<tile x="265" y="8.71" z="60.71" textura1="../../resources/game/sair.png" textura2=""/>
+			<tile x="275" y="8.71" z="60.71" textura1="../../resources/game/undo.png" textura2=""/>
+		</menuTrocas>
+			
+		<material>
+		
+		</material>
+
+		<pecas>
+			<peca id="dddlll" posX="203" posY="9" posZ="3" textura="../resources/game/pecas/dddlll"/>
+			<peca id="dddlul" posX="209" posY="9" posZ="3" textura="../resources/game/pecas/dddlul"/>
+			<peca id="ddllul" posX="2015" posY="9" posZ="3" textura="../resources/game/pecas/ddllul"/>
+			<peca id="dlllul" posX="221" posY="9" posZ="3" textura="../resources/game/pecas/dlllul"/>
+			<peca id="drdddl" posX="227" posY="9" posZ="3" textura="../resources/game/pecas/drdddl"/>
+			<peca id="drddll" posX="233" posY="9" posZ="3" textura="../resources/game/pecas/drddll"/>
+			<peca id="drddul" posX="239" posY="9" posZ="3" textura="../resources/game/pecas/drddul"/>
+			<peca id="drdlll" posX="245" posY="9" posZ="3" textura="../resources/game/pecas/drdlll"/>
+			<peca id="drdlul" posX="251" posY="9" posZ="3" textura="../resources/game/pecas/drdlul"/>
+			<peca id="drllul" posX="257" posY="9" posZ="3" textura="../resources/game/pecas/drllul"/>
+			<peca id="rrdddl" posX="263" posY="9" posZ="3" textura="../resources/game/pecas/rrdddl"/>
+			<peca id="rrddll" posX="269" posY="9" posZ="3" textura="../resources/game/pecas/rrddll"/>
+			<peca id="rrddul" posX="275" posY="9" posZ="3" textura="../resources/game/pecas/rrddul"/>
+			
+			<peca id="rrdlll" posX="200" posY="7" posZ="9" textura="../resources/game/pecas/rrdlll"/>
+			<peca id="rrdlul" posX="206" posY="7" posZ="9" textura="../resources/game/pecas/rrdlul"/>
+			<peca id="rrdrdd" posX="212" posY="7" posZ="9" textura="../resources/game/pecas/rrdrdd"/>
+			<peca id="rrdrdl" posX="218" posY="7" posZ="9" textura="../resources/game/pecas/rrdrdl"/>
+			<peca id="rrdrll" posX="224" posY="7" posZ="9" textura="../resources/game/pecas/rrdrll"/>
+			<peca id="rrdrul" posX="230" posY="7" posZ="9" textura="../resources/game/pecas/rrdrul"/>
+			<peca id="rrllul" posX="236" posY="7" posZ="9" textura="../resources/game/pecas/rrllul"/>
+			<peca id="urdddl" posX="242" posY="7" posZ="9" textura="../resources/game/pecas/urdddl"/>
+			<peca id="urddll" posX="248" posY="7" posZ="9" textura="../resources/game/pecas/urddll"/>
+			<peca id="urddul" posX="254" posY="7" posZ="9" textura="../resources/game/pecas/urddul"/>
+			<peca id="urdlll" posX="260" posY="7" posZ="9" textura="../resources/game/pecas/urdlll"/>
+			<peca id="urdlul" posX="266" posY="7" posZ="9" textura="../resources/game/pecas/urdlul"/>
+			<peca id="urdrdd" posX="272" posY="7" posZ="9" textura="../resources/game/pecas/urdrdd"/>
+			<peca id="urdrdl" posX="278" posY="7" posZ="9" textura="../resources/game/pecas/urdrdl"/>
+			
+			<peca id="urdrll" posX="200" posY="5" posZ="15" textura="../resources/game/pecas/urdrll"/>
+			<peca id="urdrul" posX="206" posY="5" posZ="15" textura="../resources/game/pecas/urdrul"/>
+			<peca id="urllul" posX="212" posY="5" posZ="15" textura="../resources/game/pecas/urllul"/>
+			<peca id="urrrdd" posX="218" posY="5" posZ="15" textura="../resources/game/pecas/urrrdd"/>
+			<peca id="urrrdl" posX="224" posY="5" posZ="15" textura="../resources/game/pecas/urrrdl"/>
+			<peca id="urrrdr" posX="230" posY="5" posZ="15" textura="../resources/game/pecas/urrrdr"/>
+			<peca id="urrrll" posX="236" posY="5" posZ="15" textura="../resources/game/pecas/urrrll"/>
+			<peca id="urrrul" posX="242" posY="5" posZ="15" textura="../resources/game/pecas/urrrul"/>
+			<peca id="uudddl" posX="248" posY="5" posZ="15" textura="../resources/game/pecas/uudddl"/>
+			<peca id="uuddll" posX="254" posY="5" posZ="15" textura="../resources/game/pecas/uuddll"/>
+			<peca id="uuddul" posX="260" posY="5" posZ="15" textura="../resources/game/pecas/uuddul"/>
+			<peca id="uudlll" posX="266" posY="5" posZ="15" textura="../resources/game/pecas/uudlll"/>
+			<peca id="uudlul" posX="272" posY="5" posZ="15" textura="../resources/game/pecas/uudlul"/>
+			<peca id="uudrdd" posX="278" posY="5" posZ="15" textura="../resources/game/pecas/uudrdd"/>
+			
+			<peca id="uudrdl" posX="197" posY="3" posZ="21" textura="../resources/game/pecas/uudrdl"/>
+			<peca id="uudrll" posX="203" posY="3" posZ="21" textura="../resources/game/pecas/uudrll"/>
+			<peca id="uudrul" posX="209" posY="3" posZ="21" textura="../resources/game/pecas/uudrul"/>
+			<peca id="uullul" posX="215" posY="3" posZ="21" textura="../resources/game/pecas/uullul"/>
+			<peca id="uurrdd" posX="221" posY="3" posZ="21" textura="../resources/game/pecas/uurrdd"/>
+			<peca id="uurrdl" posX="227" posY="3" posZ="21" textura="../resources/game/pecas/uurrdl"/>
+			<peca id="uurrdr" posX="233" posY="3" posZ="21" textura="../resources/game/pecas/uurrdr"/>
+			<peca id="uurrll" posX="239" posY="3" posZ="21" textura="../resources/game/pecas/uurrll"/>
+			<peca id="uurrul" posX="245" posY="3" posZ="21" textura="../resources/game/pecas/uurrul"/>
+			<peca id="uuurdd" posX="251" posY="3" posZ="21" textura="../resources/game/pecas/uuurdd"/>
+			<peca id="uuurdl" posX="257" posY="3" posZ="21" textura="../resources/game/pecas/uuurdl"/>
+			<peca id="uuurdr" posX="263" posY="3" posZ="21" textura="../resources/game/pecas/uuurdr"/>
+			<peca id="uuurll" posX="269" posY="3" posZ="21" textura="../resources/game/pecas/uuurll"/>
+			<peca id="uuurrr" posX="275" posY="3" posZ="21" textura="../resources/game/pecas/uuurrr"/>
+			<peca id="uuurul" posX="281" posY="3" posZ="21" textura="../resources/game/pecas/uuurul"/>
+			
+			<peca id="sw" posX="219" posY="2.01" posZ="29" textura="../resources/game/pecas/sw"/>
+			<peca id="cw" posX="219" posY="2.01" posZ="71" textura="../resources/game/pecas/cw"/>
+			<peca id="sb" posX="261" posY="2.01" posZ="71" textura="../resources/game/pecas/sb"/>
+			<peca id="cb" posX="261" posY="2.01" posZ="29" textura="../resources/game/pecas/cb"/>
+			<peca id="b1" posX="237" posY="2.01" posZ="47" textura="../resources/game/pecas/b"/>
+			<peca id="b2" posX="243" posY="2.01" posZ="47" textura="../resources/game/pecas/b"/>
+			<peca id="b3" posX="237" posY="2.01" posZ="53" textura="../resources/game/pecas/b"/>
+			<peca id="b4" posX="243" posY="2.01" posZ="53" textura="../resources/game/pecas/b"/>
+		</pecas>
+		<tiles>
+			<tile id="11" posX="214" posY="2.01" posZ="29"/>
+			<tile id="12" posX="220" posY="2.01" posZ="29"/>
+			<tile id="13" posX="226" posY="2.01" posZ="29"/>
+			<tile id="14" posX="232" posY="2.01" posZ="29"/>
+			<tile id="15" posX="238" posY="2.01" posZ="29"/>
+			<tile id="16" posX="244" posY="2.01" posZ="29"/>
+			<tile id="17" posX="250" posY="2.01" posZ="29"/>
+			<tile id="18" posX="256" posY="2.01" posZ="29"/>
+			              
+			<tile id="21" posX="214" posY="2.01" posZ="35"/>
+			<tile id="22" posX="220" posY="2.01" posZ="35"/>
+			<tile id="23" posX="226" posY="2.01" posZ="35"/>
+			<tile id="24" posX="232" posY="2.01" posZ="35"/>
+			<tile id="25" posX="238" posY="2.01" posZ="35"/>
+			<tile id="26" posX="244" posY="2.01" posZ="35"/>
+			<tile id="27" posX="250" posY="2.01" posZ="35"/>
+			<tile id="28" posX="256" posY="2.01" posZ="35"/>
+			              
+			<tile id="31" posX="214" posY="2.01" posZ="41"/>
+			<tile id="32" posX="220" posY="2.01" posZ="41"/>
+			<tile id="33" posX="226" posY="2.01" posZ="41"/>
+			<tile id="34" posX="232" posY="2.01" posZ="41"/>
+			<tile id="35" posX="238" posY="2.01" posZ="41"/>
+			<tile id="36" posX="244" posY="2.01" posZ="41"/>
+			<tile id="37" posX="250" posY="2.01" posZ="41"/>
+			<tile id="38" posX="256" posY="2.01" posZ="41"/>
+			              
+			<tile id="41" posX="214" posY="2.01" posZ="47"/>
+			<tile id="42" posX="220" posY="2.01" posZ="47"/>
+			<tile id="43" posX="226" posY="2.01" posZ="47"/>
+			<tile id="44" posX="232" posY="2.01" posZ="47"/>
+			<tile id="45" posX="238" posY="2.01" posZ="47"/>
+			<tile id="46" posX="244" posY="2.01" posZ="47"/>
+			<tile id="47" posX="250" posY="2.01" posZ="47"/>
+			<tile id="48" posX="256" posY="2.01" posZ="47"/>
+			              
+			<tile id="51" posX="214" posY="2.01" posZ="53"/>
+			<tile id="52" posX="220" posY="2.01" posZ="53"/>
+			<tile id="53" posX="226" posY="2.01" posZ="53"/>
+			<tile id="54" posX="232" posY="2.01" posZ="53"/>
+			<tile id="55" posX="238" posY="2.01" posZ="53"/>
+			<tile id="56" posX="244" posY="2.01" posZ="53"/>
+			<tile id="57" posX="250" posY="2.01" posZ="53"/>
+			<tile id="58" posX="256" posY="2.01" posZ="53"/>
+			              
+			<tile id="61" posX="214" posY="2.01" posZ="59"/>
+			<tile id="62" posX="220" posY="2.01" posZ="59"/>
+			<tile id="63" posX="226" posY="2.01" posZ="59"/>
+			<tile id="64" posX="232" posY="2.01" posZ="59"/>
+			<tile id="65" posX="238" posY="2.01" posZ="59"/>
+			<tile id="66" posX="244" posY="2.01" posZ="59"/>
+			<tile id="67" posX="250" posY="2.01" posZ="59"/>
+			<tile id="68" posX="256" posY="2.01" posZ="59"/>
+			              
+			<tile id="71" posX="214" posY="2.01" posZ="65"/>
+			<tile id="72" posX="220" posY="2.01" posZ="65"/>
+			<tile id="73" posX="226" posY="2.01" posZ="65"/>
+			<tile id="74" posX="232" posY="2.01" posZ="65"/>
+			<tile id="75" posX="238" posY="2.01" posZ="65"/>
+			<tile id="76" posX="244" posY="2.01" posZ="65"/>
+			<tile id="77" posX="250" posY="2.01" posZ="65"/>
+			<tile id="78" posX="256" posY="2.01" posZ="65"/>
+			              
+			<tile id="81" posX="214" posY="2.01" posZ="71"/>
+			<tile id="82" posX="220" posY="2.01" posZ="71"/>
+			<tile id="83" posX="226" posY="2.01" posZ="71"/>
+			<tile id="84" posX="232" posY="2.01" posZ="71"/>
+			<tile id="85" posX="238" posY="2.01" posZ="71"/>
+			<tile id="86" posX="244" posY="2.01" posZ="71"/>
+			<tile id="87" posX="250" posY="2.01" posZ="71"/>
+			<tile id="88" posX="256" posY="2.01" posZ="71"/>
+			
+		</tiles>
+		
+		<jogadores>
+			<jogador id="A" posX="214" posY="5.5" posZ="29"/>
+			<jogador id="B" posX="214" posY="5.5" posZ="71"/>
+		</jogadores>
+		
+		<cronometro posX posY posZ dimX dimY dimZ   >
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			
+			
+		</cronometro>
+	</board>
+	
+	<board id="chess3" posX="414" posY="2" posZ="26" dim="48">
+		
+		<views>
+			<!-- 1º, 2º, 3º são de jogo, a 4º do menuFinal, a 5º do meu principal-->
+			<perspective id="terceiroTabuleiro" near="0.1" far="500.0" angle="80">
+				<from x="440" y="30" z="100" />
+				<to x="440" y="0" z="0" />
+			</perspective>
+		
+			<perspective id="terceiroTabuleiro2" near="0.1" far="500.0" angle="60">
+				<from x="440" y="30" z="100" />
+				<to x="440" y="0" z="50" />
+			</perspective>
+		
+			<perspective id="terceiroTabuleiro3" near="0.1" far="500.0" angle="60">
+				<from x="440" y="60" z="51" />
+				<to x="440" y="0" z="50" />
+			</perspective>
+			
+			<perspective id="menuFinal" near="0.1" far="500.0" angle="60">
+				<from x="40" y="10" z="-20" />
+				<to x="40" y="0" z="-50" />
+			</perspective>
+			
+			<perspective id="menuPrincipal" near="0.1" far="500.0" angle="60">
+				<from x="240" y="60" z="215" />
+				<to x="240" y="40" z="180" />
+			</perspective>			
+		</views>
+		
+		<menuTrocas>
+			<tile x="470" y="12.25" z="57.25" textura1="../../resources/game/up.png" textura2=""/>
+			<tile x="470" y="5.25" z="64.25" textura1="../../resources/game/down.png" textura2=""/>
+			<tile x="465" y="8.71" z="60.71" textura1="../../resources/game/sair.png" textura2=""/>
+			<tile x="475" y="8.71" z="60.71" textura1="../../resources/game/undo.png" textura2=""/>
+		</menuTrocas>
+			
+		<material>
+		
+		</material>
+
+		<pecas>
+			<peca id="dddlll" posX="403" posY="9" posZ="3" textura="../resources/game/pecas/dddlll"/>
+			<peca id="dddlul" posX="409" posY="9" posZ="3" textura="../resources/game/pecas/dddlul"/>
+			<peca id="ddllul" posX="415" posY="9" posZ="3" textura="../resources/game/pecas/ddllul"/>
+			<peca id="dlllul" posX="421" posY="9" posZ="3" textura="../resources/game/pecas/dlllul"/>
+			<peca id="drdddl" posX="427" posY="9" posZ="3" textura="../resources/game/pecas/drdddl"/>
+			<peca id="drddll" posX="433" posY="9" posZ="3" textura="../resources/game/pecas/drddll"/>
+			<peca id="drddul" posX="439" posY="9" posZ="3" textura="../resources/game/pecas/drddul"/>
+			<peca id="drdlll" posX="445" posY="9" posZ="3" textura="../resources/game/pecas/drdlll"/>
+			<peca id="drdlul" posX="451" posY="9" posZ="3" textura="../resources/game/pecas/drdlul"/>
+			<peca id="drllul" posX="457" posY="9" posZ="3" textura="../resources/game/pecas/drllul"/>
+			<peca id="rrdddl" posX="463" posY="9" posZ="3" textura="../resources/game/pecas/rrdddl"/>
+			<peca id="rrddll" posX="469" posY="9" posZ="3" textura="../resources/game/pecas/rrddll"/>
+			<peca id="rrddul" posX="475" posY="9" posZ="3" textura="../resources/game/pecas/rrddul"/>
+			
+			<peca id="rrdlll" posX="400" posY="7" posZ="9" textura="../resources/game/pecas/rrdlll"/>
+			<peca id="rrdlul" posX="406" posY="7" posZ="9" textura="../resources/game/pecas/rrdlul"/>
+			<peca id="rrdrdd" posX="412" posY="7" posZ="9" textura="../resources/game/pecas/rrdrdd"/>
+			<peca id="rrdrdl" posX="418" posY="7" posZ="9" textura="../resources/game/pecas/rrdrdl"/>
+			<peca id="rrdrll" posX="424" posY="7" posZ="9" textura="../resources/game/pecas/rrdrll"/>
+			<peca id="rrdrul" posX="430" posY="7" posZ="9" textura="../resources/game/pecas/rrdrul"/>
+			<peca id="rrllul" posX="436" posY="7" posZ="9" textura="../resources/game/pecas/rrllul"/>
+			<peca id="urdddl" posX="442" posY="7" posZ="9" textura="../resources/game/pecas/urdddl"/>
+			<peca id="urddll" posX="448" posY="7" posZ="9" textura="../resources/game/pecas/urddll"/>
+			<peca id="urddul" posX="454" posY="7" posZ="9" textura="../resources/game/pecas/urddul"/>
+			<peca id="urdlll" posX="460" posY="7" posZ="9" textura="../resources/game/pecas/urdlll"/>
+			<peca id="urdlul" posX="466" posY="7" posZ="9" textura="../resources/game/pecas/urdlul"/>
+			<peca id="urdrdd" posX="472" posY="7" posZ="9" textura="../resources/game/pecas/urdrdd"/>
+			<peca id="urdrdl" posX="478" posY="7" posZ="9" textura="../resources/game/pecas/urdrdl"/>
+			
+			<peca id="urdrll" posX="400" posY="5" posZ="15" textura="../resources/game/pecas/urdrll"/>
+			<peca id="urdrul" posX="406" posY="5" posZ="15" textura="../resources/game/pecas/urdrul"/>
+			<peca id="urllul" posX="412" posY="5" posZ="15" textura="../resources/game/pecas/urllul"/>
+			<peca id="urrrdd" posX="418" posY="5" posZ="15" textura="../resources/game/pecas/urrrdd"/>
+			<peca id="urrrdl" posX="424" posY="5" posZ="15" textura="../resources/game/pecas/urrrdl"/>
+			<peca id="urrrdr" posX="430" posY="5" posZ="15" textura="../resources/game/pecas/urrrdr"/>
+			<peca id="urrrll" posX="436" posY="5" posZ="15" textura="../resources/game/pecas/urrrll"/>
+			<peca id="urrrul" posX="442" posY="5" posZ="15" textura="../resources/game/pecas/urrrul"/>
+			<peca id="uudddl" posX="448" posY="5" posZ="15" textura="../resources/game/pecas/uudddl"/>
+			<peca id="uuddll" posX="454" posY="5" posZ="15" textura="../resources/game/pecas/uuddll"/>
+			<peca id="uuddul" posX="460" posY="5" posZ="15" textura="../resources/game/pecas/uuddul"/>
+			<peca id="uudlll" posX="466" posY="5" posZ="15" textura="../resources/game/pecas/uudlll"/>
+			<peca id="uudlul" posX="472" posY="5" posZ="15" textura="../resources/game/pecas/uudlul"/>
+			<peca id="uudrdd" posX="478" posY="5" posZ="15" textura="../resources/game/pecas/uudrdd"/>
+			
+			<peca id="uudrdl" posX="397" posY="3" posZ="21" textura="../resources/game/pecas/uudrdl"/>
+			<peca id="uudrll" posX="403" posY="3" posZ="21" textura="../resources/game/pecas/uudrll"/>
+			<peca id="uudrul" posX="409" posY="3" posZ="21" textura="../resources/game/pecas/uudrul"/>
+			<peca id="uullul" posX="415" posY="3" posZ="21" textura="../resources/game/pecas/uullul"/>
+			<peca id="uurrdd" posX="421" posY="3" posZ="21" textura="../resources/game/pecas/uurrdd"/>
+			<peca id="uurrdl" posX="427" posY="3" posZ="21" textura="../resources/game/pecas/uurrdl"/>
+			<peca id="uurrdr" posX="433" posY="3" posZ="21" textura="../resources/game/pecas/uurrdr"/>
+			<peca id="uurrll" posX="439" posY="3" posZ="21" textura="../resources/game/pecas/uurrll"/>
+			<peca id="uurrul" posX="445" posY="3" posZ="21" textura="../resources/game/pecas/uurrul"/>
+			<peca id="uuurdd" posX="451" posY="3" posZ="21" textura="../resources/game/pecas/uuurdd"/>
+			<peca id="uuurdl" posX="457" posY="3" posZ="21" textura="../resources/game/pecas/uuurdl"/>
+			<peca id="uuurdr" posX="463" posY="3" posZ="21" textura="../resources/game/pecas/uuurdr"/>
+			<peca id="uuurll" posX="469" posY="3" posZ="21" textura="../resources/game/pecas/uuurll"/>
+			<peca id="uuurrr" posX="475" posY="3" posZ="21" textura="../resources/game/pecas/uuurrr"/>
+			<peca id="uuurul" posX="481" posY="3" posZ="21" textura="../resources/game/pecas/uuurul"/>
+			
+			<peca id="sw" posX="419" posY="2.01" posZ="29" textura="../resources/game/pecas/sw"/>
+			<peca id="cw" posX="419" posY="2.01" posZ="71" textura="../resources/game/pecas/cw"/>
+			<peca id="sb" posX="461" posY="2.01" posZ="71" textura="../resources/game/pecas/sb"/>
+			<peca id="cb" posX="461" posY="2.01" posZ="29" textura="../resources/game/pecas/cb"/>
+			<peca id="b1" posX="437" posY="2.01" posZ="47" textura="../resources/game/pecas/b"/>
+			<peca id="b2" posX="443" posY="2.01" posZ="47" textura="../resources/game/pecas/b"/>
+			<peca id="b3" posX="437" posY="2.01" posZ="53" textura="../resources/game/pecas/b"/>
+			<peca id="b4" posX="443" posY="2.01" posZ="53" textura="../resources/game/pecas/b"/>
+		</pecas>
+		<tiles>
+			<tile id="11" posX="414" posY="2.01" posZ="29"/>
+			<tile id="12" posX="420" posY="2.01" posZ="29"/>
+			<tile id="13" posX="426" posY="2.01" posZ="29"/>
+			<tile id="14" posX="432" posY="2.01" posZ="29"/>
+			<tile id="15" posX="438" posY="2.01" posZ="29"/>
+			<tile id="16" posX="444" posY="2.01" posZ="29"/>
+			<tile id="17" posX="450" posY="2.01" posZ="29"/>
+			<tile id="18" posX="456" posY="2.01" posZ="29"/>
+			              
+			<tile id="21" posX="414" posY="2.01" posZ="35"/>
+			<tile id="22" posX="420" posY="2.01" posZ="35"/>
+			<tile id="23" posX="426" posY="2.01" posZ="35"/>
+			<tile id="24" posX="432" posY="2.01" posZ="35"/>
+			<tile id="25" posX="438" posY="2.01" posZ="35"/>
+			<tile id="26" posX="444" posY="2.01" posZ="35"/>
+			<tile id="27" posX="450" posY="2.01" posZ="35"/>
+			<tile id="28" posX="456" posY="2.01" posZ="35"/>
+			              
+			<tile id="31" posX="414" posY="2.01" posZ="41"/>
+			<tile id="32" posX="420" posY="2.01" posZ="41"/>
+			<tile id="33" posX="426" posY="2.01" posZ="41"/>
+			<tile id="34" posX="432" posY="2.01" posZ="41"/>
+			<tile id="35" posX="438" posY="2.01" posZ="41"/>
+			<tile id="36" posX="444" posY="2.01" posZ="41"/>
+			<tile id="37" posX="450" posY="2.01" posZ="41"/>
+			<tile id="38" posX="456" posY="2.01" posZ="41"/>
+			              
+			<tile id="41" posX="414" posY="2.01" posZ="47"/>
+			<tile id="42" posX="420" posY="2.01" posZ="47"/>
+			<tile id="43" posX="426" posY="2.01" posZ="47"/>
+			<tile id="44" posX="432" posY="2.01" posZ="47"/>
+			<tile id="45" posX="438" posY="2.01" posZ="47"/>
+			<tile id="46" posX="444" posY="2.01" posZ="47"/>
+			<tile id="47" posX="450" posY="2.01" posZ="47"/>
+			<tile id="48" posX="456" posY="2.01" posZ="47"/>
+			              
+			<tile id="51" posX="414" posY="2.01" posZ="53"/>
+			<tile id="52" posX="420" posY="2.01" posZ="53"/>
+			<tile id="53" posX="426" posY="2.01" posZ="53"/>
+			<tile id="54" posX="432" posY="2.01" posZ="53"/>
+			<tile id="55" posX="438" posY="2.01" posZ="53"/>
+			<tile id="56" posX="444" posY="2.01" posZ="53"/>
+			<tile id="57" posX="450" posY="2.01" posZ="53"/>
+			<tile id="58" posX="456" posY="2.01" posZ="53"/>
+			              
+			<tile id="61" posX="414" posY="2.01" posZ="59"/>
+			<tile id="62" posX="420" posY="2.01" posZ="59"/>
+			<tile id="63" posX="426" posY="2.01" posZ="59"/>
+			<tile id="64" posX="432" posY="2.01" posZ="59"/>
+			<tile id="65" posX="438" posY="2.01" posZ="59"/>
+			<tile id="66" posX="444" posY="2.01" posZ="59"/>
+			<tile id="67" posX="450" posY="2.01" posZ="59"/>
+			<tile id="68" posX="456" posY="2.01" posZ="59"/>
+			              
+			<tile id="71" posX="414" posY="2.01" posZ="65"/>
+			<tile id="72" posX="420" posY="2.01" posZ="65"/>
+			<tile id="73" posX="426" posY="2.01" posZ="65"/>
+			<tile id="74" posX="432" posY="2.01" posZ="65"/>
+			<tile id="75" posX="438" posY="2.01" posZ="65"/>
+			<tile id="76" posX="444" posY="2.01" posZ="65"/>
+			<tile id="77" posX="450" posY="2.01" posZ="65"/>
+			<tile id="78" posX="456" posY="2.01" posZ="65"/>
+			              
+			<tile id="81" posX="414" posY="2.01" posZ="71"/>
+			<tile id="82" posX="420" posY="2.01" posZ="71"/>
+			<tile id="83" posX="426" posY="2.01" posZ="71"/>
+			<tile id="84" posX="432" posY="2.01" posZ="71"/>
+			<tile id="85" posX="438" posY="2.01" posZ="71"/>
+			<tile id="86" posX="444" posY="2.01" posZ="71"/>
+			<tile id="87" posX="450" posY="2.01" posZ="71"/>
+			<tile id="88" posX="456" posY="2.01" posZ="71"/>
+			
+		</tiles>
+		
+		<jogadores>
+			<jogador id="A" posX="414" posY="5.5" posZ="29"/>
+			<jogador id="B" posX="414" posY="5.5" posZ="71"/>
+		</jogadores>
+		
+		<cronometro posX posY posZ dimX dimY dimZ   >
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			
+			
+		</cronometro>
 	</board>
 	
 </dsx>

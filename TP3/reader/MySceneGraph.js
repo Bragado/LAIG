@@ -1267,6 +1267,21 @@ MySceneGraph.prototype.parsePrimitives = function(elementos)
 			
 		}
 		
+		// reversedSphere
+		var reversedSphere = elems[i].getElementsByTagName('reversedSphere');
+		if(!(reversedSphere == null || reversedSphere.length == 0)){
+			this.primitives[id]["reversedSphere"] = [];
+			
+			var radius = this.readFloat(reversedSphere[0], 'radius');
+			var slices = this.readFloat(reversedSphere[0], 'slices');
+			var stacks = this.readFloat(reversedSphere[0], 'stacks');
+			
+			this.primitives[id] = new ReversedSphere(this.scene, radius, slices, stacks);
+			
+			continue;
+			
+		}
+		
 		//torus
 		var torus = elems[i].getElementsByTagName('torus');
 		if(!(torus == null || torus.length == 0)){
@@ -1342,6 +1357,20 @@ MySceneGraph.prototype.parsePrimitives = function(elementos)
 		var vehicle  = elems[i].getElementsByTagName('vehicle');
 		if(vehicle.length != 0){
 			this.primitives[id] = new Vehicle(this.scene);
+			continue;
+		}
+		
+		// cube
+		var cube = elems[i].getElementsByTagName('cube');
+		if(cube.length != 0){
+			this.primitives[id] = new Cube(this.scene);
+			continue;
+		}
+		
+		// cruz
+		var cruz = elems[i].getElementsByTagName('cruz');
+		if(cruz.length != 0){
+			this.primitives[id] = new Cruz(this.scene);
 			continue;
 		}
 		
