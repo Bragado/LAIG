@@ -17,14 +17,14 @@
 				<to x="40" y="0" z="0" />
 			</perspective>
 			
-			<perspective id="chess2_porfazer" near="0.1" far="500.0" angle="60">
-				<from x="40" y="30" z="100" />
-				<to x="40" y="0" z="50" />
+			<perspective id="chess2" near="0.1" far="500.0" angle="60">
+				<from x="240" y="30" z="100" />
+				<to x="240" y="0" z="50" />
 			</perspective>
 			
-			<perspective id="chess3_porfazer" near="0.1" far="500.0" angle="60">
-				<from x="40" y="60" z="51" />
-				<to x="40" y="0" z="50" />
+			<perspective id="chess3" near="0.1" far="500.0" angle="60">
+				<from x="440" y="60" z="100" />
+				<to x="440" y="0" z="50" />
 			</perspective>
 			
 		</views>
@@ -246,7 +246,7 @@
 			<jogador id="B" posX="14" posY="5.5" posZ="71"/>
 		</jogadores>
 		
-		<cronometro posX posY posZ dimX dimY dimZ   >
+		<cronometro posX="" posY="" posZ="" dimX="" dimY="" dimZ=""   >
 			<texture ref = ""/>
 			<texture ref = ""/>
 			<texture ref = ""/>
@@ -306,74 +306,74 @@
 		</material>
 
 		<pecas>
-			<peca id="dddlll" posX="203" posY="9" posZ="3" textura="../resources/game/pecas/dddlll"/>
-			<peca id="dddlul" posX="209" posY="9" posZ="3" textura="../resources/game/pecas/dddlul"/>
-			<peca id="ddllul" posX="2015" posY="9" posZ="3" textura="../resources/game/pecas/ddllul"/>
-			<peca id="dlllul" posX="221" posY="9" posZ="3" textura="../resources/game/pecas/dlllul"/>
-			<peca id="drdddl" posX="227" posY="9" posZ="3" textura="../resources/game/pecas/drdddl"/>
-			<peca id="drddll" posX="233" posY="9" posZ="3" textura="../resources/game/pecas/drddll"/>
-			<peca id="drddul" posX="239" posY="9" posZ="3" textura="../resources/game/pecas/drddul"/>
-			<peca id="drdlll" posX="245" posY="9" posZ="3" textura="../resources/game/pecas/drdlll"/>
-			<peca id="drdlul" posX="251" posY="9" posZ="3" textura="../resources/game/pecas/drdlul"/>
-			<peca id="drllul" posX="257" posY="9" posZ="3" textura="../resources/game/pecas/drllul"/>
-			<peca id="rrdddl" posX="263" posY="9" posZ="3" textura="../resources/game/pecas/rrdddl"/>
-			<peca id="rrddll" posX="269" posY="9" posZ="3" textura="../resources/game/pecas/rrddll"/>
-			<peca id="rrddul" posX="275" posY="9" posZ="3" textura="../resources/game/pecas/rrddul"/>
+			<peca id="dddlll" posX="203" posY="9" posZ="3" textura="../resources/game/pecas/dddlll.png"/>
+			<peca id="dddlul" posX="209" posY="9" posZ="3" textura="../resources/game/pecas/dddlul.png"/>
+			<peca id="ddllul" posX="2015" posY="9" posZ="3" textura="../resources/game/pecas/ddllul.png"/>
+			<peca id="dlllul" posX="221" posY="9" posZ="3" textura="../resources/game/pecas/dlllul.png"/>
+			<peca id="drdddl" posX="227" posY="9" posZ="3" textura="../resources/game/pecas/drdddl.png"/>
+			<peca id="drddll" posX="233" posY="9" posZ="3" textura="../resources/game/pecas/drddll.png"/>
+			<peca id="drddul" posX="239" posY="9" posZ="3" textura="../resources/game/pecas/drddul.png"/>
+			<peca id="drdlll" posX="245" posY="9" posZ="3" textura="../resources/game/pecas/drdlll.png"/>
+			<peca id="drdlul" posX="251" posY="9" posZ="3" textura="../resources/game/pecas/drdlul.png"/>
+			<peca id="drllul" posX="257" posY="9" posZ="3" textura="../resources/game/pecas/drllul.png"/>
+			<peca id="rrdddl" posX="263" posY="9" posZ="3" textura="../resources/game/pecas/rrdddl.png"/>
+			<peca id="rrddll" posX="269" posY="9" posZ="3" textura="../resources/game/pecas/rrddll.png"/>
+			<peca id="rrddul" posX="275" posY="9" posZ="3" textura="../resources/game/pecas/rrddul.png"/>
 			
-			<peca id="rrdlll" posX="200" posY="7" posZ="9" textura="../resources/game/pecas/rrdlll"/>
-			<peca id="rrdlul" posX="206" posY="7" posZ="9" textura="../resources/game/pecas/rrdlul"/>
-			<peca id="rrdrdd" posX="212" posY="7" posZ="9" textura="../resources/game/pecas/rrdrdd"/>
-			<peca id="rrdrdl" posX="218" posY="7" posZ="9" textura="../resources/game/pecas/rrdrdl"/>
-			<peca id="rrdrll" posX="224" posY="7" posZ="9" textura="../resources/game/pecas/rrdrll"/>
-			<peca id="rrdrul" posX="230" posY="7" posZ="9" textura="../resources/game/pecas/rrdrul"/>
-			<peca id="rrllul" posX="236" posY="7" posZ="9" textura="../resources/game/pecas/rrllul"/>
-			<peca id="urdddl" posX="242" posY="7" posZ="9" textura="../resources/game/pecas/urdddl"/>
-			<peca id="urddll" posX="248" posY="7" posZ="9" textura="../resources/game/pecas/urddll"/>
-			<peca id="urddul" posX="254" posY="7" posZ="9" textura="../resources/game/pecas/urddul"/>
-			<peca id="urdlll" posX="260" posY="7" posZ="9" textura="../resources/game/pecas/urdlll"/>
-			<peca id="urdlul" posX="266" posY="7" posZ="9" textura="../resources/game/pecas/urdlul"/>
-			<peca id="urdrdd" posX="272" posY="7" posZ="9" textura="../resources/game/pecas/urdrdd"/>
-			<peca id="urdrdl" posX="278" posY="7" posZ="9" textura="../resources/game/pecas/urdrdl"/>
+			<peca id="rrdlll" posX="200" posY="7" posZ="9" textura="../resources/game/pecas/rrdlll.png"/>
+			<peca id="rrdlul" posX="206" posY="7" posZ="9" textura="../resources/game/pecas/rrdlul.png"/>
+			<peca id="rrdrdd" posX="212" posY="7" posZ="9" textura="../resources/game/pecas/rrdrdd.png"/>
+			<peca id="rrdrdl" posX="218" posY="7" posZ="9" textura="../resources/game/pecas/rrdrdl.png"/>
+			<peca id="rrdrll" posX="224" posY="7" posZ="9" textura="../resources/game/pecas/rrdrll.png"/>
+			<peca id="rrdrul" posX="230" posY="7" posZ="9" textura="../resources/game/pecas/rrdrul.png"/>
+			<peca id="rrllul" posX="236" posY="7" posZ="9" textura="../resources/game/pecas/rrllul.png"/>
+			<peca id="urdddl" posX="242" posY="7" posZ="9" textura="../resources/game/pecas/urdddl.png"/>
+			<peca id="urddll" posX="248" posY="7" posZ="9" textura="../resources/game/pecas/urddll.png"/>
+			<peca id="urddul" posX="254" posY="7" posZ="9" textura="../resources/game/pecas/urddul.png"/>
+			<peca id="urdlll" posX="260" posY="7" posZ="9" textura="../resources/game/pecas/urdlll.png"/>
+			<peca id="urdlul" posX="266" posY="7" posZ="9" textura="../resources/game/pecas/urdlul.png"/>
+			<peca id="urdrdd" posX="272" posY="7" posZ="9" textura="../resources/game/pecas/urdrdd.png"/>
+			<peca id="urdrdl" posX="278" posY="7" posZ="9" textura="../resources/game/pecas/urdrdl.png"/>
 			
-			<peca id="urdrll" posX="200" posY="5" posZ="15" textura="../resources/game/pecas/urdrll"/>
-			<peca id="urdrul" posX="206" posY="5" posZ="15" textura="../resources/game/pecas/urdrul"/>
-			<peca id="urllul" posX="212" posY="5" posZ="15" textura="../resources/game/pecas/urllul"/>
-			<peca id="urrrdd" posX="218" posY="5" posZ="15" textura="../resources/game/pecas/urrrdd"/>
-			<peca id="urrrdl" posX="224" posY="5" posZ="15" textura="../resources/game/pecas/urrrdl"/>
-			<peca id="urrrdr" posX="230" posY="5" posZ="15" textura="../resources/game/pecas/urrrdr"/>
-			<peca id="urrrll" posX="236" posY="5" posZ="15" textura="../resources/game/pecas/urrrll"/>
-			<peca id="urrrul" posX="242" posY="5" posZ="15" textura="../resources/game/pecas/urrrul"/>
-			<peca id="uudddl" posX="248" posY="5" posZ="15" textura="../resources/game/pecas/uudddl"/>
-			<peca id="uuddll" posX="254" posY="5" posZ="15" textura="../resources/game/pecas/uuddll"/>
-			<peca id="uuddul" posX="260" posY="5" posZ="15" textura="../resources/game/pecas/uuddul"/>
-			<peca id="uudlll" posX="266" posY="5" posZ="15" textura="../resources/game/pecas/uudlll"/>
-			<peca id="uudlul" posX="272" posY="5" posZ="15" textura="../resources/game/pecas/uudlul"/>
-			<peca id="uudrdd" posX="278" posY="5" posZ="15" textura="../resources/game/pecas/uudrdd"/>
+			<peca id="urdrll" posX="200" posY="5" posZ="15" textura="../resources/game/pecas/urdrll.png"/>
+			<peca id="urdrul" posX="206" posY="5" posZ="15" textura="../resources/game/pecas/urdrul.png"/>
+			<peca id="urllul" posX="212" posY="5" posZ="15" textura="../resources/game/pecas/urllul.png"/>
+			<peca id="urrrdd" posX="218" posY="5" posZ="15" textura="../resources/game/pecas/urrrdd.png"/>
+			<peca id="urrrdl" posX="224" posY="5" posZ="15" textura="../resources/game/pecas/urrrdl.png"/>
+			<peca id="urrrdr" posX="230" posY="5" posZ="15" textura="../resources/game/pecas/urrrdr.png"/>
+			<peca id="urrrll" posX="236" posY="5" posZ="15" textura="../resources/game/pecas/urrrll.png"/>
+			<peca id="urrrul" posX="242" posY="5" posZ="15" textura="../resources/game/pecas/urrrul.png"/>
+			<peca id="uudddl" posX="248" posY="5" posZ="15" textura="../resources/game/pecas/uudddl.png"/>
+			<peca id="uuddll" posX="254" posY="5" posZ="15" textura="../resources/game/pecas/uuddll.png"/>
+			<peca id="uuddul" posX="260" posY="5" posZ="15" textura="../resources/game/pecas/uuddul.png"/>
+			<peca id="uudlll" posX="266" posY="5" posZ="15" textura="../resources/game/pecas/uudlll.png"/>
+			<peca id="uudlul" posX="272" posY="5" posZ="15" textura="../resources/game/pecas/uudlul.png"/>
+			<peca id="uudrdd" posX="278" posY="5" posZ="15" textura="../resources/game/pecas/uudrdd.png"/>
 			
-			<peca id="uudrdl" posX="197" posY="3" posZ="21" textura="../resources/game/pecas/uudrdl"/>
-			<peca id="uudrll" posX="203" posY="3" posZ="21" textura="../resources/game/pecas/uudrll"/>
-			<peca id="uudrul" posX="209" posY="3" posZ="21" textura="../resources/game/pecas/uudrul"/>
-			<peca id="uullul" posX="215" posY="3" posZ="21" textura="../resources/game/pecas/uullul"/>
-			<peca id="uurrdd" posX="221" posY="3" posZ="21" textura="../resources/game/pecas/uurrdd"/>
-			<peca id="uurrdl" posX="227" posY="3" posZ="21" textura="../resources/game/pecas/uurrdl"/>
-			<peca id="uurrdr" posX="233" posY="3" posZ="21" textura="../resources/game/pecas/uurrdr"/>
-			<peca id="uurrll" posX="239" posY="3" posZ="21" textura="../resources/game/pecas/uurrll"/>
-			<peca id="uurrul" posX="245" posY="3" posZ="21" textura="../resources/game/pecas/uurrul"/>
-			<peca id="uuurdd" posX="251" posY="3" posZ="21" textura="../resources/game/pecas/uuurdd"/>
-			<peca id="uuurdl" posX="257" posY="3" posZ="21" textura="../resources/game/pecas/uuurdl"/>
-			<peca id="uuurdr" posX="263" posY="3" posZ="21" textura="../resources/game/pecas/uuurdr"/>
-			<peca id="uuurll" posX="269" posY="3" posZ="21" textura="../resources/game/pecas/uuurll"/>
-			<peca id="uuurrr" posX="275" posY="3" posZ="21" textura="../resources/game/pecas/uuurrr"/>
-			<peca id="uuurul" posX="281" posY="3" posZ="21" textura="../resources/game/pecas/uuurul"/>
+			<peca id="uudrdl" posX="197" posY="3" posZ="21" textura="../resources/game/pecas/uudrdl.png"/>
+			<peca id="uudrll" posX="203" posY="3" posZ="21" textura="../resources/game/pecas/uudrll.png"/>
+			<peca id="uudrul" posX="209" posY="3" posZ="21" textura="../resources/game/pecas/uudrul.png"/>
+			<peca id="uullul" posX="215" posY="3" posZ="21" textura="../resources/game/pecas/uullul.png"/>
+			<peca id="uurrdd" posX="221" posY="3" posZ="21" textura="../resources/game/pecas/uurrdd.png"/>
+			<peca id="uurrdl" posX="227" posY="3" posZ="21" textura="../resources/game/pecas/uurrdl.png"/>
+			<peca id="uurrdr" posX="233" posY="3" posZ="21" textura="../resources/game/pecas/uurrdr.png"/>
+			<peca id="uurrll" posX="239" posY="3" posZ="21" textura="../resources/game/pecas/uurrll.png"/>
+			<peca id="uurrul" posX="245" posY="3" posZ="21" textura="../resources/game/pecas/uurrul.png"/>
+			<peca id="uuurdd" posX="251" posY="3" posZ="21" textura="../resources/game/pecas/uuurdd.png"/>
+			<peca id="uuurdl" posX="257" posY="3" posZ="21" textura="../resources/game/pecas/uuurdl.png"/>
+			<peca id="uuurdr" posX="263" posY="3" posZ="21" textura="../resources/game/pecas/uuurdr.png"/>
+			<peca id="uuurll" posX="269" posY="3" posZ="21" textura="../resources/game/pecas/uuurll.png"/>
+			<peca id="uuurrr" posX="275" posY="3" posZ="21" textura="../resources/game/pecas/uuurrr.png"/>
+			<peca id="uuurul" posX="281" posY="3" posZ="21" textura="../resources/game/pecas/uuurul.png"/>
 			
-			<peca id="sw" posX="219" posY="2.01" posZ="29" textura="../resources/game/pecas/sw"/>
-			<peca id="cw" posX="219" posY="2.01" posZ="71" textura="../resources/game/pecas/cw"/>
-			<peca id="sb" posX="261" posY="2.01" posZ="71" textura="../resources/game/pecas/sb"/>
-			<peca id="cb" posX="261" posY="2.01" posZ="29" textura="../resources/game/pecas/cb"/>
-			<peca id="b1" posX="237" posY="2.01" posZ="47" textura="../resources/game/pecas/b"/>
-			<peca id="b2" posX="243" posY="2.01" posZ="47" textura="../resources/game/pecas/b"/>
-			<peca id="b3" posX="237" posY="2.01" posZ="53" textura="../resources/game/pecas/b"/>
-			<peca id="b4" posX="243" posY="2.01" posZ="53" textura="../resources/game/pecas/b"/>
+			<peca id="sw" posX="214" posY="2.01" posZ="29" textura="../resources/game/pecas/sw.png"/>
+			<peca id="cw" posX="214" posY="2.01" posZ="71" textura="../resources/game/pecas/cw.png"/>
+			<peca id="sb" posX="256" posY="2.01" posZ="71" textura="../resources/game/pecas/sb.png"/>
+			<peca id="cb" posX="256" posY="2.01" posZ="29" textura="../resources/game/pecas/cb.png"/>
+			<peca id="b1" posX="232" posY="2.01" posZ="47" textura="../resources/game/pecas/b.png"/>
+			<peca id="b2" posX="238" posY="2.01" posZ="47" textura="../resources/game/pecas/b.png"/>
+			<peca id="b3" posX="232" posY="2.01" posZ="53" textura="../resources/game/pecas/b.png"/>
+			<peca id="b4" posX="238" posY="2.01" posZ="53" textura="../resources/game/pecas/b.png"/>
 		</pecas>
 		<tiles>
 			<tile id="11" posX="214" posY="2.01" posZ="29"/>
@@ -455,7 +455,7 @@
 			<jogador id="B" posX="214" posY="5.5" posZ="71"/>
 		</jogadores>
 		
-		<cronometro posX posY posZ dimX dimY dimZ   >
+		<cronometro posX="" posY="" posZ="" dimX="" dimY="" dimZ=""   >
 			<texture ref = ""/>
 			<texture ref = ""/>
 			<texture ref = ""/>
@@ -514,74 +514,74 @@
 		</material>
 
 		<pecas>
-			<peca id="dddlll" posX="403" posY="9" posZ="3" textura="../resources/game/pecas/dddlll"/>
-			<peca id="dddlul" posX="409" posY="9" posZ="3" textura="../resources/game/pecas/dddlul"/>
-			<peca id="ddllul" posX="415" posY="9" posZ="3" textura="../resources/game/pecas/ddllul"/>
-			<peca id="dlllul" posX="421" posY="9" posZ="3" textura="../resources/game/pecas/dlllul"/>
-			<peca id="drdddl" posX="427" posY="9" posZ="3" textura="../resources/game/pecas/drdddl"/>
-			<peca id="drddll" posX="433" posY="9" posZ="3" textura="../resources/game/pecas/drddll"/>
-			<peca id="drddul" posX="439" posY="9" posZ="3" textura="../resources/game/pecas/drddul"/>
-			<peca id="drdlll" posX="445" posY="9" posZ="3" textura="../resources/game/pecas/drdlll"/>
-			<peca id="drdlul" posX="451" posY="9" posZ="3" textura="../resources/game/pecas/drdlul"/>
-			<peca id="drllul" posX="457" posY="9" posZ="3" textura="../resources/game/pecas/drllul"/>
-			<peca id="rrdddl" posX="463" posY="9" posZ="3" textura="../resources/game/pecas/rrdddl"/>
-			<peca id="rrddll" posX="469" posY="9" posZ="3" textura="../resources/game/pecas/rrddll"/>
-			<peca id="rrddul" posX="475" posY="9" posZ="3" textura="../resources/game/pecas/rrddul"/>
+			<peca id="dddlll" posX="403" posY="9" posZ="3" textura="../resources/game/pecas/dddlll.png"/>
+			<peca id="dddlul" posX="409" posY="9" posZ="3" textura="../resources/game/pecas/dddlul.png"/>
+			<peca id="ddllul" posX="415" posY="9" posZ="3" textura="../resources/game/pecas/ddllul.png"/>
+			<peca id="dlllul" posX="421" posY="9" posZ="3" textura="../resources/game/pecas/dlllul.png"/>
+			<peca id="drdddl" posX="427" posY="9" posZ="3" textura="../resources/game/pecas/drdddl.png"/>
+			<peca id="drddll" posX="433" posY="9" posZ="3" textura="../resources/game/pecas/drddll.png"/>
+			<peca id="drddul" posX="439" posY="9" posZ="3" textura="../resources/game/pecas/drddul.png"/>
+			<peca id="drdlll" posX="445" posY="9" posZ="3" textura="../resources/game/pecas/drdlll.png"/>
+			<peca id="drdlul" posX="451" posY="9" posZ="3" textura="../resources/game/pecas/drdlul.png"/>
+			<peca id="drllul" posX="457" posY="9" posZ="3" textura="../resources/game/pecas/drllul.png"/>
+			<peca id="rrdddl" posX="463" posY="9" posZ="3" textura="../resources/game/pecas/rrdddl.png"/>
+			<peca id="rrddll" posX="469" posY="9" posZ="3" textura="../resources/game/pecas/rrddll.png"/>
+			<peca id="rrddul" posX="475" posY="9" posZ="3" textura="../resources/game/pecas/rrddul.png"/>
 			
-			<peca id="rrdlll" posX="400" posY="7" posZ="9" textura="../resources/game/pecas/rrdlll"/>
-			<peca id="rrdlul" posX="406" posY="7" posZ="9" textura="../resources/game/pecas/rrdlul"/>
-			<peca id="rrdrdd" posX="412" posY="7" posZ="9" textura="../resources/game/pecas/rrdrdd"/>
-			<peca id="rrdrdl" posX="418" posY="7" posZ="9" textura="../resources/game/pecas/rrdrdl"/>
-			<peca id="rrdrll" posX="424" posY="7" posZ="9" textura="../resources/game/pecas/rrdrll"/>
-			<peca id="rrdrul" posX="430" posY="7" posZ="9" textura="../resources/game/pecas/rrdrul"/>
-			<peca id="rrllul" posX="436" posY="7" posZ="9" textura="../resources/game/pecas/rrllul"/>
-			<peca id="urdddl" posX="442" posY="7" posZ="9" textura="../resources/game/pecas/urdddl"/>
-			<peca id="urddll" posX="448" posY="7" posZ="9" textura="../resources/game/pecas/urddll"/>
-			<peca id="urddul" posX="454" posY="7" posZ="9" textura="../resources/game/pecas/urddul"/>
-			<peca id="urdlll" posX="460" posY="7" posZ="9" textura="../resources/game/pecas/urdlll"/>
-			<peca id="urdlul" posX="466" posY="7" posZ="9" textura="../resources/game/pecas/urdlul"/>
-			<peca id="urdrdd" posX="472" posY="7" posZ="9" textura="../resources/game/pecas/urdrdd"/>
-			<peca id="urdrdl" posX="478" posY="7" posZ="9" textura="../resources/game/pecas/urdrdl"/>
+			<peca id="rrdlll" posX="400" posY="7" posZ="9" textura="../resources/game/pecas/rrdlll.png"/>
+			<peca id="rrdlul" posX="406" posY="7" posZ="9" textura="../resources/game/pecas/rrdlul.png"/>
+			<peca id="rrdrdd" posX="412" posY="7" posZ="9" textura="../resources/game/pecas/rrdrdd.png"/>
+			<peca id="rrdrdl" posX="418" posY="7" posZ="9" textura="../resources/game/pecas/rrdrdl.png"/>
+			<peca id="rrdrll" posX="424" posY="7" posZ="9" textura="../resources/game/pecas/rrdrll.png"/>
+			<peca id="rrdrul" posX="430" posY="7" posZ="9" textura="../resources/game/pecas/rrdrul.png"/>
+			<peca id="rrllul" posX="436" posY="7" posZ="9" textura="../resources/game/pecas/rrllul.png"/>
+			<peca id="urdddl" posX="442" posY="7" posZ="9" textura="../resources/game/pecas/urdddl.png"/>
+			<peca id="urddll" posX="448" posY="7" posZ="9" textura="../resources/game/pecas/urddll.png"/>
+			<peca id="urddul" posX="454" posY="7" posZ="9" textura="../resources/game/pecas/urddul.png"/>
+			<peca id="urdlll" posX="460" posY="7" posZ="9" textura="../resources/game/pecas/urdlll.png"/>
+			<peca id="urdlul" posX="466" posY="7" posZ="9" textura="../resources/game/pecas/urdlul.png"/>
+			<peca id="urdrdd" posX="472" posY="7" posZ="9" textura="../resources/game/pecas/urdrdd.png"/>
+			<peca id="urdrdl" posX="478" posY="7" posZ="9" textura="../resources/game/pecas/urdrdl.png"/>
 			
-			<peca id="urdrll" posX="400" posY="5" posZ="15" textura="../resources/game/pecas/urdrll"/>
-			<peca id="urdrul" posX="406" posY="5" posZ="15" textura="../resources/game/pecas/urdrul"/>
-			<peca id="urllul" posX="412" posY="5" posZ="15" textura="../resources/game/pecas/urllul"/>
-			<peca id="urrrdd" posX="418" posY="5" posZ="15" textura="../resources/game/pecas/urrrdd"/>
-			<peca id="urrrdl" posX="424" posY="5" posZ="15" textura="../resources/game/pecas/urrrdl"/>
-			<peca id="urrrdr" posX="430" posY="5" posZ="15" textura="../resources/game/pecas/urrrdr"/>
-			<peca id="urrrll" posX="436" posY="5" posZ="15" textura="../resources/game/pecas/urrrll"/>
-			<peca id="urrrul" posX="442" posY="5" posZ="15" textura="../resources/game/pecas/urrrul"/>
-			<peca id="uudddl" posX="448" posY="5" posZ="15" textura="../resources/game/pecas/uudddl"/>
-			<peca id="uuddll" posX="454" posY="5" posZ="15" textura="../resources/game/pecas/uuddll"/>
-			<peca id="uuddul" posX="460" posY="5" posZ="15" textura="../resources/game/pecas/uuddul"/>
-			<peca id="uudlll" posX="466" posY="5" posZ="15" textura="../resources/game/pecas/uudlll"/>
-			<peca id="uudlul" posX="472" posY="5" posZ="15" textura="../resources/game/pecas/uudlul"/>
-			<peca id="uudrdd" posX="478" posY="5" posZ="15" textura="../resources/game/pecas/uudrdd"/>
+			<peca id="urdrll" posX="400" posY="5" posZ="15" textura="../resources/game/pecas/urdrll.png"/>
+			<peca id="urdrul" posX="406" posY="5" posZ="15" textura="../resources/game/pecas/urdrul.png"/>
+			<peca id="urllul" posX="412" posY="5" posZ="15" textura="../resources/game/pecas/urllul.png"/>
+			<peca id="urrrdd" posX="418" posY="5" posZ="15" textura="../resources/game/pecas/urrrdd.png"/>
+			<peca id="urrrdl" posX="424" posY="5" posZ="15" textura="../resources/game/pecas/urrrdl.png"/>
+			<peca id="urrrdr" posX="430" posY="5" posZ="15" textura="../resources/game/pecas/urrrdr.png"/>
+			<peca id="urrrll" posX="436" posY="5" posZ="15" textura="../resources/game/pecas/urrrll.png"/>
+			<peca id="urrrul" posX="442" posY="5" posZ="15" textura="../resources/game/pecas/urrrul.png"/>
+			<peca id="uudddl" posX="448" posY="5" posZ="15" textura="../resources/game/pecas/uudddl.png"/>
+			<peca id="uuddll" posX="454" posY="5" posZ="15" textura="../resources/game/pecas/uuddll.png"/>
+			<peca id="uuddul" posX="460" posY="5" posZ="15" textura="../resources/game/pecas/uuddul.png"/>
+			<peca id="uudlll" posX="466" posY="5" posZ="15" textura="../resources/game/pecas/uudlll.png"/>
+			<peca id="uudlul" posX="472" posY="5" posZ="15" textura="../resources/game/pecas/uudlul.png"/>
+			<peca id="uudrdd" posX="478" posY="5" posZ="15" textura="../resources/game/pecas/uudrdd.png"/>
 			
-			<peca id="uudrdl" posX="397" posY="3" posZ="21" textura="../resources/game/pecas/uudrdl"/>
-			<peca id="uudrll" posX="403" posY="3" posZ="21" textura="../resources/game/pecas/uudrll"/>
-			<peca id="uudrul" posX="409" posY="3" posZ="21" textura="../resources/game/pecas/uudrul"/>
-			<peca id="uullul" posX="415" posY="3" posZ="21" textura="../resources/game/pecas/uullul"/>
-			<peca id="uurrdd" posX="421" posY="3" posZ="21" textura="../resources/game/pecas/uurrdd"/>
-			<peca id="uurrdl" posX="427" posY="3" posZ="21" textura="../resources/game/pecas/uurrdl"/>
-			<peca id="uurrdr" posX="433" posY="3" posZ="21" textura="../resources/game/pecas/uurrdr"/>
-			<peca id="uurrll" posX="439" posY="3" posZ="21" textura="../resources/game/pecas/uurrll"/>
-			<peca id="uurrul" posX="445" posY="3" posZ="21" textura="../resources/game/pecas/uurrul"/>
-			<peca id="uuurdd" posX="451" posY="3" posZ="21" textura="../resources/game/pecas/uuurdd"/>
-			<peca id="uuurdl" posX="457" posY="3" posZ="21" textura="../resources/game/pecas/uuurdl"/>
-			<peca id="uuurdr" posX="463" posY="3" posZ="21" textura="../resources/game/pecas/uuurdr"/>
-			<peca id="uuurll" posX="469" posY="3" posZ="21" textura="../resources/game/pecas/uuurll"/>
-			<peca id="uuurrr" posX="475" posY="3" posZ="21" textura="../resources/game/pecas/uuurrr"/>
-			<peca id="uuurul" posX="481" posY="3" posZ="21" textura="../resources/game/pecas/uuurul"/>
+			<peca id="uudrdl" posX="397" posY="3" posZ="21" textura="../resources/game/pecas/uudrdl.png"/>
+			<peca id="uudrll" posX="403" posY="3" posZ="21" textura="../resources/game/pecas/uudrll.png"/>
+			<peca id="uudrul" posX="409" posY="3" posZ="21" textura="../resources/game/pecas/uudrul.png"/>
+			<peca id="uullul" posX="415" posY="3" posZ="21" textura="../resources/game/pecas/uullul.png"/>
+			<peca id="uurrdd" posX="421" posY="3" posZ="21" textura="../resources/game/pecas/uurrdd.png"/>
+			<peca id="uurrdl" posX="427" posY="3" posZ="21" textura="../resources/game/pecas/uurrdl.png"/>
+			<peca id="uurrdr" posX="433" posY="3" posZ="21" textura="../resources/game/pecas/uurrdr.png"/>
+			<peca id="uurrll" posX="439" posY="3" posZ="21" textura="../resources/game/pecas/uurrll.png"/>
+			<peca id="uurrul" posX="445" posY="3" posZ="21" textura="../resources/game/pecas/uurrul.png"/>
+			<peca id="uuurdd" posX="451" posY="3" posZ="21" textura="../resources/game/pecas/uuurdd.png"/>
+			<peca id="uuurdl" posX="457" posY="3" posZ="21" textura="../resources/game/pecas/uuurdl.png"/>
+			<peca id="uuurdr" posX="463" posY="3" posZ="21" textura="../resources/game/pecas/uuurdr.png"/>
+			<peca id="uuurll" posX="469" posY="3" posZ="21" textura="../resources/game/pecas/uuurll.png"/>
+			<peca id="uuurrr" posX="475" posY="3" posZ="21" textura="../resources/game/pecas/uuurrr.png"/>
+			<peca id="uuurul" posX="481" posY="3" posZ="21" textura="../resources/game/pecas/uuurul.png"/>
 			
-			<peca id="sw" posX="419" posY="2.01" posZ="29" textura="../resources/game/pecas/sw"/>
-			<peca id="cw" posX="419" posY="2.01" posZ="71" textura="../resources/game/pecas/cw"/>
-			<peca id="sb" posX="461" posY="2.01" posZ="71" textura="../resources/game/pecas/sb"/>
-			<peca id="cb" posX="461" posY="2.01" posZ="29" textura="../resources/game/pecas/cb"/>
-			<peca id="b1" posX="437" posY="2.01" posZ="47" textura="../resources/game/pecas/b"/>
-			<peca id="b2" posX="443" posY="2.01" posZ="47" textura="../resources/game/pecas/b"/>
-			<peca id="b3" posX="437" posY="2.01" posZ="53" textura="../resources/game/pecas/b"/>
-			<peca id="b4" posX="443" posY="2.01" posZ="53" textura="../resources/game/pecas/b"/>
+			<peca id="sw" posX="414" posY="2.01" posZ="29" textura="../resources/game/pecas/sw.png"/>
+			<peca id="cw" posX="414" posY="2.01" posZ="71" textura="../resources/game/pecas/cw.png"/>
+			<peca id="sb" posX="456" posY="2.01" posZ="71" textura="../resources/game/pecas/sb.png"/>
+			<peca id="cb" posX="456" posY="2.01" posZ="29" textura="../resources/game/pecas/cb.png"/>
+			<peca id="b1" posX="432" posY="2.01" posZ="47" textura="../resources/game/pecas/b.png"/>
+			<peca id="b2" posX="438" posY="2.01" posZ="47" textura="../resources/game/pecas/b.png"/>
+			<peca id="b3" posX="432" posY="2.01" posZ="53" textura="../resources/game/pecas/b.png"/>
+			<peca id="b4" posX="438" posY="2.01" posZ="53" textura="../resources/game/pecas/b.png"/>
 		</pecas>
 		<tiles>
 			<tile id="11" posX="414" posY="2.01" posZ="29"/>
@@ -663,7 +663,7 @@
 			<jogador id="B" posX="414" posY="5.5" posZ="71"/>
 		</jogadores>
 		
-		<cronometro posX posY posZ dimX dimY dimZ   >
+		<cronometro posX="" posY="" posZ="" dimX="" dimY="" dimZ=""   >
 			<texture ref = ""/>
 			<texture ref = ""/>
 			<texture ref = ""/>

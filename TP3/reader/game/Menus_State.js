@@ -202,7 +202,7 @@ class MenuPrincipal extends Menu {
 					
 				}
 				
-		this.scene.state = new Transition(this.scene, new Constroi_Tab_State(this.scene, this.internalState.Ambiente, id, this.internalState.Dificuldade, [this.camera[this.cameraStates.MenuPrincipal], this.camera[this.cameraStates.MenuFinal]]), this.camera[this.cameraStates.MenuPrincipal], this.camera[CHESS], this.currTime  );
+		this.scene.state = new Transition(this.scene, new Constroi_Tab_State(this.scene, this.internalState.Ambiente, id, this.internalState.Dificuldade, [this.camera[this.cameraStates.MenuPrincipal], this.camera[this.cameraStates.MenuFinal]]), this.camera[this.cameraStates.MenuPrincipal], this.camera[CHESS - 1], this.currTime  );
 				
 				
 			break;
