@@ -252,6 +252,24 @@
 			<jogador id="B" posX="14" posY="5.5" posZ="71"/>
 		</jogadores>
 		
+ 
+		<cronometro posX="" posY="" posZ="" dimX="" dimY="" dimZ=""   >
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			
+			
+		</cronometro>
+		
+ 
 	</board>
 	
 	<board id="chess2" posX="214" posY="2" posZ="26" dim="48">
@@ -298,7 +316,9 @@
 		<pecas>
 			<peca id="dddlll" posX="203" posY="9" posZ="3" textura="../resources/game/pecas/dddlll.png"/>
 			<peca id="dddlul" posX="209" posY="9" posZ="3" textura="../resources/game/pecas/dddlul.png"/>
+ 
 			<peca id="ddllul" posX="215" posY="9" posZ="3" textura="../resources/game/pecas/ddllul.png"/>
+ 
 			<peca id="dlllul" posX="221" posY="9" posZ="3" textura="../resources/game/pecas/dlllul.png"/>
 			<peca id="drdddl" posX="227" posY="9" posZ="3" textura="../resources/game/pecas/drdddl.png"/>
 			<peca id="drddll" posX="233" posY="9" posZ="3" textura="../resources/game/pecas/drddll.png"/>
@@ -440,11 +460,28 @@
 			
 		</tiles>
 		
-		<jogadores>
+ 		<jogadores>
 			<jogador id="A" posX="214" posY="5.5" posZ="29"/>
 			<jogador id="B" posX="214" posY="5.5" posZ="71"/>
 		</jogadores>
 		
+ 
+		<cronometro posX="" posY="" posZ="" dimX="" dimY="" dimZ=""   >
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			
+			
+		</cronometro>
+ 
 	</board>
 	
 	<board id="chess3" posX="414" posY="2" posZ="26" dim="48">
@@ -638,6 +675,23 @@
 			<jogador id="B" posX="414" posY="5.5" posZ="71"/>
 		</jogadores>
 		
+ 
+		<cronometro posX="" posY="" posZ="" dimX="" dimY="" dimZ=""   >
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			<texture ref = ""/>
+			
+			
+		</cronometro>
+ 
 	</board>
 	
 </dsx>
