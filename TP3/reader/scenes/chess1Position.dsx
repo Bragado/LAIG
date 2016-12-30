@@ -3,13 +3,13 @@
 		<views>
 	
 			<perspective id="principal" near="0.1" far="500.0" angle="60">
-				<from x="40" y="57" z="315" />
-				<to x="40" y="40" z="280" />
+				<from x="40" y="60" z="215" />
+				<to x="40" y="40" z="180" />
 			</perspective>
 			
 			<perspective id="auxiliar" near="0.1" far="500.0" angle="60">
-				<from x="40" y="60" z="220" />
-				<to x="40" y="40" z="180" />
+				<from x="40" y="57" z="320" />
+				<to x="40" y="45" z="280" />
 			</perspective>
 			
 			<perspective id="chess1" near="0.1" far="500.0" angle="60">
@@ -30,25 +30,25 @@
 		</views>
 		
 		<menuPrincipal>
-			<tile x="40" y="56" z="301.61" textura1= "../../resources/game/button_2-jogadores.png" textura2=""/>
+			<tile x="40" y="56" z="201.61" textura1= "../../resources/game/button_2-jogadores.png" textura2=""/>
 			
-			<tile x="40" y="52" z="301.61" textura1="../../resources/game/button_1-jogador.png" textura2=""/>
+			<tile x="40" y="52" z="201.61" textura1="../../resources/game/button_1-jogador.png" textura2=""/>
 			
-			<tile x="40" y="48" z="301.61" textura1= "../../resources/game/button_computador-vs-computador.png" textura2=""/>
+			<tile x="40" y="48" z="201.61" textura1= "../../resources/game/button_computador-vs-computador.png" textura2=""/>
 			
-			<tile x="40" y="44" z="301.61" textura1="../../resources/game/button_opcoes.png" textura2=""/>
+			<tile x="40" y="44" z="201.61" textura1="../../resources/game/button_opcoes.png" textura2=""/>
 		</menuPrincipal>
 		
 		<menuAuxiliar>
-			<tile  x="40" y="57.5" z="201.61" textura1= "../../resources/game/button_ambiente-1.png" textura2= "../../resources/game/button_2-jogadores.png"/>
-			<tile  x="40" y="55.5" z="201.61" textura1= "../../resources/game/button_ambiente-2.png" textura2= "../../resources/game/button_ambiente-2-selecionado.png"/>
-			<tile  x="40" y="53.5" z="201.61" textura1= "../../resources/game/button_ambiente-3.png" textura2= "../../resources/game/button_ambiente-3-selecionado.png"/>
+			<tile  x="40" y="57.5" z="301.61" textura1= "../../resources/game/button_ambiente-1.png" textura2= "../../resources/game/button_2-jogadores.png"/>
+			<tile  x="40" y="55.5" z="301.61" textura1= "../../resources/game/button_ambiente-2.png" textura2= "../../resources/game/button_ambiente-2-selecionado.png"/>
+			<tile  x="40" y="53.5" z="301.61" textura1= "../../resources/game/button_ambiente-3.png" textura2= "../../resources/game/button_ambiente-3-selecionado.png"/>
 			
-			<tile  x="40" y="48.5" z="201.61" textura1= "../../resources/game/button_facil.png" textura2= "../../resources/game/button_facil-selecionado.png"/>
-			<tile  x="40" y="46.5" z="201.61" textura1= "../../resources/game/button_medio.png" textura2= "../../resources/game/button_medio-selecionado.png"/>
-			<tile  x="40" y="44.5" z="201.61" textura1= "../../resources/game/button_dificil.png" textura2= "../../resources/game/button_dificil-selecionado.png"/>
+			<tile  x="40" y="48.5" z="301.61" textura1= "../../resources/game/button_facil.png" textura2= "../../resources/game/button_facil-selecionado.png"/>
+			<tile  x="40" y="46.5" z="301.61" textura1= "../../resources/game/button_medio.png" textura2= "../../resources/game/button_medio-selecionado.png"/>
+			<tile  x="40" y="44.5" z="301.61" textura1= "../../resources/game/button_dificil.png" textura2= "../../resources/game/button_dificil-selecionado.png"/>
 			
-			<tile  x="40" y="41.5" z="201.61" textura1= "../../resources/game/button_back.png" textura2= ""/>
+			<tile  x="40" y="41.5" z="301.61" textura1= "../../resources/game/button_back.png" textura2= ""/>
 		</menuAuxiliar>
 		
 	</menus>
