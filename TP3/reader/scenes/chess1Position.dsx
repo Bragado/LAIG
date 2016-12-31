@@ -98,10 +98,10 @@
 		</views>
 		
 		<menuTrocas>
-			<tile x="70" y="12.25" z="57.25" textura1="../../resources/game/up.png" textura2=""/>
-			<tile x="70" y="5.25" z="64.25" textura1="../../resources/game/down.png" textura2=""/>
-			<tile x="65" y="8.71" z="60.71" textura1="../../resources/game/sair.png" textura2=""/>
-			<tile x="75" y="8.71" z="60.71" textura1="../../resources/game/undo.png" textura2=""/>
+			<tile x="70" y="12.25" z="57.25" textura1="../../resources/game/up.png"  />
+			<tile x="70" y="5.25" z="64.25" textura1="../../resources/game/down.png" />
+			<tile x="65" y="8.71" z="60.71" textura1="../../resources/game/sair.png" />
+			<tile x="75" y="8.71" z="60.71" textura1="../../resources/game/undo.png" />
 		</menuTrocas> <!-- menu trocas 70,8,60 -->
 			
 		<material>

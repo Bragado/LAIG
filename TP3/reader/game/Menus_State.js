@@ -84,7 +84,6 @@ class Menu {
 	}
 	this.initTiles(this.name);	
 	
-	
 	}
 	
 	

@@ -158,7 +158,7 @@ class EmJogo_State {
 			}
 			
 			
-			this.scene.state = new Transition(this.scene, new MenuFinal(this.scene, this.gameBoard, this.movesTRACK, type,  [this.cameras[0], this.cameras[3]]), this.cameras[this.cameraState], this.cameras[1], this.currTime );
+			this.scene.state = new Transition(this.scene, new MenuFinal(this.scene, this.gameBoard, this.movesTRACK, type,  [this.cameras[0], this.cameras[3]]), this.scene.camera, this.cameras[1], this.currTime );
 			
 			
 		}

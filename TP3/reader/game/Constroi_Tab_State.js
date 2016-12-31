@@ -1,7 +1,7 @@
 function Constroi_Tab_State(scene, boardID, tipoDeJogo, dificuldade, cameras)  {
 		
 		
-		this.cameras = cameras;			/* Menu Principal, Menu Final, 3 Diferentes c√¢maras */
+		this.cameras = cameras;			/* Menu Principal, Menu Final, 3 Diferentes c‚maras */
 		this.ready = false;													// Colocar isto a dar...
 		scene.ready = false;
 		this.erros = false;
@@ -76,7 +76,7 @@ Constroi_Tab_State.prototype.onXMLReady=function()
 Constroi_Tab_State.prototype.processBoard = function(root) {
 		 
 		/*
-			Coloca√ß√£o das tiles para o gameBoard		
+			ColocaÁ„o das tiles para o gameBoard		
 		*/
 			
 		var tiles = root.getElementsByTagName('tiles');
@@ -97,7 +97,7 @@ Constroi_Tab_State.prototype.processBoard = function(root) {
 
 		
 		/*
-			Coloca√ß√£o das pe√ßas
+			ColocaÁ„o das peÁas
 		*/
 		
 		var pecas = root.getElementsByTagName('pecas');
@@ -244,6 +244,30 @@ Constroi_Tab_State.prototype.processBoard = function(root) {
 			
 			
 		}
+		/*
+		
+			Menu Trocas
+		*/
+		this.piecesToPick = new Array();
+		var menuTroca = root.getElementsByTagName('menuTrocas');
+		var tiles = menuTroca[0].getElementsByTagName('tile');
+		
+		for(var i = 0; i < tiles.length; i++) {
+			
+			var texture = this.reader.getString(tiles[i], 'textura1', false);
+			 
+			
+			
+			
+			var x = this.reader.getFloat(tiles[i], 'x', false);
+			var y = this.reader.getFloat(tiles[i], 'y', false);
+			var z = this.reader.getFloat(tiles[i], 'z', false);
+			
+			var text1 = new CGFtexture(this.scene, texture);
+			
+				this.piecesToPick.push(new Piece(new Rectangle(this.scene, -2.5, -2.5, 2.5, 2.5), x, y, z, text1));
+			
+		}
 		
 		
 
@@ -288,16 +312,71 @@ Constroi_Tab_State.prototype.display = function(currTime) {
 			
 		this.players[0].display();
 		this.players[1].display();
-		
+		this.displayPieces();
 			
 		
 	}
 	
 	
+Constroi_Tab_State.prototype.displayPieces = function() {
+	for(var i = 0; i < this.piecesToPick.length; i++) {				//	piece	piece.x piece.y piece.z piece.texture
+			 
+			this.scene.pushMatrix();
+				
+				
+				this.scene.translate(this.piecesToPick[i].x, this.piecesToPick[i].y, this.piecesToPick[i].z);
+				this.scene.rotate(-Math.PI/4, 1, 0, 0);
+				
+				
+				this.piecesToPick[i].texture.bind(0);
+				
+				this.piecesToPick[i].piece.updateTexturesAmpli(5,5);
+				this.scene.registerForPick(i + 1000, this.piecesToPick[i].piece);
+				this.piecesToPick[i].piece.display();
+				this.piecesToPick[i].texture.unbind(0);
+				
+			this.scene.popMatrix();
+			
+			 
+			
+		}
+		
+		this.scene.clearPickRegistration();
+	
+}	
+
+Constroi_Tab_State.prototype.dealWithPieces = function(id)    {
+		
+		switch(id) {
+			case 1000:	// up
+			break;
+			case 1001:
+			break;
+			case 1002:	//back
+				this.scene.state = new Transition(this.scene, new MenuPrincipal(this.scene, "chess1", 1), this.scene.camera, this.cameras[0], this.currTime);
+			break;
+			case 1003:	// undo
+			break;	
+		}
+	
+	
+	
+}
+	
+	
 Constroi_Tab_State.prototype.dealWithTipoDeJogo = function() {
+		
+		var id = this.scene.logPicking();
+		if(id != undefined && id < 1004 && id > 999) {
+			this.dealWithPieces(id);
+			return;
+		}
+			
+		
+		
 		switch(this.tipoDeJogo) {
 			case 1:
-				var id = this.scene.logPicking();
+				
 				this.scene.clearPickRegistration();
 				if (id != "" && id != undefined) {
 					this.mouseDown(id);
@@ -305,7 +384,7 @@ Constroi_Tab_State.prototype.dealWithTipoDeJogo = function() {
 			break;
 			case 2:
 				if(this.playerTurn == this.states.PLAYERA) {
-					var id = this.scene.logPicking();
+					
 					this.scene.clearPickRegistration();
 					if (id != "" && id != undefined) {
 						this.mouseDown(id);
