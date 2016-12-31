@@ -65,14 +65,15 @@ function transition(scene, initTime, currTime, spanTime, camera1, camera2) {
 		return;
 	}	
 	
-	var dt = spanTime/(currTime - initTime);
+	var dt = (currTime - initTime)/spanTime;
 	
 	var angle = (1.0-dt)*camera1.fov + dt*camera2.fov;
 			
 	var fx = (1.0-dt)*camera1.position[0] + dt*camera2.position[0];
 	var fy = (1.0-dt)*camera1.position[1] + dt*camera2.position[1];
 	var fz = (1.0-dt)*camera1.position[2] + dt*camera2.position[2];
-			
+	
+		
 	var tx = (1.0-dt)*camera1.target[0] + dt*camera2.target[0];
 	var ty = (1.0-dt)*camera1.target[1] + dt*camera2.target[1];
 	var tz = (1.0-dt)*camera1.target[2] + dt*camera2.target[2];

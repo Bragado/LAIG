@@ -353,7 +353,7 @@ Constroi_Tab_State.prototype.dealWithPieces = function(id)    {
 				
 				if(this.internalCamera < 4) {
 					this.internalCamera++;
-					this.changeView = {OLDSTATE: this.internalState, INITTIME: this.currTime, OLDCAMERA: this.cameras[this.internalCamera - 1], NEWCAMERA: this.cameras[this.internalCamera], SPANTIME: 1 };		
+					this.changeView = {OLDSTATE: this.internalState, INITTIME: this.currTime, OLDCAMERA: this.cameras[this.internalCamera - 1], NEWCAMERA: this.cameras[this.internalCamera], SPANTIME: 0.8 };		
 					this.internalState = this.states.UPDATEVIEW;
 				}	
 				
@@ -361,7 +361,7 @@ Constroi_Tab_State.prototype.dealWithPieces = function(id)    {
 			case 1001:
 				if(this.internalCamera > 2) {
 					this.internalCamera--;
-					this.changeView = {OLDSTATE: this.internalState, INITTIME: this.currTime, OLDCAMERA: this.cameras[this.internalCamera + 1], NEWCAMERA: this.cameras[this.internalCamera], SPANTIME: 1 };		
+					this.changeView = {OLDSTATE: this.internalState, INITTIME: this.currTime, OLDCAMERA: this.cameras[this.internalCamera + 1], NEWCAMERA: this.cameras[this.internalCamera], SPANTIME: 0.8 };		
 					this.internalState = this.states.UPDATEVIEW;
 				}
 				
