@@ -10,10 +10,16 @@ class EmJogo_State {
 		
 		this.scene = scene;
 		this.initTime = currTime;
-		this.dificuldade = dificuldade;
+		
+		if(tipo_de_jogo == 3)
+			this.dificuldade = 1;
+		else
+			this.dificuldade = dificuldade;
+		
 		this.gameBoard = Board;
 		this.tipo_de_jogo = tipo_de_jogo;
 		this.cameras = cameras;			/* Menu Principal, Menu Final, 3 Diferentes câmaras */
+		this.cameraState = 2;
 		
 		this.states = { PLAYERA: 0, PLAYERB: 1, WAITING: 2, AUTOMATICMOVE: 3, ALLMOVES:4, BESTMOVE: 5 };
 		
@@ -151,8 +157,8 @@ class EmJogo_State {
 				
 			}
 			
-			// transition
-			//this.scene.state = new Transition(this.scene, new MenuFinal(this.scene, [this.cameras[0], this.cameras[3]], this.gameBoard, movesTRACK, type), this.camera[this.cameraState], this.camera[1], this.currTime );
+			
+			this.scene.state = new Transition(this.scene, new MenuFinal(this.scene, this.gameBoard, this.movesTRACK, type,  [this.cameras[0], this.cameras[3]]), this.cameras[this.cameraState], this.cameras[1], this.currTime );
 			
 			
 		}

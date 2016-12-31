@@ -84,7 +84,7 @@ class Menu {
 	}
 	this.initTiles(this.name);	
 	
-		
+	
 	}
 	
 	
@@ -102,6 +102,8 @@ class Menu {
 			var texture = this.reader.getString(tiles[i], 'textura1', false);
 			var texture2 = this.reader.getString(tiles[i], 'textura2', false);
 			
+			
+			
 			var x = this.reader.getFloat(tiles[i], 'x', false);
 			var y = this.reader.getFloat(tiles[i], 'y', false);
 			var z = this.reader.getFloat(tiles[i], 'z', false);
@@ -109,7 +111,13 @@ class Menu {
 			var text1 = new CGFtexture(this.scene, texture);
 			var text2 = new CGFtexture(this.scene, texture2);
 			
-			this.piecesToPick.push(new Piece(new Rectangle(this.scene, -4.5, -1, 4.5, 1), x, y, z, text1, text2));
+			if(i == 0 && name == 'menuFinal') {
+				var texture3 = this.reader.getString(tiles[i], 'textura3', false);
+				var text3 = new CGFtexture(this.scene, texture3);
+				this.piecesToPick.push(new Piece(new Rectangle(this.scene, -4.5, -1, 4.5, 1), x, y, z, text1, text2, text3));
+			}
+			else
+				this.piecesToPick.push(new Piece(new Rectangle(this.scene, -4.5, -1, 4.5, 1), x, y, z, text1, text2));
 			
 		}
 		
@@ -202,7 +210,7 @@ class MenuPrincipal extends Menu {
 					
 				}
 				
-		this.scene.state = new Transition(this.scene, new Constroi_Tab_State(this.scene, this.internalState.Ambiente, id, this.internalState.Dificuldade, [this.camera[this.cameraStates.MenuPrincipal], this.camera[this.cameraStates.MenuFinal]]), this.camera[this.cameraStates.MenuPrincipal], this.camera[CHESS - 1], this.currTime  );
+		this.scene.state = new Transition(this.scene, new Constroi_Tab_State(this.scene, this.internalState.Ambiente, id, this.internalState.Dificuldade, [this.camera[this.cameraStates.MenuPrincipal], this.camera[this.cameraStates.MenuFinal]]), this.camera[this.cameraStates.MenuPrincipal], this.camera[CHESS], this.currTime  );
 				
 				
 			break;
@@ -325,16 +333,93 @@ class MenuAuxiliar extends Menu {
 	
 }
 
+class MenuFinal extends Menu {
+	
+	constructor(scene, gameBoard, movesTrack, result, camera) {
+		super(scene, 'menuFinal');
+		this.gameBoard = gameBoard;
+		this.movesTrack = movesTrack;
+		this.result = result;
+		this.cameras = camera;
+	}
+	
+	display(currTime){
+		
+		if(!this.ready)
+			return;
+		
+		this.currTime = currTime;
+		
+		var id = this.scene.logPicking();
+		this.scene.clearPickRegistration();
+		if (id != "" && id != undefined) {
+			this.mouseDown(id);
+		}
+		
+		for(var i = 0; i < this.piecesToPick.length; i++) {
+			if(i == 0) 
+				switch(this.result) {
+					case 0:
+						this.material.setTexture(this.piecesToPick[i].texture);
+					break;
+					case 1:
+						this.material.setTexture(this.piecesToPick[i].texture2);
+					break;
+					case 2:
+						this.material.setTexture(this.piecesToPick[i].texture3);
+					break;
+				}			
+			else 			
+				this.material.setTexture(this.piecesToPick[i].texture);
+			
+			this.material.apply();
+			this.piecesToPick[i].piece.updateTexturesAmpli(9,2);
+			
+			this.scene.pushMatrix();
+				
+				this.scene.translate(this.piecesToPick[i].x, this.piecesToPick[i].y, this.piecesToPick[i].z);
+				if(i > 0)
+					this.scene.registerForPick(i , this.piecesToPick[i].piece);
+				this.piecesToPick[i].piece.display();
+			
+			this.scene.popMatrix();
+		}
+		
+	}
+	
+	
+	mouseDown(id) {
+		
+		switch(id) {
+			case 1:
+			break;
+			case 2:
+				this.scene.state = new Transition(this.scene, new MenuPrincipal(this.scene, "chess1", 0), this.camera[this.cameraStates.MenuFinal], this.camera[this.cameraStates.MenuPrincipal], this.currTime);
+			break;
+			
+		}
+		
+		
+	}
+	
+	
+	
+}
+
+
+
+
 
 class Piece {
 	
-	constructor(piece, x, y, z, texture, texture2 ) {
+	constructor(piece, x, y, z, texture, texture2, texture3 ) {
 		this.piece = piece;
 		this.x = x;
 		this.y = y;
 		this.z = z;
 		this.texture = texture;
 		this.texture2 = texture2;
+		this.texture3 = texture3;
 		
 	}
 	

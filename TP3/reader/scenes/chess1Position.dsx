@@ -2,14 +2,20 @@
 	<menus>
 		<views>
 	
-			<perspective id="principal" near="0.1" far="500.0" angle="60">
-				<from x="240" y="60" z="215" />
+			<perspective id="principal" near="0.1" far="800.0" angle="60">
+				<from x="240" y="60" z="225" />
 				<to x="240" y="40" z="180" />
 			</perspective>
 			
-			<perspective id="auxiliar" near="0.1" far="500.0" angle="60">
+			<perspective id="auxiliar" near="0.1" far="1000.0" angle="60">
 				<from x="240" y="60" z="320" />
 				<to x="240" y="45" z="280" />
+			</perspective>
+			
+			<perspective id="final" near="0.1" far="500.0" angle="60">
+				<from x="240" y="10" z="-20" />
+				<to x="240" y="-5" z ="-50" />
+				
 			</perspective>
 			
 			<perspective id="chess1" near="0.1" far="500.0" angle="60">
@@ -52,9 +58,9 @@
 		</menuAuxiliar>
 		
 		<menuFinal>
-			<tile  x="40" y="3" z="-48.49" textura1= "../../resources/game/empate.png" textura2= "../../resources/game/playerA.png" textura3= "../../resources/game/playerB.png"/>
-			<tile  x="40" y="0" z="-48.49" textura1= "../../resources/game/button_filme-de-jogo.png" textura2= ""/>
-			<tile  x="40" y="-3" z="-48.49" textura1= "../../resources/game/button_menu-principal.png" textura2= ""/>
+			<tile  x="240" y="3" z="-48.49" textura1= "../../resources/game/empate.png" textura2= "../../resources/game/playerA.png" textura3= "../../resources/game/playerB.png"/>
+			<tile  x="240" y="0" z="-48.49" textura1= "../../resources/game/button_filme-de-jogo.png" textura2= "" />
+			<tile  x="240" y="-3" z="-48.49" textura1= "../../resources/game/button_menu-principal.png" textura2= "" />
 		</menuFinal>
 		
 	</menus>
