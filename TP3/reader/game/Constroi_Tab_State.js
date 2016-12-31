@@ -487,7 +487,7 @@ Constroi_Tab_State.prototype.verifyEnd = function() {
 			this.gameConstructBoard[i].pick = this.gameConstructBoard[i].states.NOPICK;	
 		}
 	
-		this.scene.state = new EmJogo_State(this.scene, this.gameBoard, this.dificuldade, this.tipoDeJogo, this.currTime, this.players, this.cameras);
+		this.scene.state = new EmJogo_State(this.scene, this.gameBoard, this.dificuldade, this.tipoDeJogo, this.currTime, this.players, this.cameras, this.piecesToPick);
 		
 	}
 }

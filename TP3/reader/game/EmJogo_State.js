@@ -6,7 +6,7 @@ var theEnd = false;
 
 class EmJogo_State {
 	
-	constructor(scene, Board, dificuldade, tipo_de_jogo, currTime, players, cameras) {
+	constructor(scene, Board, dificuldade, tipo_de_jogo, currTime, players, cameras, piecesToPick) {
 		
 		this.scene = scene;
 		this.initTime = currTime;
@@ -16,12 +16,14 @@ class EmJogo_State {
 		else
 			this.dificuldade = dificuldade;
 		
+		this.piecesToPickk = piecesToPick;
+		
 		this.gameBoard = Board;
 		this.tipo_de_jogo = tipo_de_jogo;
 		this.cameras = cameras;			/* Menu Principal, Menu Final, 3 Diferentes câmaras */
 		this.cameraState = 2;
 		
-		this.states = { PLAYERA: 0, PLAYERB: 1, WAITING: 2, AUTOMATICMOVE: 3, ALLMOVES:4, BESTMOVE: 5 };
+		this.states = { PLAYERA: 0, PLAYERB: 1, WAITING: 2, AUTOMATICMOVE: 3, ALLMOVES:4, BESTMOVE: 5, UPDATEVIEW: 6 };
 		
 		this.internalState = this.states.WAITING;
 		this.player = this.states.PLAYERA;
@@ -29,6 +31,7 @@ class EmJogo_State {
 		
 		this.players = players;
 		
+		this.changeView = {OLDSTATE: 0, INITTIME: 1, OLDCAMERA: 2, NEWCAMERA: 3, SPANTIME: 0 };
 		this.movesTRACK = [];
 		
 		this.piecesAvailable = new Array();
@@ -64,14 +67,7 @@ class EmJogo_State {
 	
 	display(currTime) {
 			if(this.ready) {
-				this.dealWithProlog();
-				
-				var id = this.scene.logPicking();
-				
-				this.scene.clearPickRegistration();
-				if (id != "" && id != undefined) {
-					this.mouseDown(id);
-				}
+				this.dealwithIt();
 			}
 		
 		
@@ -80,7 +76,96 @@ class EmJogo_State {
 		this.gameBoard.display(currTime);
 		this.players[0].display(currTime);
 		this.players[1].display(currTime);
+		this.displayPieces();
 		 
+	}
+	
+	
+	dealwithIt() {
+		if(this.internalState != this.states.UPDATEVIEW)	{			
+			this.dealWithProlog();
+									
+			var id = this.scene.logPicking();
+			if(id != undefined && id > 999 && id < 1004) {
+				this.dealWithPieces(id);
+			}else if (id != "" && id != undefined) {
+				this.mouseDown(id);
+			}
+					
+										
+					
+			}else if(this.internalState == this.states.UPDATEVIEW) {
+				if(this.changeView.SPANTIME > this.currTime - this.changeView.INITTIME + 0.01)
+					transition(this.scene, this.changeView.INITTIME, this.currTime, this.changeView.SPANTIME, this.changeView.OLDCAMERA, this.changeView.NEWCAMERA);
+				else {
+					this.internalState = this.changeView.OLDSTATE;
+					
+				}
+					
+			}
+		
+	}
+	
+	dealWithPieces(id)    {
+		
+		switch(id) {
+			case 1000:	// up
+				
+				if(this.internalCamera < 4) {
+					this.internalCamera++;
+					this.changeView = {OLDSTATE: this.internalState, INITTIME: this.currTime, OLDCAMERA: this.cameras[this.internalCamera - 1], NEWCAMERA: this.cameras[this.internalCamera], SPANTIME: 0.8 };		
+					this.internalState = this.states.UPDATEVIEW;
+				}	
+				
+			break;
+			case 1001:
+				if(this.internalCamera > 2) {
+					this.internalCamera--;
+					this.changeView = {OLDSTATE: this.internalState, INITTIME: this.currTime, OLDCAMERA: this.cameras[this.internalCamera + 1], NEWCAMERA: this.cameras[this.internalCamera], SPANTIME: 0.8 };		
+					this.internalState = this.states.UPDATEVIEW;
+				}
+				
+				
+			break;
+			case 1002:	//back
+				this.scene.state = new Transition(this.scene, new MenuPrincipal(this.scene, "chess1", 1), this.scene.camera, this.cameras[0], this.currTime);
+			break;
+			case 1003:	// undo
+			break;	
+		}
+	
+	
+	
+}
+	
+	
+	
+	
+	displayPieces() {
+		for(var i = 0; i < this.piecesToPickk.length; i++) {				//	piece	piece.x piece.y piece.z piece.texture
+			 
+			this.scene.pushMatrix();
+				
+				
+				this.scene.translate(this.piecesToPickk[i].x, this.piecesToPickk[i].y, this.piecesToPickk[i].z);
+				this.scene.rotate(-Math.PI/4, 1, 0, 0);
+				
+				
+				this.piecesToPickk[i].texture.bind(0);
+				
+				this.piecesToPickk[i].piece.updateTexturesAmpli(5,5);
+				this.scene.registerForPick(i + 1000, this.piecesToPickk[i].piece);
+				this.piecesToPickk[i].piece.display();
+				this.piecesToPickk[i].texture.unbind(0);
+				
+			this.scene.popMatrix();
+			
+			 
+			
+		}
+		
+		this.scene.clearPickRegistration();	
+		
 	}
 	
 	dealWithProlog() {
