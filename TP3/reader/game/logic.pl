@@ -6,8 +6,16 @@ not(Goal).
 
 
 
-testaFim(Tab, X, Y, X1, Y1, 1) :- not(possibleMoves(Tab, X, Y, X1, Y1)), not(possibleMoves(Tab, X1, Y1, X, Y)). 
-testaFim(_, _, _, _, _, 0).
+testaFim(Tab, ID, X, Y, ID1, X1, Y1, 1) :- not(possibleMoves(Tab, X, Y, X1, Y1)), not(possibleMoves(Tab, X1, Y1, X, Y)).
+testaFim(_, ID, X, Y, ID1, X1, Y1, 1) :- newWinner(ID, X, Y, ID1, X1, Y1). 
+testaFim(_, _, _, _, _, _, _, 0).
+
+
+newWinner('A', 8, 8, _, _, _).
+newWinner(_, _, _, 'B', 8, 1). 
+
+
+
 
 nextStep(X, Y,  Peca) :- testaMove(X, Y, 1), 	move(Peca, 1).
 nextStep(X, Y,  Peca) :- testaMove(X, Y, 2), 	move(Peca, 2).
@@ -32,8 +40,9 @@ teste(B,funcionaaaaaaaaaaaa).
  
 
 bestMove(_, Moves, _, _,_,_,  1, D) :- generateRandomMove(Moves, D).
-bestMove(Board, Moves, X, Y, X1, Y1, 2, D) :- assert(melhorJogada(5, 9999)), !, tentaMoves(Board, Moves, X, Y, X1, Y1, D, 2), alwaysYES(retracts).
-bestMove(Board, Moves, X, Y, X1, Y1, 3, D) :- assert(melhorJogada(5, 9999)), tentaMoves(Board, Moves, X, Y, X1, Y1, D, 3), alwaysYES(retracts).
+bestMove(Board, Moves, X, Y, X1, Y1, 2, D) :- generateRandomMove(Moves, DMove), assert(melhorJogada(DMove, 9999)), !, tentaMoves(Board, Moves, X, Y, X1, Y1, D, 2), alwaysYES(retracts).
+
+bestMove(Board, Moves, X, Y, X1, Y1, 3, D) :- generateRandomMove(Moves, DMove), assert(melhorJogada(DMove, 9999)), !, tentaMoves(Board, Moves, X, Y, X1, Y1, D, 3), alwaysYES(retracts).
 
 retracts:- retract(melhorJogada(_, _)), retract(melhorJogada(_, _)),retract(melhorJogada(_, _)),retract(melhorJogada(_, _)),retract(melhorJogada(_, _)),retract(melhorJogada(_, _)), retract(nJogadas(_)), retract(nJogadas(_)), retract(nJogadas(_)),retract(nJogadas(_)),retract(nJogadas(_)),retract(nJogadas(_)). 
 
@@ -43,9 +52,9 @@ tentaMoves(Board, [D|T], X, Y, X1, Y1, Di, Grau) :- tentaMovesAux(Board,  D, X, 
 
 tentaMovesAux(Board, D,  X, Y, X1, Y1, 2) :-  assert(nJogadas(9999)),    alwaysYES(movePC(Board, D, X, Y, 0, CF)), nJogadas(N), melhorJogada(_, NA), !, decideTroca(D, N, NA).
 decideTroca(D, N, NA) :- N < NA, retract(nJogadas(_)), retract(melhorJogada(_, _)),   assert(melhorJogada(D, N)), !.
-decideTroca(_, _, _,) :- retract(nJogadas(_)).
+decideTroca(_, _, _) :- retract(nJogadas(_)).
 
-tentaMovesAux(_, _, _, _, _, 5, 2).
+tentaMovesAux(_, 5, _, _, _, _, 2).
 
 
 tentaMovesAux(Board,  D, X, Y, X1, Y1, 3) :-  assert(nJogadas(9999)),    alwaysYES(jogoEu(Board, 0, X, Y, X1, Y1, D)),   nJogadas(N), melhorJogada(_, NA), !, decideTroca(D, N, NA).
@@ -87,12 +96,12 @@ alwaysYES(Goal) :- call(Goal).
 
 movePC(Tab, D, X, Y, Contador, ContadorFinal) :- jogadaEfetuada(X, Y, D, X1, Y1),   Contador1 is Contador + 1, testaFinal(X1, Y1, Contador1, ContadorFinal).
 
-movePC(Tab, D, X, Y, Contador, ContadorFinal) :- jogadaEfetuada(X, Y, D, X1, Y1),   Contador1 is Contador + 1,  getPeca(Tab, X1, Y1, Peca), findall(Jogada, move(Peca, Jogada), Moves), !, jogadasPossiveis(Contador1, ContadorFinal, Moves, X1, Y1).
+movePC(Tab, D, X, Y, Contador, ContadorFinal) :- jogadaEfetuada(X, Y, D, X1, Y1),   Contador1 is Contador + 1,  getPeca(Tab, X1, Y1, Peca), findall(Jogada, move(Peca, Jogada), Moves), !, jogadasPossiveis(Tab, Contador1, ContadorFinal, Moves, X1, Y1).
 
-jogadasPossiveis(_, _, [5], _, _).
-jogadasPossiveis(Contador, ContadorFinal, [], _, _) :- !, fail.
-jogadasPossiveis(Contador, ContadorFinal, [H|T], X, Y) :- testaMove(X, Y, H), movePC(H, X, Y, Contador, ContadorFinal), !, jogadasPossiveis(Contador, ContadorFinal, T, X, Y).
-jogadasPossiveis(Contador, ContadorFinal, [H|T], X, Y) :- jogadasPossiveis(Contador, ContadorFinal, T, X, Y).
+jogadasPossiveis(_, _, _, [5], _, _).
+jogadasPossiveis(Tab, Contador, ContadorFinal, [], _, _) :- !, fail.
+jogadasPossiveis(Tab, Contador, ContadorFinal, [H|T], X, Y) :- testaMove(X, Y, H), movePC(Tab, H, X, Y, Contador, ContadorFinal), !, jogadasPossiveis(Tab, Contador, ContadorFinal, T, X, Y).
+jogadasPossiveis(Tab, Contador, ContadorFinal, [H|T], X, Y) :- jogadasPossiveis(Tab, Contador, ContadorFinal, T, X, Y).
 
 testaFinal(8, 1, Contador, Contador) :-  nJogadas(X), Contador < X, retract(nJogadas(X)), assert(nJogadas(Contador)).
 testaFinal(_, _, Contador, _):- Contador > 10.
@@ -103,7 +112,15 @@ testaFinal1(_, _, Contador, _):- Contador > 7.
 
 
 
-
+jogadaEfetuada(X, Y, 5, X, Y).
+jogadaEfetuada(X, Y, 1, X1, Y1) :- X1 is X - 1, Y1 is Y + 1.
+jogadaEfetuada(X, Y, 2, X, Y1) :- Y1 is Y + 1.
+jogadaEfetuada(X, Y, 3, X1, Y1) :- X1 is X + 1, Y1 is Y + 1. 
+jogadaEfetuada(X, Y, 4, X1, Y) :- X1 is X - 1.
+jogadaEfetuada(X, Y, 6, X1, Y) :- X1 is X + 1.
+jogadaEfetuada(X, Y, 7, X1, Y1) :- X1 is X - 1, Y1 is Y - 1. 
+jogadaEfetuada(X, Y, 8, X, Y1) :- Y1 is Y - 1.
+jogadaEfetuada(X, Y, 9, X1, Y1) :- X1 is X + 1, Y1 is Y - 1.
 
 
 

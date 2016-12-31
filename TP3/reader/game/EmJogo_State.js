@@ -94,11 +94,12 @@ class EmJogo_State {
 			}else if (!(this.tipo_de_jogo == 1 ||  (this.tipo_de_jogo == 2 && this.players[this.player].id == 'A'))){
 				if(this.tipo_de_jogo == 3 && this.firstTime) {
 					this.firstTime = false;
+					allMoves = "[2,3,6]";
 					this.bestMoveRequest();
-					this.applyBestMove();
+					
 				}
 				if(movesChanged) {
-					//this.decodeMoves(allMoves);
+					 
 					movesChanged = false;
 					this.bestMoveRequest(); 					
 				}
@@ -112,12 +113,14 @@ class EmJogo_State {
 	}
 	
 	bestMoveRequest() {
-		var stringRequest = "move(" + this.gameBoard.toString() + "," + allMoves + ","+ this.players[this.player].row + "," + this.players[this.player].col + "," + this.players[Math.abs(this.player - 1)].row + "," + this.players[Math.abs(this.player - 1)].col + "," + (this.dificuldade + 1) + ")";
+		var stringRequest = "move(" + this.gameBoard.toString() + "," + allMoves + ","+ this.players[this.player].col + "," + this.players[this.player].row + "," + this.players[Math.abs(this.player - 1)].col + "," + this.players[Math.abs(this.player - 1)].row + "," + (this.dificuldade + 1) + ")";
 		makeRequest(stringRequest, this, 1);
 	}
 	
 	applyBestMove() {
 		this.piecesAvailable = new Array();
+				
+		
 		this.addPieceAvailable(parseInt(bestMove));
 		var move = {oldX: this.players[this.player].x, oldY: this.players[this.player].y, oldZ: this.players[this.player].z, newX: this.piecesAvailable[0].x, newY: this.piecesAvailable[0].y, newZ: this.piecesAvailable[0].z }
 					
@@ -198,18 +201,17 @@ class EmJogo_State {
 	}
 	
 	calculaPecasDisponiveis() {
-		if(this.firstTime) {					 
+		if(this.tipo_de_jogo == 3 && this.firstTime) 
+			return;
+		
+		if(this.firstTime ) {					 
 			this.piecesAvailable.push(this.gameBoard.board[0][1].peca);
 			this.piecesAvailable.push(this.gameBoard.board[1][1].peca);
 			this.piecesAvailable.push(this.gameBoard.board[1][0].peca);
-			if(this.tipo_de_jogo != 3) {
-				this.firstTime = false;
-				this.piecesToPick();
-			}
-			else {
-				allMoves = "[" + this.scene.pieces[this.gameBoard.board[0][1].peca.id] + "," + this.scene.pieces[this.gameBoard.board[1][1].peca.id] + "," + this.scene.pieces[this.gameBoard.board[1][0].peca.id] + "]"; 
-				
-			}
+			this.firstTime = false;
+			this.piecesToPick();
+			
+			 
 			
 		}else {
 			// falar com prolog
@@ -257,7 +259,7 @@ class EmJogo_State {
 	}
 	
 	testTheEnd() {
-		var stringRequest = "fim(" + this.gameBoard.toString() + ","  + this.players[this.player].col + "," + this.players[this.player].row + "," + this.players[Math.abs(this.player - 1)].col + "," + this.players[Math.abs(this.player - 1)].row + ")";
+		var stringRequest = "fim(" + this.gameBoard.toString() + "," + this.players[this.player].id + "," + this.players[this.player].col + "," + this.players[this.player].row + "," + this.players[Math.abs(this.player - 1)].id  +"," + this.players[Math.abs(this.player - 1)].col + "," + this.players[Math.abs(this.player - 1)].row + ")";
 		makeRequest(stringRequest, this, 2);
 		
 	}

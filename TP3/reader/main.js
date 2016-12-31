@@ -19,7 +19,7 @@ main=function()
     var app = new CGFapplication(document.body);
     var myScene = new XMLscene();
     var myInterface = new Interface();
-	var sound = new Howl({src: ['sound.mp3'], autoplay: true, loop: true});
+	//var sound = new Howl({src: ['sound.mp3'], autoplay: true, loop: true});
 
     app.init();
 
