@@ -57,3 +57,32 @@ class Transition {
 	
 	
 }
+
+function transition(scene, initTime, currTime, spanTime, camera1, camera2) {
+	if(spanTime <= currTime - initTime) {
+		scene.camera = camera2;
+		scene.graph.interface.setActiveCamera(camera2);
+		return;
+	}	
+	
+	var dt = spanTime/(currTime - initTime);
+	
+	var angle = (1.0-dt)*camera1.fov + dt*camera2.fov;
+			
+	var fx = (1.0-dt)*camera1.position[0] + dt*camera2.position[0];
+	var fy = (1.0-dt)*camera1.position[1] + dt*camera2.position[1];
+	var fz = (1.0-dt)*camera1.position[2] + dt*camera2.position[2];
+			
+	var tx = (1.0-dt)*camera1.target[0] + dt*camera2.target[0];
+	var ty = (1.0-dt)*camera1.target[1] + dt*camera2.target[1];
+	var tz = (1.0-dt)*camera1.target[2] + dt*camera2.target[2];
+			
+	var near = camera2.near;
+	var far = camera2.far;
+
+			
+	var camera = new CGFcamera(angle, near, far, vec3.fromValues(fx, fy, fz), vec3.fromValues(tx, ty, tz) ); 
+	scene.camera = camera;
+	scene.graph.interface.setActiveCamera(camera);
+	
+}

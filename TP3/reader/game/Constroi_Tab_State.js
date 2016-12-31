@@ -2,6 +2,7 @@ function Constroi_Tab_State(scene, boardID, tipoDeJogo, dificuldade, cameras)  {
 		
 		
 		this.cameras = cameras;			/* Menu Principal, Menu Final, 3 Diferentes câmaras */
+		this.internalCamera = 2;
 		this.ready = false;													// Colocar isto a dar...
 		scene.ready = false;
 		this.erros = false;
@@ -19,7 +20,7 @@ function Constroi_Tab_State(scene, boardID, tipoDeJogo, dificuldade, cameras)  {
 			Internal States
 		*/
 		
-		this.states = { PIECECHOOSED: 0, NOPIECECHOOSED: 1, AUTOMATICMOVE: 2, PLAYERA: 3, PLAYERB: 4};
+		this.states = { PIECECHOOSED: 0, NOPIECECHOOSED: 1, AUTOMATICMOVE: 2, PLAYERA: 3, PLAYERB: 4, UPDATEVIEW: 5};
 		this.internalState = this.states.NOPIECECHOOSED;
 		this.playerTurn = this.states.PLAYERA;
 		
@@ -38,8 +39,8 @@ function Constroi_Tab_State(scene, boardID, tipoDeJogo, dificuldade, cameras)  {
 		
 		this.players = [];
 		
-		
-				
+		this.changeView = {OLDSTATE: 0, INITTIME: 1, OLDCAMERA: 2, NEWCAMERA: 3, SPANTIME: 0 };
+		this.degToRad= Math.PI / 180.0; 		
 		
 		
 		var filename=getUrlVars()['chess1Position.dsx'] || "chess1Position.dsx";
@@ -349,8 +350,22 @@ Constroi_Tab_State.prototype.dealWithPieces = function(id)    {
 		
 		switch(id) {
 			case 1000:	// up
+				
+				if(this.internalCamera < 4) {
+					this.internalCamera++;
+					this.changeView = {OLDSTATE: this.internalState, INITTIME: this.currTime, OLDCAMERA: this.cameras[this.internalCamera - 1], NEWCAMERA: this.cameras[this.internalCamera], SPANTIME: 1 };		
+					this.internalState = this.states.UPDATEVIEW;
+				}	
+				
 			break;
 			case 1001:
+				if(this.internalCamera > 2) {
+					this.internalCamera--;
+					this.changeView = {OLDSTATE: this.internalState, INITTIME: this.currTime, OLDCAMERA: this.cameras[this.internalCamera + 1], NEWCAMERA: this.cameras[this.internalCamera], SPANTIME: 1 };		
+					this.internalState = this.states.UPDATEVIEW;
+				}
+				
+				
 			break;
 			case 1002:	//back
 				this.scene.state = new Transition(this.scene, new MenuPrincipal(this.scene, "chess1", 1), this.scene.camera, this.cameras[0], this.currTime);
@@ -365,6 +380,18 @@ Constroi_Tab_State.prototype.dealWithPieces = function(id)    {
 	
 	
 Constroi_Tab_State.prototype.dealWithTipoDeJogo = function() {
+		
+		if(this.internalState == this.states.UPDATEVIEW) {
+			if(this.changeView.SPANTIME > this.currTime - this.changeView.INITTIME + 0.01)
+				transition(this.scene, this.changeView.INITTIME, this.currTime, this.changeView.SPANTIME, this.changeView.OLDCAMERA, this.changeView.NEWCAMERA);
+			else {
+				this.internalState = this.changeView.OLDSTATE;
+				
+			}
+			return;
+		}
+		
+		
 		
 		var id = this.scene.logPicking();
 		if(id != undefined && id < 1004 && id > 999) {
