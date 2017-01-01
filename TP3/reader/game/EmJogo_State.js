@@ -233,11 +233,12 @@ class EmJogo_State {
 				if(this.players[i].id == 'A') {
 					if(this.players[i].row == 8 && this.players[i].col == 8)
 						type = 1;
+					this.scene.PLAYERA_RESULT++;
 					
 				} else {
 					if(this.players[i].row == 1 && this.players[i].col == 8)
 						type = 2;
-					
+					this.scene.PLAYERB_RESULT++;	
 				}				
 				
 			}

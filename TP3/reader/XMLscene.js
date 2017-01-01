@@ -32,7 +32,8 @@ XMLscene.prototype.init = function (application) {
 	this.currTime = 0;
 	this.startingTime = 0;
 	
-	
+	this.PLAYERA_RESULT = 1;
+	this.PLAYERB_RESULT = 0;
 	
 };
 
