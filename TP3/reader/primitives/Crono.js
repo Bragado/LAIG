@@ -1,7 +1,7 @@
-function Crono(scene, boardID, initTime) {
+function Crono(scene, boardID, initTime, state) {
 	
 	this.scene = scene;
- 
+	this.state = state;
 	this.boardID = boardID;
 	this.ready = false;
 	this.quad = new Rectangle(this.scene, -10, -7, 10, 7);
@@ -23,11 +23,16 @@ function Crono(scene, boardID, initTime) {
 	this.reader.open('scenes/'+ filename, this);
 	
 	this.states = {ANIMEON: 0, ANIMEOFF: 1, PLAYERA: 11, PLAYERB: 12 };
+	this.internalState = this.states.ANIMEOFF;
 	this.player = this.states.PLAYERA;
-	this.anime = this.states.ANIMEOFF;
-	this.spanTime = 0.5;
+	 
+	
 	this.superInitTime = initTime;
 	this.initTime = initTime; 
+	
+	this.spanTime = 1;
+	this.animeInit;
+	this.internalAngle = 0;
 	
 	this.ready = false;
 }
@@ -73,10 +78,8 @@ Crono.prototype.dealWithTemp = function(currTime) {
 	var temporizador = Math.floor(30 + this.initTime - currTime);
 	var temp = {seg1: Math.floor(temporizador/10), seg2: temporizador%10};
 	if(temporizador <= 0) {
-		this.initTime = currTime;
-		temp.seg1 = 3;
-		temp.seg2 = 0;
-		return temp;
+		this.state.cronoAlert();
+		// alertar o state
 	}
 	return temp;
 	
@@ -91,17 +94,49 @@ Crono.prototype.dealWithCrono = function(currTime) {
 	return crono;
 }
 
+Crono.prototype.changePlayer = function(currTime) {
+	this.animeInit = currTime;
+	if(this.player == this.states.PLAYERA)
+		this.player = this.states.PLAYERB;
+	else
+		this.player = this.states.PLAYERA;
+	this.internalState = this.states.ANIMEON;
+	
+}
+
+Crono.prototype.getRotation = function(currTime) {
+			
+	if(this.internalState == this.states.ANIMEON) {
+		if( (currTime - this.animeInit) > this.spanTime) {
+			this.internalAngle += Math.PI;	
+			this.internalState = this.states.ANIMEOFF;
+			this.initTime = currTime;
+			this.state.cronoAlert();
+		}
+		else {
+			var dt = (currTime - this.animeInit)/this.spanTime;	
+			return this.internalAngle + Math.PI * dt;
+		
+		}
+		
+	}
+	
+	return this.internalAngle;
+	
+}
+
 Crono.prototype.display = function(currTime) {
 	if(!this.ready)
 		return;
-	
+	var angle = this.getRotation(currTime);
+	if(this.internalState != this.states.ANIMEON)
 	var temporizador = this.dealWithTemp(currTime);
 	var crono = this.dealWithCrono(currTime);
 	this.material.apply();
 	
 	this.scene.pushMatrix();
 		this.scene.translate(this.x, this.y, this.z); 
-		//this.scene.rotate(Math.PI/2, 0, 1,0);				||||| Aqui será chamado o ângulo que irá variar durante a troca de jogadores
+		this.scene.rotate(angle, 0, 1,0);			//	||||| Aqui será chamado o ângulo que irá variar durante a troca de jogadores
 		this.scene.pushMatrix();			// frente
 			this.scene.translate(0,0,3);
 			this.textureFundo.bind(0);
@@ -117,31 +152,31 @@ Crono.prototype.display = function(currTime) {
 				this.scene.pushMatrix();		// player
 					this.scene.translate(-4/18, 0, 0.1);
 					this.scene.scale(10/18, 1, 1);
-					this.textures[this.player].bind(0);
+					this.textures[this.states.PLAYERA].bind(0);
 					this.genericQuad.updateTexturesAmpli(1,1);
 					this.genericQuad.display();
-					this.textures[this.player].unbind(0);
+					this.textures[this.states.PLAYERA].unbind(0);
 				this.scene.popMatrix();
-				
-				this.scene.pushMatrix();		//seg1
-					this.scene.translate(4.5/18, 0, 0.1);
-					this.scene.scale(3/18, 3/4, 1);
-					this.textures[temporizador.seg1].bind(0);
-					this.genericQuad.updateTexturesAmpli(1,1);
-					this.genericQuad.display();
-					this.textures[temporizador.seg1].unbind(0);
-					
-				this.scene.popMatrix();
-				this.scene.pushMatrix();		//seg2
-					this.scene.translate(7.5/18, 0, 0.1);
-					this.scene.scale(3/18, 3/4, 1);
-					this.textures[temporizador.seg2].bind(0);
-					this.genericQuad.updateTexturesAmpli(1,1);
-					this.genericQuad.display();
-					this.textures[temporizador.seg2].unbind(0);
-					
-				this.scene.popMatrix();
-				
+				if(this.player == this.states.PLAYERA && this.internalState == this.states.ANIMEOFF) {
+					this.scene.pushMatrix();		//seg1
+						this.scene.translate(4.5/18, 0, 0.1);
+						this.scene.scale(3/18, 3/4, 1);
+						this.textures[temporizador.seg1].bind(0);
+						this.genericQuad.updateTexturesAmpli(1,1);
+						this.genericQuad.display();
+						this.textures[temporizador.seg1].unbind(0);
+						
+					this.scene.popMatrix();
+					this.scene.pushMatrix();		//seg2
+						this.scene.translate(7.5/18, 0, 0.1);
+						this.scene.scale(3/18, 3/4, 1);
+						this.textures[temporizador.seg2].bind(0);
+						this.genericQuad.updateTexturesAmpli(1,1);
+						this.genericQuad.display();
+						this.textures[temporizador.seg2].unbind(0);
+						
+					this.scene.popMatrix();
+				}
 			this.scene.popMatrix();
 			
 			this.scene.pushMatrix();	// cima -> Score
@@ -276,6 +311,139 @@ Crono.prototype.display = function(currTime) {
 			this.scene.rotate(Math.PI, 0, 1, 0);
 			this.quad.display();
 			this.textureFundo.unbind(0);
+			
+			
+			this.scene.pushMatrix();	// meio -> temporizador
+				this.scene.translate(0,0,0.1);
+				this.scene.scale(18, 4, 1);
+				this.textureRed.bind(0);
+				//this.genericQuad.display();
+				this.textureRed.unbind(0);
+				
+				this.scene.pushMatrix();		// player
+					this.scene.translate(-4/18, 0, 0.1);
+					this.scene.scale(10/18, 1, 1);
+					this.textures[this.states.PLAYERB].bind(0);
+					this.genericQuad.updateTexturesAmpli(1,1);
+					this.genericQuad.display();
+					this.textures[this.states.PLAYERB].unbind(0);
+				this.scene.popMatrix();
+				if(this.player == this.states.PLAYERB && this.internalState == this.states.ANIMEOFF) {
+					this.scene.pushMatrix();		//seg1
+						this.scene.translate(4.5/18, 0, 0.1);
+						this.scene.scale(3/18, 3/4, 1);
+						this.textures[temporizador.seg1].bind(0);
+						this.genericQuad.updateTexturesAmpli(1,1);
+						this.genericQuad.display();
+						this.textures[temporizador.seg1].unbind(0);
+						
+					this.scene.popMatrix();
+					this.scene.pushMatrix();		//seg2
+						this.scene.translate(7.5/18, 0, 0.1);
+						this.scene.scale(3/18, 3/4, 1);
+						this.textures[temporizador.seg2].bind(0);
+						this.genericQuad.updateTexturesAmpli(1,1);
+						this.genericQuad.display();
+						this.textures[temporizador.seg2].unbind(0);
+						
+					this.scene.popMatrix();
+				}
+			this.scene.popMatrix();
+			
+			this.scene.pushMatrix();	// cima -> Score
+				this.scene.translate(0, 4.5,0.1);
+				this.scene.scale(18, 4, 1);
+				this.textureRed.bind(0);
+				//this.genericQuad.display();
+				this.textureRed.unbind(0);
+				
+				this.scene.pushMatrix();
+					this.scene.translate(0, 0, 0.1);
+					this.scene.scale(1/3, 1, 1);
+					this.textures[13].bind(0);
+					this.genericQuad.updateTexturesAmpli(1,1);
+					this.genericQuad.display();
+					this.textures[13].unbind(0);
+				this.scene.popMatrix();
+				
+				this.scene.pushMatrix();
+					this.scene.translate(-7/18, 0, 0.1 );
+					this.scene.scale(4/18, 1, 1);
+					this.textures[this.scene.PLAYERA_RESULT].bind(0);
+					this.genericQuad.updateTexturesAmpli(1,1);
+					this.genericQuad.display();
+					this.textures[this.scene.PLAYERA_RESULT].unbind(0);
+				this.scene.popMatrix();
+
+				this.scene.pushMatrix();
+					this.scene.translate(7/18, 0, 0.1 );
+					this.scene.scale(4/18, 1, 1);
+					this.textures[this.scene.PLAYERB_RESULT].bind(0);
+					this.genericQuad.updateTexturesAmpli(1,1);
+					this.genericQuad.display();
+					this.textures[this.scene.PLAYERA_RESULT].unbind(0);
+				this.scene.popMatrix();
+				
+			this.scene.popMatrix();
+			
+			this.scene.pushMatrix();	// baixo -> cronometro
+				this.scene.translate(0,-4.5,0.1);
+				this.scene.scale(18, 4, 1);
+				this.textureRed.bind(0);
+				this.genericQuad.display();
+				this.textureRed.unbind(0);
+				
+				this.scene.pushMatrix();
+					this.scene.translate(-7/18, 0, 0.1 );
+					this.scene.scale(4/18, 1, 1);
+					this.textures[crono.min1].bind(0);
+					this.genericQuad.updateTexturesAmpli(1,1);
+					this.genericQuad.display();
+					this.textures[crono.min1].unbind(0);
+				this.scene.popMatrix();
+				this.scene.pushMatrix();
+					this.scene.translate(-3/18, 0, 0.1 );
+					this.scene.scale(4/18, 1, 1);
+					this.textures[crono.min2].bind(0);
+					this.genericQuad.updateTexturesAmpli(1,1);
+					this.genericQuad.display();
+					this.textures[crono.min2].unbind(0);
+				this.scene.popMatrix();
+				this.scene.pushMatrix();
+					this.scene.translate(0, 0, 0.1 );
+					this.scene.scale(2/18, 1, 1);
+					this.textures[10].bind(0);
+					this.genericQuad.updateTexturesAmpli(1,1);
+					this.genericQuad.display();
+					this.textures[10].unbind(0);
+				this.scene.popMatrix();
+				this.scene.pushMatrix();
+					this.scene.translate(3/18, 0, 0.1 );
+					this.scene.scale(4/18, 1, 1);
+					this.textures[crono.seg1].bind(0);
+					this.genericQuad.updateTexturesAmpli(1,1);
+					this.genericQuad.display();
+					this.textures[crono.seg1].unbind(0);
+				this.scene.popMatrix();
+				this.scene.pushMatrix();
+					this.scene.translate(7/18, 0, 0.1 );
+					this.scene.scale(4/18, 1, 1);
+					this.textures[crono.seg2].bind(0);
+					this.genericQuad.updateTexturesAmpli(1,1);
+					this.genericQuad.display();
+					this.textures[crono.seg2].unbind(0);
+				this.scene.popMatrix();
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 		this.scene.popMatrix();
 		
 		

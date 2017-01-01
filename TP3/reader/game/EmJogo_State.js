@@ -6,11 +6,13 @@ var theEnd = false;
 
 class EmJogo_State {
 	
-	constructor(scene, Board, dificuldade, tipo_de_jogo, currTime, players, cameras, piecesToPick) {
+	constructor(scene, Board, dificuldade, tipo_de_jogo, currTime, players, cameras, piecesToPick, crono, boardID) {
 		
 		this.scene = scene;
 		this.initTime = currTime;
-		
+		//this.crono = crono;
+		//this.crono.state = this;
+		this.boardID = boardID;
 		if(tipo_de_jogo == 3)
 			this.dificuldade = 1;
 		else
@@ -23,7 +25,7 @@ class EmJogo_State {
 		this.cameras = cameras;			/* Menu Principal, Menu Final, 3 Diferentes câmaras */
 		this.cameraState = 2;
 		
-		this.states = { PLAYERA: 0, PLAYERB: 1, WAITING: 2, AUTOMATICMOVE: 3, ALLMOVES:4, BESTMOVE: 5, UPDATEVIEW: 6 };
+		this.states = { PLAYERA: 0, PLAYERB: 1, WAITING: 2, AUTOMATICMOVE: 3, ALLMOVES:4, BESTMOVE: 5, UPDATEVIEW: 6, CHANGEPLAYER: 7 };
 		
 		this.internalState = this.states.WAITING;
 		this.player = this.states.PLAYERA;
@@ -62,6 +64,7 @@ class EmJogo_State {
 	stopSpecialAutomatic() {
 			this.internalState = this.states.WAITING;
 			this.ready = true;
+			 
 	}
 	
 	
@@ -77,12 +80,15 @@ class EmJogo_State {
 		this.players[0].display(currTime);
 		this.players[1].display(currTime);
 		this.displayPieces();
-		 
+		this.crono.display(this.currTime); 
 	}
 	
 	
 	dealwithIt() {
-		if(this.internalState != this.states.UPDATEVIEW)	{			
+		if(this.crono == undefined)
+			this.crono = new Crono(this.scene, this.boardID, this.currTime, this);
+		
+		if(this.internalState != this.states.UPDATEVIEW && this.internalState != this.states.CHANGEPLAYER)	{			
 			this.dealWithProlog();
 									
 			var id = this.scene.logPicking();
@@ -281,8 +287,21 @@ class EmJogo_State {
 		
 	}
 	
+	cronoAlert() {
+		if(this.internalState != this.states.CHANGEPLAYER && this.ready) {
+			this.noPiecesToPick();
+			
+			this.stopAutomatic();
+		}
+		else {
+			this.internalState = this.states.WAITING;
+		}
+	}
+	
+	
 	stopAutomatic() {
 		this.internalState = this.states.WAITING;
+		
 		this.trocaJogador();
 		this.calculaPecasDisponiveis();
 				
@@ -318,12 +337,12 @@ class EmJogo_State {
 	}
 	
 	trocaJogador() {
-		
+		 
 		this.testTheEnd();
-		// programar o cronometro 
+		this.internalState = this.states.CHANGEPLAYER;
 		
 		this.player = (this.player == this.states.PLAYERA) ? this.states.PLAYERB : this.states.PLAYERA;
-			
+		this.crono.changePlayer(this.currTime);	
 		
 	}
 	

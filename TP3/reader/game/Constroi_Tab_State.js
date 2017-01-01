@@ -506,9 +506,10 @@ Constroi_Tab_State.prototype.verifyEnd = function() {
 			this.gameConstructBoard[i].pick = this.gameConstructBoard[i].states.NOPICK;	
 		}
 	
-		this.scene.state = new EmJogo_State(this.scene, this.gameBoard, this.dificuldade, this.tipoDeJogo, this.currTime, this.players, this.cameras, this.piecesToPick);
-		
+		this.scene.state = new EmJogo_State(this.scene, this.gameBoard, this.dificuldade, this.tipoDeJogo, this.currTime, this.players, this.cameras, this.piecesToPick, this.crono, this.boardID);
+		return true;
 	}
+	return false;
 }
 	
 	
@@ -649,7 +650,7 @@ Constroi_Tab_State.prototype.stopAutomatic = function() {
 		if(this.tipoDeJogo == 1 || (this.tipoDeJogo==2 && this.playerTurn == this.states.PLAYERA))
 			this.NoTilesToPick_PiecesToPick();
 		
-		this.verifyEnd();
+		if(!this.verifyEnd())
 		this.trocaPlayer();
 	}
 	
