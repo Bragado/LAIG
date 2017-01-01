@@ -1,7 +1,7 @@
 function Constroi_Tab_State(scene, boardID, tipoDeJogo, dificuldade, cameras)  {
 		
 		
-		this.cameras = cameras;			/* Menu Principal, Menu Final, 3 Diferentes câmaras */
+		this.cameras = cameras;			/* Menu Principal, Menu Final, 3 Diferentes cï¿½maras */
 		this.internalCamera = 2;
 		this.ready = false;													// Colocar isto a dar...
 		scene.ready = false;
@@ -46,7 +46,7 @@ function Constroi_Tab_State(scene, boardID, tipoDeJogo, dificuldade, cameras)  {
 		var filename=getUrlVars()['chess1Position.dsx'] || "chess1Position.dsx";
 		this.reader = this.scene.graph.reader;
 		this.reader.open('scenes/'+ filename, this);
-
+	
 	};
 	
 	
@@ -58,7 +58,9 @@ Constroi_Tab_State.prototype.onXMLReady=function()
 		for(var i = 0; i < board.length; i++){
 			var id = this.reader.getString(board[i], 'id', false);
 			if(id == this.boardID){
+				this.scene.ready = true;
 				this.processBoard(board[i]);
+				
 				if(this.errors == false){
 					this.ready == true;
 					if(this.tipoDeJogo < 2)
@@ -69,15 +71,16 @@ Constroi_Tab_State.prototype.onXMLReady=function()
 			}
 		}
 		
-		this.scene.ready = true;
-		this.crono = new Crono(this.scene, this.boardID);
+		//
+		
+		
 	}
 	
 	
 Constroi_Tab_State.prototype.processBoard = function(root) {
-		 
+		 	
 		/*
-			Colocação das tiles para o gameBoard		
+			Colocaï¿½ï¿½o das tiles para o gameBoard		
 		*/
 			
 		var tiles = root.getElementsByTagName('tiles');
@@ -98,7 +101,7 @@ Constroi_Tab_State.prototype.processBoard = function(root) {
 
 		
 		/*
-			Colocação das peças
+			Colocaï¿½ï¿½o das peï¿½as
 		*/
 		
 		var pecas = root.getElementsByTagName('pecas');
@@ -271,7 +274,7 @@ Constroi_Tab_State.prototype.processBoard = function(root) {
 		}
 		
 		
-
+	
 		this.ready = true;
 
 		
@@ -285,6 +288,9 @@ Constroi_Tab_State.prototype.processBoard = function(root) {
 		
 	//@override
 Constroi_Tab_State.prototype.display = function(currTime) {
+		if(this.crono == undefined)
+			this.crono = new Crono(this.scene, this.boardID, currTime);
+		
 		if(!this.ready)
 			return;
 		 	
@@ -314,7 +320,7 @@ Constroi_Tab_State.prototype.display = function(currTime) {
 		this.players[0].display();
 		this.players[1].display();
 		this.displayPieces();
-		this.crono.display(this.currTime);	
+		this.crono.display(currTime);	
 		
 	}
 	

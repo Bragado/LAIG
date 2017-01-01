@@ -1,4 +1,4 @@
-function Crono(scene, boardID) {
+function Crono(scene, boardID, initTime) {
 	
 	this.scene = scene;
  
@@ -22,8 +22,14 @@ function Crono(scene, boardID) {
 	this.reader = this.scene.graph.reader;
 	this.reader.open('scenes/'+ filename, this);
 	
+	this.states = {ANIMEON: 0, ANIMEOFF: 1, PLAYERA: 11, PLAYERB: 12 };
+	this.player = this.states.PLAYERA;
+	this.anime = this.states.ANIMEOFF;
+	this.spanTime = 0.5;
+	this.superInitTime = initTime;
+	this.initTime = initTime; 
 	
-	
+	this.ready = false;
 }
 
 
@@ -41,7 +47,7 @@ Crono.prototype.onXMLReady=function()
 			}
 		
 		
-		this.scene.ready = true;
+		 
 		
 }
 
@@ -60,10 +66,37 @@ Crono.prototype.process= function(root) {
 		this.textures.push(new CGFtexture(this.scene, textRef));
 		
 	}
+	this.ready = true;
+}
+
+Crono.prototype.dealWithTemp = function(currTime) {
+	var temporizador = Math.floor(30 + this.initTime - currTime);
+	var temp = {seg1: Math.floor(temporizador/10), seg2: temporizador%10};
+	if(temporizador <= 0) {
+		this.initTime = currTime;
+		temp.seg1 = 3;
+		temp.seg2 = 0;
+		return temp;
+	}
+	return temp;
 	
 }
 
+Crono.prototype.dealWithCrono = function(currTime) {
+	var minutes = Math.floor( (currTime - this.superInitTime)/60);
+	var secunds = Math.floor(currTime - this.superInitTime)%60;
+	
+	var crono = {min1: Math.floor(minutes/10), min2: minutes%10, seg1: Math.floor(secunds/10), seg2: secunds%10};
+	
+	return crono;
+}
+
 Crono.prototype.display = function(currTime) {
+	if(!this.ready)
+		return;
+	
+	var temporizador = this.dealWithTemp(currTime);
+	var crono = this.dealWithCrono(currTime);
 	this.material.apply();
 	
 	this.scene.pushMatrix();
@@ -74,12 +107,41 @@ Crono.prototype.display = function(currTime) {
 			this.textureFundo.bind(0);
 			this.quad.display();
 			
-			this.scene.pushMatrix();	// meio
+			this.scene.pushMatrix();	// meio -> temporizador
 				this.scene.translate(0,0,0.1);
 				this.scene.scale(18, 4, 1);
 				this.textureRed.bind(0);
-				this.genericQuad.display();
+				//this.genericQuad.display();
 				this.textureRed.unbind(0);
+				
+				this.scene.pushMatrix();		// player
+					this.scene.translate(-4/18, 0, 0.1);
+					this.scene.scale(10/18, 1, 1);
+					this.textures[this.player].bind(0);
+					this.genericQuad.updateTexturesAmpli(1,1);
+					this.genericQuad.display();
+					this.textures[this.player].unbind(0);
+				this.scene.popMatrix();
+				
+				this.scene.pushMatrix();		//seg1
+					this.scene.translate(4.5/18, 0, 0.1);
+					this.scene.scale(3/18, 3/4, 1);
+					this.textures[temporizador.seg1].bind(0);
+					this.genericQuad.updateTexturesAmpli(1,1);
+					this.genericQuad.display();
+					this.textures[temporizador.seg1].unbind(0);
+					
+				this.scene.popMatrix();
+				this.scene.pushMatrix();		//seg2
+					this.scene.translate(7.5/18, 0, 0.1);
+					this.scene.scale(3/18, 3/4, 1);
+					this.textures[temporizador.seg2].bind(0);
+					this.genericQuad.updateTexturesAmpli(1,1);
+					this.genericQuad.display();
+					this.textures[temporizador.seg2].unbind(0);
+					
+				this.scene.popMatrix();
+				
 			this.scene.popMatrix();
 			
 			this.scene.pushMatrix();	// cima -> Score
@@ -118,12 +180,54 @@ Crono.prototype.display = function(currTime) {
 				
 			this.scene.popMatrix();
 			
-			this.scene.pushMatrix();	// baixo
+			this.scene.pushMatrix();	// baixo -> cronometro
 				this.scene.translate(0,-4.5,0.1);
 				this.scene.scale(18, 4, 1);
 				this.textureRed.bind(0);
 				this.genericQuad.display();
 				this.textureRed.unbind(0);
+				
+				this.scene.pushMatrix();
+					this.scene.translate(-7/18, 0, 0.1 );
+					this.scene.scale(4/18, 1, 1);
+					this.textures[crono.min1].bind(0);
+					this.genericQuad.updateTexturesAmpli(1,1);
+					this.genericQuad.display();
+					this.textures[crono.min1].unbind(0);
+				this.scene.popMatrix();
+				this.scene.pushMatrix();
+					this.scene.translate(-3/18, 0, 0.1 );
+					this.scene.scale(4/18, 1, 1);
+					this.textures[crono.min2].bind(0);
+					this.genericQuad.updateTexturesAmpli(1,1);
+					this.genericQuad.display();
+					this.textures[crono.min2].unbind(0);
+				this.scene.popMatrix();
+				this.scene.pushMatrix();
+					this.scene.translate(0, 0, 0.1 );
+					this.scene.scale(2/18, 1, 1);
+					this.textures[10].bind(0);
+					this.genericQuad.updateTexturesAmpli(1,1);
+					this.genericQuad.display();
+					this.textures[10].unbind(0);
+				this.scene.popMatrix();
+				this.scene.pushMatrix();
+					this.scene.translate(3/18, 0, 0.1 );
+					this.scene.scale(4/18, 1, 1);
+					this.textures[crono.seg1].bind(0);
+					this.genericQuad.updateTexturesAmpli(1,1);
+					this.genericQuad.display();
+					this.textures[crono.seg1].unbind(0);
+				this.scene.popMatrix();
+				this.scene.pushMatrix();
+					this.scene.translate(7/18, 0, 0.1 );
+					this.scene.scale(4/18, 1, 1);
+					this.textures[crono.seg2].bind(0);
+					this.genericQuad.updateTexturesAmpli(1,1);
+					this.genericQuad.display();
+					this.textures[crono.seg2].unbind(0);
+				this.scene.popMatrix();
+				
 			this.scene.popMatrix();	
 			this.textureFundo.unbind(0);
 		this.scene.popMatrix();
