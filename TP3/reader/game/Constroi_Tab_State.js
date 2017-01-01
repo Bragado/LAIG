@@ -46,6 +46,14 @@ function Constroi_Tab_State(scene, boardID, tipoDeJogo, dificuldade, cameras)  {
 		var filename=getUrlVars()['chess1Position.dsx'] || "chess1Position.dsx";
 		this.reader = this.scene.graph.reader;
 		this.reader.open('scenes/'+ filename, this);
+		
+		this.lastPiece = {
+			Tile: null,
+			Peca: null,
+			xOld: -1, yOld: -1, zOld: -1
+		}
+		
+		
 	
 	};
 	
@@ -296,10 +304,10 @@ Constroi_Tab_State.prototype.display = function(currTime) {
 		 	
 		this.test++;
 		
-		if(this.tipoDeJogo == 3 && this.test % 20 == 0) {
+		if((this.tipoDeJogo == 3 || (this.tipoDeJogo == 2 && this.playerTurn == this.states.PLAYERB)) && this.test % 200 == 0) {
 			this.dealWithTipoDeJogo();
 			
-		} else if(this.tipoDeJogo != 3)
+		} else if(this.tipoDeJogo == 1 || (this.tipoDeJogo == 2 && this.playerTurn == this.states.PLAYERA))
 			this.dealWithTipoDeJogo();
 		
 		
@@ -377,6 +385,13 @@ Constroi_Tab_State.prototype.dealWithPieces = function(id)    {
 				this.scene.state = new Transition(this.scene, new MenuPrincipal(this.scene, "chess1", 1), this.scene.camera, this.cameras[0], this.currTime);
 			break;
 			case 1003:	// undo
+				if(this.lastPiece.Peca != null) {
+					this.lastPiece.Peca.setAutomaticMove(this, this.lastPiece.xOld, this.lastPiece.yOld, this.lastPiece.zOld, 0.5, this.currTime, 10);
+					this.lastPiece.Tile.internalState = this.lastPiece.Tile.states.NOPIECE;
+					this.lastPiece.Tile.peca.placed = false;
+					this.lastPiece.Tile.peca = null;
+					this.lastPiece.Peca = null;
+				}
 			break;	
 		}
 	
@@ -386,6 +401,7 @@ Constroi_Tab_State.prototype.dealWithPieces = function(id)    {
 
 Constroi_Tab_State.prototype.cronoAlert = function() {
 	if(this.internalState != this.states.CHANGEPLAYER) {
+		this.lastPiece.Peca = null;
 		this.stopAutomatic();
 	}
 	else {
@@ -448,6 +464,7 @@ Constroi_Tab_State.prototype.dealWithTipoDeJogo = function() {
 					tile.setPeca(peca);
 					tile.internalState = tile.states.PIECE;
 					//tile.peca.pick = tile.piece.states.NOPICK;
+					this.lastPiece = {Tile: tile, Peca: peca, xOld: peca.x, yOld: peca.y, zOld: peca.z};
 					tile.peca.setAutomaticMove(this, tile.x, tile.y, tile.z, 0.5, this.currTime, 10);
 					this.internalState = this.states.AUTOMATICMOVE;
 					tile.peca.placed = true;		
@@ -610,6 +627,7 @@ Constroi_Tab_State.prototype.mouseDown = function(id) {
 						tile.setPeca(this.tile_choosed);
 						tile.internalState = tile.states.PIECE;
 						//tile.peca.pick = tile.piece.states.NOPICK;
+						this.lastPiece = {Tile: tile, Peca: this.tile_choosed, xOld: this.tile_choosed.x, yOld: this.tile_choosed.y, zOld: this.tile_choosed.z};
 						tile.peca.setAutomaticMove(this, tile.x, tile.y, tile.z, 0.5, this.currTime, 10);
 						this.internalState = this.states.AUTOMATICMOVE;
 						tile.peca.placed = true;			
@@ -668,9 +686,10 @@ Constroi_Tab_State.prototype.onXMLError=function (message) {
 
 class PlayerMove {					// move.oldX, move.newX, move.oldY, move.newY
 		
-		constructor(player, move){
+		constructor(player, move, peca){
 			this.player = player;
 			this.move = move;
+			this.peca = peca;
 		}		
 		
 	}
