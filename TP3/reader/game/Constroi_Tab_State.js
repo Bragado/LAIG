@@ -20,7 +20,7 @@ function Constroi_Tab_State(scene, boardID, tipoDeJogo, dificuldade, cameras)  {
 			Internal States
 		*/
 		
-		this.states = { PIECECHOOSED: 0, NOPIECECHOOSED: 1, AUTOMATICMOVE: 2, PLAYERA: 3, PLAYERB: 4, UPDATEVIEW: 5};
+		this.states = { PIECECHOOSED: 0, NOPIECECHOOSED: 1, AUTOMATICMOVE: 2, PLAYERA: 3, PLAYERB: 4, UPDATEVIEW: 5, CHANGEPLAYER: 6};
 		this.internalState = this.states.NOPIECECHOOSED;
 		this.playerTurn = this.states.PLAYERA;
 		
@@ -289,7 +289,7 @@ Constroi_Tab_State.prototype.processBoard = function(root) {
 	//@override
 Constroi_Tab_State.prototype.display = function(currTime) {
 		if(this.crono == undefined)
-			this.crono = new Crono(this.scene, this.boardID, currTime);
+			this.crono = new Crono(this.scene, this.boardID, currTime, this);
 		
 		if(!this.ready)
 			return;
@@ -383,9 +383,22 @@ Constroi_Tab_State.prototype.dealWithPieces = function(id)    {
 	
 	
 }
+
+Constroi_Tab_State.prototype.cronoAlert = function() {
+	if(this.internalState != this.states.CHANGEPLAYER) {
+		this.stopAutomatic();
+	}
+	else {
+		this.internalState = this.states.NOPIECECHOOSED;
+	}
+	
+}
 	
 	
 Constroi_Tab_State.prototype.dealWithTipoDeJogo = function() {
+		
+		if(this.internalState == this.states.CHANGEPLAYER)
+			return;
 		
 		if(this.internalState == this.states.UPDATEVIEW) {
 			if(this.changeView.SPANTIME > this.currTime - this.changeView.INITTIME + 0.01)
@@ -571,6 +584,8 @@ Constroi_Tab_State.prototype.trocaPlayer = function() {
 			this.playerTurn = this.states.PLAYERB;
 		else
 			this.playerTurn = this.states.PLAYERA;
+		this.internalState = this.states.CHANGEPLAYER;
+		this.crono.changePlayer(this.currTime);
 	
 }
 	
@@ -629,12 +644,13 @@ Constroi_Tab_State.prototype.mouseDown = function(id) {
 	//@override
 Constroi_Tab_State.prototype.stopAutomatic = function() {
 		this.internalState = this.states.NOPIECECHOOSED;
-		this.trocaPlayer();
+		
 		
 		if(this.tipoDeJogo == 1 || (this.tipoDeJogo==2 && this.playerTurn == this.states.PLAYERA))
 			this.NoTilesToPick_PiecesToPick();
 		
 		this.verifyEnd();
+		this.trocaPlayer();
 	}
 	
 	//@override
