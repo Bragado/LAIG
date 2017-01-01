@@ -259,19 +259,20 @@
 		</jogadores>
 		
  
-		<cronometro posX="" posY="" posZ="" dimX="" dimY="" dimZ=""   >
-			<texture ref = ""/>
-			<texture ref = ""/>
-			<texture ref = ""/>
-			<texture ref = ""/>
-			<texture ref = ""/>
-			<texture ref = ""/>
-			<texture ref = ""/>
-			<texture ref = ""/>
-			<texture ref = ""/>
-			<texture ref = ""/>
-			<texture ref = ""/>
-			
+		<cronometro posX="40" posY="35" posZ="10"   >
+			<texture="../resources/game/0.jpg"/>
+			<texture="../resources/game/1.jpg/>
+			<texture="../resources/game/2.jpg/>
+			<texture="../resources/game/3.jpg/>
+			<texture="../resources/game/4.jpg/>
+			<texture="../resources/game/5.jpg/>
+			<texture="../resources/game/6.jpg/>
+			<texture="../resources/game/7.jpg/>
+			<texture="../resources/game/8.jpg/>
+			<texture="../resources/game/9.jpg/>
+			<texture="../resources/game/doisPontos.jpg/>
+			<texture="../resources/game/playerA.png/>
+			<texture="../resources/game/playerB.png/>
 			
 		</cronometro>
 		
@@ -682,7 +683,7 @@
 		</jogadores>
 		
  
-		<cronometro posX="" posY="" posZ="" dimX="" dimY="" dimZ=""   >
+		<cronometro posX="" posY="" posZ="" >
 			<texture ref = ""/>
 			<texture ref = ""/>
 			<texture ref = ""/>

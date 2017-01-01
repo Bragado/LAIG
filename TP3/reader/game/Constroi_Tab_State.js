@@ -70,7 +70,7 @@ Constroi_Tab_State.prototype.onXMLReady=function()
 		}
 		
 		this.scene.ready = true;
-		
+		this.crono = new Crono(this.scene, this.boardID);
 	}
 	
 	
@@ -314,7 +314,7 @@ Constroi_Tab_State.prototype.display = function(currTime) {
 		this.players[0].display();
 		this.players[1].display();
 		this.displayPieces();
-			
+		this.crono.display(this.currTime);	
 		
 	}
 	

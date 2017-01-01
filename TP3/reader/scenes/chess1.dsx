@@ -570,6 +570,7 @@
 				<componentref id="paredes_chao1"/>
 				<componentref id="escadinhas1"/>
 				<componentref id="menu_opcoes1"/>
+				
             </children>
             
         </component>
@@ -1810,6 +1811,9 @@
             </children>
             
         </component>
+		
+		
+		
 		<component id="menu_opcoes2">
         
             <transformation>
@@ -1865,6 +1869,7 @@
             </children>
             
         </component>
+		
 		<component id="cubo_opcoes2">
         
             <transformation>
