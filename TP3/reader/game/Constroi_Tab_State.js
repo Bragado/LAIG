@@ -458,7 +458,7 @@ Constroi_Tab_State.prototype.dealWithTipoDeJogo = function() {
 				
 			
 			default:
-				if(this.internalState == this.states.NOPIECECHOOSED && this.test%80 == 0) {
+				if(this.internalState == this.states.NOPIECECHOOSED && this.test%10 == 0) {
 					
 					var peca = this.findFreePiece();
 					var tile = this.findFreeTile();

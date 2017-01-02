@@ -82,6 +82,7 @@ class EmJogo_State {
 		this.players[0].display(currTime);
 		this.players[1].display(currTime);
 		this.displayPieces();
+		if(this.crono != undefined)
 		this.crono.display(this.currTime); 
 	}
 	
@@ -139,6 +140,14 @@ class EmJogo_State {
 				this.scene.state = new Transition(this.scene, new MenuPrincipal(this.scene, "chess1", 1), this.scene.camera, this.cameras[0], this.currTime);
 			break;
 			case 1003:	// undo
+				if(this.movesTRACK.length == 0)
+					return;
+				var move = this.movesTRACK[this.movesTRACK.length - 1];
+				this.movesTRACK.splice(this.movesTRACK.length - 1);
+				this.noPiecesToPick();
+				this.players[Math.abs(this.player - 1)].setAnimeOn(true, move.xOld, move.zOld, this.currTime, this);
+				//this.player = Math.abs(this.player -1);
+				this.internalState = this.states.AUTOMATICMOVE;
 			break;	
 		}
 	
@@ -202,7 +211,7 @@ class EmJogo_State {
 					movesChanged = false;
 					this.bestMoveRequest(); 					
 				}
-				if(bestMoveReady && test > 100) {
+				if(bestMoveReady && this.test > 100) {
 					bestMoveReady = false;
 					this.applyBestMove();
 					
@@ -343,6 +352,7 @@ class EmJogo_State {
 		
 		this.player = (this.player == this.states.PLAYERA) ? this.states.PLAYERB : this.states.PLAYERA;
 		this.crono.changePlayer(this.currTime);	
+		this.test = 0;
 		
 	}
 	
