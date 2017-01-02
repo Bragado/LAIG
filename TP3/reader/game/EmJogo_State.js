@@ -89,7 +89,7 @@ class EmJogo_State {
 	
 	dealwithIt() {
 		if(this.crono == undefined)
-			this.crono = new Crono(this.scene, this.boardID, this.currTime, this);
+			this.crono = new Crono(this.scene, this.boardID, this.initTime, this);
 		
 		if(this.internalState != this.states.UPDATEVIEW && this.internalState != this.states.CHANGEPLAYER)	{			
 			this.dealWithProlog();

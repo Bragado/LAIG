@@ -108,7 +108,7 @@ testaFinal(_, _, Contador, _):- Contador > 10.
 
 
 testaFinall(8, 1, Contador, Contador) :-  nJogadas(X), Contador < X, retract(nJogadas(X)), assert(nJogadas(Contador)).
-testaFinal1(_, _, Contador, _):- Contador > 7.
+testaFinal1(_, _, Contador, _):- Contador > 5.
 
 
 

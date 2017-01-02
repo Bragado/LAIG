@@ -391,6 +391,7 @@ class MenuFinal extends Menu {
 		
 		switch(id) {
 			case 1:
+				this.scene.state = new Transition(this.scene, new Filme_State(this.scene, this.camera[this.cameraStates.MenuPrincipal], this.gameBoard, this.movesTrack), this.camera[this.cameraStates.MenuFinal], this.cameras[1], this.currTime);
 			break;
 			case 2:
 				this.scene.state = new Transition(this.scene, new MenuPrincipal(this.scene, "chess1", 0), this.camera[this.cameraStates.MenuFinal], this.camera[this.cameraStates.MenuPrincipal], this.currTime);

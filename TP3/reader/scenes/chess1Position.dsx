@@ -473,20 +473,21 @@
 		</jogadores>
 		
  
-		<cronometro posX="" posY="" posZ="" dimX="" dimY="" dimZ=""   >
-			<texture ref = ""/>
-			<texture ref = ""/>
-			<texture ref = ""/>
-			<texture ref = ""/>
-			<texture ref = ""/>
-			<texture ref = ""/>
-			<texture ref = ""/>
-			<texture ref = ""/>
-			<texture ref = ""/>
-			<texture ref = ""/>
-			<texture ref = ""/>
-			
-			
+		<cronometro posX="240" posY="35" posZ="10"   >
+			<texture id="../resources/game/0.jpg"/>
+			<texture id="../resources/game/1.jpg"/>
+			<texture id="../resources/game/2.jpg"/>
+			<texture id="../resources/game/3.jpg"/>
+			<texture id="../resources/game/4.jpg"/>
+			<texture id="../resources/game/5.jpg"/>
+			<texture id="../resources/game/6.jpg"/>
+			<texture id="../resources/game/7.jpg"/>
+			<texture id="../resources/game/8.jpg"/>
+			<texture id="../resources/game/9.jpg"/>
+			<texture id="../resources/game/doisPontos.jpg"/>
+			<texture id="../resources/game/playerA.png"/>
+			<texture id="../resources/game/playerB.png"/>
+			<texture id="../resources/game/score.jpg"/>
 		</cronometro>
  
 	</board>
@@ -683,20 +684,21 @@
 		</jogadores>
 		
  
-		<cronometro posX="" posY="" posZ="" >
-			<texture ref = ""/>
-			<texture ref = ""/>
-			<texture ref = ""/>
-			<texture ref = ""/>
-			<texture ref = ""/>
-			<texture ref = ""/>
-			<texture ref = ""/>
-			<texture ref = ""/>
-			<texture ref = ""/>
-			<texture ref = ""/>
-			<texture ref = ""/>
-			
-			
+		<cronometro posX="440" posY="35" posZ="10"   >
+			<texture id="../resources/game/0.jpg"/>
+			<texture id="../resources/game/1.jpg"/>
+			<texture id="../resources/game/2.jpg"/>
+			<texture id="../resources/game/3.jpg"/>
+			<texture id="../resources/game/4.jpg"/>
+			<texture id="../resources/game/5.jpg"/>
+			<texture id="../resources/game/6.jpg"/>
+			<texture id="../resources/game/7.jpg"/>
+			<texture id="../resources/game/8.jpg"/>
+			<texture id="../resources/game/9.jpg"/>
+			<texture id="../resources/game/doisPontos.jpg"/>
+			<texture id="../resources/game/playerA.png"/>
+			<texture id="../resources/game/playerB.png"/>
+			<texture id="../resources/game/score.jpg"/>
 		</cronometro>
  
 	</board>
