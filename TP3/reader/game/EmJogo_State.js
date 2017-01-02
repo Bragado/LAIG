@@ -44,6 +44,7 @@ class EmJogo_State {
 		
 		this.firstMove();
 		this.ready = false; 
+		this.test = 0;
 	}
 	
 	firstMove() {
@@ -69,7 +70,8 @@ class EmJogo_State {
 	
 	
 	display(currTime) {
-			if(this.ready) {
+		this.test++;
+		if(this.ready) {
 				this.dealwithIt();
 			}
 		
@@ -200,7 +202,7 @@ class EmJogo_State {
 					movesChanged = false;
 					this.bestMoveRequest(); 					
 				}
-				if(bestMoveReady) {
+				if(bestMoveReady && test > 100) {
 					bestMoveReady = false;
 					this.applyBestMove();
 					
@@ -219,9 +221,8 @@ class EmJogo_State {
 				
 		
 		this.addPieceAvailable(parseInt(bestMove));
-		var move = {oldX: this.players[this.player].x, oldY: this.players[this.player].y, oldZ: this.players[this.player].z, newX: this.piecesAvailable[0].x, newY: this.piecesAvailable[0].y, newZ: this.piecesAvailable[0].z }
-					
-		this.movesTRACK.push(new PlayerMove(this.players[this.player].id, move));
+		
+		this.movesTRACK.push(new PlayerMove(this.players[this.player].id, this.players[this.player].x, this.players[this.player].y, this.players[this.player].z, this.piecesAvailable[0].x, this.piecesAvailable[0].y + 3, this.piecesAvailable[0].z ));
 		this.noPiecesToPick();
 		this.players[this.player].setAnimeOn(true, this.piecesAvailable[0].x, this.piecesAvailable[0].z, this.currTime, this);
 		this.internalState = this.states.AUTOMATICMOVE;
@@ -268,9 +269,7 @@ class EmJogo_State {
 				
 				if(id == this.piecesAvailable[i].id) {
 					
-					var move = {oldX: this.players[this.player].x, oldY: this.players[this.player].y, oldZ: this.players[this.player].z, newX: this.piecesAvailable[i].x, newY: this.piecesAvailable[i].y, newZ: this.piecesAvailable[i].z }
-					
-					this.movesTRACK.push(new PlayerMove(this.players[this.player].id, move));
+					this.movesTRACK.push(new PlayerMove(this.players[this.player].id, this.players[this.player].x, this.players[this.player].y, this.players[this.player].z,  this.piecesAvailable[i].x, this.piecesAvailable[i].y + 3, this.piecesAvailable[i].z));
 					this.noPiecesToPick();
 					this.players[this.player].setAnimeOn(true, this.piecesAvailable[i].x, this.piecesAvailable[i].z, this.currTime, this);
 					this.internalState = this.states.AUTOMATICMOVE;
@@ -295,6 +294,7 @@ class EmJogo_State {
 		}
 		else {
 			this.internalState = this.states.WAITING;
+			this.test = 0;
 		}
 	}
 	
@@ -450,4 +450,20 @@ class EmJogo_State {
 	
 	
 }
+
+class PlayerMove {					// move.oldX, move.newX, move.oldY, move.newY
+		
+		constructor(player, xOld, yOld, zOld, xNew, yNew, zNew) {
+			this.player = player;
+			this.xOld = xOld;
+			this.yOld = yOld;
+			this.zOld = zOld;
+			this.xNew = xNew;
+			this.yNew = yNew;
+			this.zNew = zNew;
+			
+		}		
+		
+	}
+
 

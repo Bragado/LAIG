@@ -304,10 +304,10 @@ Constroi_Tab_State.prototype.display = function(currTime) {
 		 	
 		this.test++;
 		
-		if((this.tipoDeJogo == 3 || (this.tipoDeJogo == 2 && this.playerTurn == this.states.PLAYERB)) && this.test % 200 == 0) {
+		if(this.tipoDeJogo == 3 && this.test % 100 == 0) {
 			this.dealWithTipoDeJogo();
 			
-		} else if(this.tipoDeJogo == 1 || (this.tipoDeJogo == 2 && this.playerTurn == this.states.PLAYERA))
+		} else if(this.tipoDeJogo != 3)
 			this.dealWithTipoDeJogo();
 		
 		
@@ -406,6 +406,7 @@ Constroi_Tab_State.prototype.cronoAlert = function() {
 	}
 	else {
 		this.internalState = this.states.NOPIECECHOOSED;
+		this.test = 0;
 	}
 	
 }
@@ -457,7 +458,7 @@ Constroi_Tab_State.prototype.dealWithTipoDeJogo = function() {
 				
 			
 			default:
-				if(this.internalState == this.states.NOPIECECHOOSED) {
+				if(this.internalState == this.states.NOPIECECHOOSED && this.test%80 == 0) {
 					
 					var peca = this.findFreePiece();
 					var tile = this.findFreeTile();
@@ -604,6 +605,7 @@ Constroi_Tab_State.prototype.trocaPlayer = function() {
 			this.playerTurn = this.states.PLAYERA;
 		this.internalState = this.states.CHANGEPLAYER;
 		this.crono.changePlayer(this.currTime);
+		
 	
 }
 	
@@ -684,12 +686,3 @@ Constroi_Tab_State.prototype.onXMLError=function (message) {
 };
 
 
-class PlayerMove {					// move.oldX, move.newX, move.oldY, move.newY
-		
-		constructor(player, move, peca){
-			this.player = player;
-			this.move = move;
-			this.peca = peca;
-		}		
-		
-	}
