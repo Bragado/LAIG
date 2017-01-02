@@ -542,6 +542,7 @@ Constroi_Tab_State.prototype.setPieceChoosed= function(id) {
 				 
 				this.internalState = this.states.PIECECHOOSED;
 				this.tilesToPick_NoPieceToPick();
+				this.tile_choosed.pick = this.tile_choosed.states.RedColor;
 			}
 	}
 	
@@ -625,7 +626,7 @@ Constroi_Tab_State.prototype.mouseDown = function(id) {
 				else { 
 					var tile = this.findBoardTile(id);
 					if(tile != null && tile.internalState == tile.states.NOPIECE){
-							
+						this.tile_choosed.pick = this.tile_choosed.states.NOPICK;	
 						tile.setPeca(this.tile_choosed);
 						tile.internalState = tile.states.PIECE;
 						//tile.peca.pick = tile.piece.states.NOPICK;

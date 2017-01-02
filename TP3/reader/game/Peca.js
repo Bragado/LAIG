@@ -10,7 +10,7 @@ class Peca {
 		
 		this.animeOn = false;	
 		
-		this.states = {NOPICK: 0, PICK: 1, TOPPICK: 2};
+		this.states = {NOPICK: 0, PICK: 1, TOPPICK: 2, RedColor: 3};
 		
 		
 		
@@ -210,7 +210,8 @@ class normalPeca extends Peca {
 			//this.material.setTexture(this.texture);	
 			//this.material.apply();
 			this.texture.bind(0);
-			if(this.states.TOPPICK == this.pick){
+			if(this.states.TOPPICK == this.pick || this.states.RedColor == this.pick){
+				if(this.states.TOPPICK == this.pick)
 				this.scene.registerForPick(parseInt(this.id), this.quad);
 				this.scene.setActiveShader(this.shader);
 				this.quad.display();
