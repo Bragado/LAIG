@@ -34,6 +34,22 @@ public class FileToBackup {
 		return del;
 	}
 	
+	public String getId() {
+		return id;
+	}
+	
+	public void setBack(State back) {
+		this.back = back;
+	}
+	
+	public void setChunks(Hashtable<Integer, Chunk> chunks) {
+		this.chunks = chunks;
+	}
+	
+	public void setDel(State del) {
+		this.del = del;
+	}
+	
 	
 	
 	

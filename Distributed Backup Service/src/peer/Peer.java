@@ -1,5 +1,9 @@
 package peer;
 
+import java.nio.file.Files;
+
+import auxiliarStructures.Chunks;
+import auxiliarStructures.*;
 import channels.MC_Channel;
 import channels.MDB_Channel;
 import channels.MDR_Channel;
@@ -28,7 +32,14 @@ public class Peer {
 	private MC_Channel mc_channel;
 	private MDB_Channel mdb_channel;
 	private MDR_Channel mdr_channel;
-	
+	public Chunks chunks = new Chunks();
+	public auxiliarStructures.Files files = new auxiliarStructures.Files();
+
+
+	private String ID;
+
+
+	private String version;
 	
 	
 	public Peer(String[] args) {
@@ -43,6 +54,8 @@ public class Peer {
 		 * args[7] -> MDR address
 		 * args[8] -> MDR port
 		 */
+		this.ID = args[1];
+		this.version = args[0];
 		
 		this.ui = new UIListenner(args[2]);
 		this.mc_channel = new MC_Channel(args[3], Integer.parseInt(args[4]));
@@ -77,5 +90,13 @@ public class Peer {
 		
 	}
 	
+	
+	public String getID() {
+		return this.ID;
+	}
+	
+	public String getVersion() {
+		return this.version;
+	}
 	
 }

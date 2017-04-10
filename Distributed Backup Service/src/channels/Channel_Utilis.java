@@ -50,7 +50,7 @@ public class Channel_Utilis {
 		
 		String header = parseHeader(message);
 		
-		return header.split(" ");
+		return header.split(" "); //TODO probably wont work
 	}
 	
 	
